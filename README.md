@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# Dodge Website
 
-TODO: Document your project here
+Legal and support pages for Dodge.

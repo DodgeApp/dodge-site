@@ -57,11 +57,6 @@ export default function LegalPageShell({ title, lastUpdated, children }: LegalPa
         </div>
 
         {children}
-
-        {/* Footer */}
-        <div className="pt-4 pb-2 text-center">
-          <p className="text-xs text-muted-foreground">© 2025 Dodge Labs (Pty) Ltd. All rights reserved.</p>
-        </div>
       </main>
     </div>
   );

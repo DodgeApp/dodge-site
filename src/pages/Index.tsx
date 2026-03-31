@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { FileText, Shield, ChevronRight } from "lucide-react";
+import { FileText, Shield, LifeBuoy, ChevronRight } from "lucide-react";
 import dodgeLogo from "@/assets/dodge-logo.png";
 
 export default function Index() {
@@ -48,6 +48,18 @@ export default function Index() {
             </div>
             <ChevronRight size={16} className="text-muted-foreground flex-shrink-0" />
           </button>
+
+          <button
+            onClick={() => navigate("/support")}
+            className="w-full card-dodge flex items-center gap-4 p-4 text-left transition-all active:scale-[0.98] hover:border-gold/30"
+          >
+            <LifeBuoy size={16} strokeWidth={2} className="text-foreground flex-shrink-0" />
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-foreground">Support</p>
+              <p className="text-xs text-muted-foreground mt-0.5">Help, issues, and feedback</p>
+            </div>
+            <ChevronRight size={16} className="text-muted-foreground flex-shrink-0" />
+          </button>
         </div>
 
         {/* Preview notice */}
@@ -59,9 +71,6 @@ export default function Index() {
           </p>
         </div>
 
-        <p className="text-center text-xs text-muted-foreground pt-2">
-          © 2026 Dodge Labs (Pty) Ltd · All rights reserved
-        </p>
       </div>
     </div>
   );
