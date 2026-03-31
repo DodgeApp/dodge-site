@@ -1,10 +1,61 @@
-import { ArrowLeft, HelpCircle, Mail, MessageCircle } from "lucide-react";
+import { FormEvent, useState } from "react";
+import { ArrowLeft, HelpCircle, Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import dodgeLogo from "@/assets/dodge-logo.png";
-import LegalCard, { BulletList } from "@/components/LegalCard";
+import LegalCard from "@/components/LegalCard";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 export default function Support() {
   const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState<{ type: "success" | "error"; text: string } | null>(null);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const trap = new FormData(form).get("company");
+
+    if (trap) {
+      return;
+    }
+
+    setSending(true);
+    setStatus(null);
+
+    fetch("/api/support", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name.trim(),
+        email: email.trim(),
+        message: message.trim(),
+      }),
+    })
+      .then(async (response) => {
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(data?.error || "Unable to send support request.");
+        }
+        setStatus({ type: "success", text: "Message sent. Our support team will contact you soon." });
+        setName("");
+        setEmail("");
+        setMessage("");
+      })
+      .catch((error: Error) => {
+        setStatus({ type: "error", text: error.message || "Something went wrong. Please try again." });
+      })
+      .finally(() => {
+        setSending(false);
+      });
+  };
 
   return (
     <div className="min-h-screen bg-background font-sans">
@@ -47,21 +98,78 @@ export default function Support() {
           </a>
         </LegalCard>
 
-        <LegalCard icon={HelpCircle} title="FAQ">
-          <BulletList
-            items={[
-              "How quickly will I get a response? We aim to reply as soon as possible.",
-              "What can support help with? Account access, technical issues, and general questions.",
-              "Can I send product feedback? Yes, we welcome feature requests and feedback.",
-            ]}
-          />
+        <LegalCard icon={Mail} title="Contact Form">
+          <form onSubmit={handleSubmit} className="space-y-3">
+            <input
+              type="text"
+              name="company"
+              autoComplete="off"
+              tabIndex={-1}
+              className="hidden"
+              aria-hidden="true"
+            />
+            <Input
+              type="text"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+              placeholder="Your name"
+              autoComplete="name"
+            />
+            <Input
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              placeholder="Your email"
+              autoComplete="email"
+              required
+            />
+            <Textarea
+              value={message}
+              onChange={(event) => setMessage(event.target.value)}
+              placeholder="How can we help?"
+              className="min-h-[110px]"
+              required
+            />
+            <Button type="submit" className="w-full" disabled={sending}>
+              {sending ? "Sending..." : "Send Message"}
+            </Button>
+            {status && (
+              <p className={status.type === "success" ? "text-xs text-gold" : "text-xs text-destructive"}>
+                {status.text}
+              </p>
+            )}
+          </form>
         </LegalCard>
 
-        <LegalCard icon={MessageCircle} title="Need More Help?">
-          <p>
-            Include relevant details in your email, such as your device type and a short description of
-            the issue, so we can assist you faster.
-          </p>
+        <LegalCard icon={HelpCircle} title="Frequently Asked Questions">
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="response-time" className="border-border/60">
+              <AccordionTrigger className="text-left text-sm text-foreground hover:no-underline">
+                How quickly will I get a response?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-[13.5px] leading-relaxed">
+                We aim to respond as soon as possible, typically within 1 to 2 business days.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="help-scope" className="border-border/60">
+              <AccordionTrigger className="text-left text-sm text-foreground hover:no-underline">
+                What can support help with?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-[13.5px] leading-relaxed">
+                Support can assist with account access, technical issues, and general app questions.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="feedback" className="border-b-0">
+              <AccordionTrigger className="text-left text-sm text-foreground hover:no-underline">
+                Can I send product feedback?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-[13.5px] leading-relaxed">
+                Yes. Feature requests and product feedback are always welcome.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </LegalCard>
       </main>
     </div>

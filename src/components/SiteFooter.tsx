@@ -16,13 +16,6 @@ export default function SiteFooter() {
           </Link>
         </div>
 
-        <a
-          href="mailto:support@dodgeapp.com"
-          className="inline-block text-sm text-gold font-medium hover:opacity-80 transition-opacity"
-        >
-          support@dodgeapp.com
-        </a>
-
         <p className="text-[11px] text-muted-foreground">© 2026 Dodge Labs (Pty) Ltd · All rights reserved</p>
       </div>
     </footer>
