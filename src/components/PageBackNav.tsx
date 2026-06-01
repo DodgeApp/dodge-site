@@ -1,12 +1,13 @@
-import { ArrowLeft } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-/** Fixed back bar — stays at viewport top while page content scrolls beneath. */
+/** Floating back control (46pt circle, elevated surface) — left side, chevron back. */
+const CONTROL_SIZE_PX = 46;
+
 export default function PageBackNav() {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    // Deep links from the iOS app (e.g. /privacy, /terms) have no prior history.
     const historyIndex = (window.history.state as { idx?: number } | null)?.idx;
     if (historyIndex != null && historyIndex > 0) {
       navigate(-1);
@@ -16,21 +17,22 @@ export default function PageBackNav() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-app bg-card/95 backdrop-blur-xl pt-[env(safe-area-inset-top,0px)]">
-      <div className="mx-auto flex max-w-lg items-center px-5 py-3">
-        <button
-          type="button"
-          onClick={handleBack}
-          className="flex items-center gap-1.5 text-primary transition-opacity active:opacity-60 hover:opacity-80"
-        >
-          <ArrowLeft size={20} strokeWidth={2.5} />
-          <span className="text-sm font-medium">Back</span>
-        </button>
-      </div>
-    </header>
+    <button
+      type="button"
+      onClick={handleBack}
+      aria-label="Back"
+      className="fixed z-50 flex items-center justify-center rounded-full border border-white/10 bg-card text-foreground shadow-card transition-opacity active:opacity-70 hover:opacity-90"
+      style={{
+        top: "calc(env(safe-area-inset-top, 0px) + 4px)",
+        left: "max(1.25rem, env(safe-area-inset-left, 0px))",
+        width: CONTROL_SIZE_PX,
+        height: CONTROL_SIZE_PX,
+      }}
+    >
+      <ChevronLeft size={20} strokeWidth={2.75} aria-hidden />
+    </button>
   );
 }
 
-/** Main content offset: safe area + fixed nav row + spacing below nav. */
-export const PAGE_CONTENT_PAD_TOP =
-  "calc(env(safe-area-inset-top, 0px) + 3rem + 1.5rem)";
+/** Top spacing so content clears the floating control on notched devices. */
+export const PAGE_CONTENT_PAD_TOP = "calc(env(safe-area-inset-top, 0px) + 1rem)";

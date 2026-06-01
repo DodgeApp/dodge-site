@@ -10,7 +10,7 @@ interface LegalPageShellProps {
 
 export default function LegalPageShell({ title, lastUpdated, children }: LegalPageShellProps) {
   return (
-    <div className="min-h-screen bg-surface font-sans">
+    <div className="relative min-h-screen bg-surface font-sans">
       <PageBackNav />
 
       <main

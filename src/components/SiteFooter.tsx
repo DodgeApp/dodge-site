@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 export default function SiteFooter() {
   return (
-    <footer className="border-t border-app bg-card/80">
-      <div className="mx-auto max-w-lg space-y-2 px-5 py-5 text-center">
+    <footer className="border-t border-app bg-card pb-[env(safe-area-inset-bottom,0px)]">
+      <div className="mx-auto max-w-lg space-y-2 px-5 pb-5 pt-5 text-center">
         <div className="flex items-center justify-center gap-4 text-xs font-medium">
           <Link to="/support" className="text-muted-foreground transition-colors hover:text-foreground">
             Support

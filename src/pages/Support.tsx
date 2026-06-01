@@ -65,7 +65,7 @@ export default function Support() {
   };
 
   return (
-    <div className="min-h-screen bg-surface font-sans">
+    <div className="relative min-h-screen bg-surface font-sans">
       <PageBackNav />
 
       <main

@@ -39,7 +39,7 @@
     --input: 0 0% 22%;
     --ring: 255 204 0;
 
-    --radius: 1rem; /* 16px — slightly tighter than app 24pt cards */
+    --radius: 1.5rem; /* 24px — matches app Settings card corners */
 
     --gold: 255 204 0;
     --gold-dim: 204 163 0;
@@ -63,6 +63,8 @@
   }
 
   html {
+    /* Match header/footer (appSurfaceElevated) in safe areas & overscroll */
+    background-color: hsl(var(--card));
     /* Matches SwiftUI .system(..., design: .rounded) on Apple; Nunito fallback elsewhere */
     font-family:
       ui-rounded,
@@ -78,8 +80,13 @@
   }
 
   body {
-    @apply bg-surface text-foreground;
-    background-color: hsl(var(--surface));
+    @apply text-foreground;
+    background-color: hsl(var(--card));
+  }
+
+  #root {
+    min-height: 100%;
+    min-height: 100dvh;
   }
 }
 
@@ -97,7 +104,7 @@
   /* Settings-style card — matches ProfilePageView SettingsSection:
      elevated fill, 2px yellow stroke, shadow(black 25%, radius 12, y 8) */
   .settings-card {
-    @apply rounded-2xl bg-card;
+    @apply rounded-3xl bg-card;
     border: 2px solid rgb(var(--primary));
     box-shadow: 0 8px 12px 0 rgb(0 0 0 / 0.25);
   }
@@ -119,7 +126,7 @@
   }
 
   .preview-notice {
-    @apply flex items-start gap-3 rounded-2xl border-2 border-primary/40 bg-primary/10 px-4 py-3 shadow-card;
+    @apply flex items-start gap-3 rounded-3xl border-2 border-primary/40 bg-primary/10 px-4 py-3 shadow-card;
   }
 }
 
