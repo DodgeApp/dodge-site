@@ -95,7 +95,7 @@ export default function TermsOfService() {
         <p>For any questions regarding these Terms, please contact us at:</p>
         <a
           href="mailto:support@dodgeapp.com"
-          className="inline-block mt-1 text-gold font-medium hover:opacity-80 transition-opacity"
+          className="mt-1 inline-block font-semibold text-primary transition-opacity hover:opacity-80"
         >
           support@dodgeapp.com
         </a>

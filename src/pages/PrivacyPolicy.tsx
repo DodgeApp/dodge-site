@@ -46,12 +46,12 @@ export default function PrivacyPolicy() {
       </LegalCard>
 
       {/* Highlighted card */}
-      <LegalCard icon={MapPin} title="Location Data Usage" highlight>
+      <LegalCard icon={MapPin} title="Location Data Usage">
         <p>
           Dodge collects and processes location data to enable safety features such as live location
           sharing and unsafe status alerts.
         </p>
-        <p className="font-medium text-foreground/80">
+        <p className="font-medium text-foreground">
           Location data is only shared with users you explicitly choose.
         </p>
       </LegalCard>
@@ -97,7 +97,7 @@ export default function PrivacyPolicy() {
         <p>If you have questions about this Privacy Policy, contact:</p>
         <a
           href="mailto:support@dodgeapp.com"
-          className="inline-block mt-1 text-gold font-medium hover:opacity-80 transition-opacity"
+          className="mt-1 inline-block font-semibold text-primary transition-opacity hover:opacity-80"
         >
           support@dodgeapp.com
         </a>

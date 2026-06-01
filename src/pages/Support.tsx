@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
-import { ArrowLeft, HelpCircle, Mail } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import dodgeLogo from "@/assets/dodge-logo.png";
+import { HelpCircle, Mail } from "lucide-react";
+import PageBackNav, { PAGE_CONTENT_PAD_TOP } from "@/components/PageBackNav";
+import PageHeader from "@/components/PageHeader";
 import LegalCard from "@/components/LegalCard";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
@@ -9,7 +9,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
 export default function Support() {
-  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -40,7 +39,15 @@ export default function Support() {
       }),
     })
       .then(async (response) => {
-        const data = await response.json().catch(() => ({}));
+        const isJson = response.headers.get("content-type")?.includes("application/json");
+        const data = isJson ? await response.json().catch(() => ({})) : {};
+
+        if (!isJson) {
+          throw new Error(
+            "Support API is not reachable. For local testing, run npm run dev:vercel instead of npm run dev.",
+          );
+        }
+
         if (!response.ok) {
           throw new Error(data?.error || "Unable to send support request.");
         }
@@ -58,41 +65,22 @@ export default function Support() {
   };
 
   return (
-    <div className="min-h-screen bg-background font-sans">
-      <div className="h-12" />
+    <div className="min-h-screen bg-surface font-sans">
+      <PageBackNav />
 
-      <nav className="sticky top-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border/50">
-        <div className="flex items-center px-4 py-3 max-w-lg mx-auto">
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-1.5 text-gold transition-opacity active:opacity-60 hover:opacity-80"
-          >
-            <ArrowLeft size={20} strokeWidth={2.5} />
-            <span className="text-sm font-medium">Back</span>
-          </button>
-        </div>
-      </nav>
+      <main
+        className="mx-auto max-w-lg animate-fade-in space-y-6 px-5 pb-16"
+        style={{ paddingTop: PAGE_CONTENT_PAD_TOP }}
+      >
+        <PageHeader title="Support" subtitle="We are here to help" />
 
-      <main className="max-w-lg mx-auto px-4 pb-16 pt-6 space-y-4 animate-fade-in">
-        <div className="flex items-center gap-4 pb-2">
-          <img
-            src={dodgeLogo}
-            alt="Dodge"
-            className="w-12 h-12 rounded-[14px] shadow-gold-glow flex-shrink-0"
-          />
-          <div>
-            <h1 className="text-2xl font-bold text-foreground tracking-tight leading-tight">Support</h1>
-            <p className="text-xs text-muted-foreground mt-0.5">We are here to help</p>
-          </div>
-        </div>
-
-        <LegalCard icon={Mail} title="Contact Support" highlight>
+        <LegalCard icon={Mail} title="Contact Support">
           <p>
             For help with your account, app issues, or feedback, please contact the Dodge support team.
           </p>
           <a
             href="mailto:support@dodgeapp.com"
-            className="inline-block mt-1 text-gold font-medium hover:opacity-80 transition-opacity"
+            className="mt-1 inline-block font-semibold text-primary transition-opacity hover:opacity-80"
           >
             support@dodgeapp.com
           </a>
@@ -130,11 +118,11 @@ export default function Support() {
               className="min-h-[110px]"
               required
             />
-            <Button type="submit" className="w-full" disabled={sending}>
+            <Button type="submit" size="lg" className="w-full" disabled={sending}>
               {sending ? "Sending..." : "Send Message"}
             </Button>
             {status && (
-              <p className={status.type === "success" ? "text-xs text-gold" : "text-xs text-destructive"}>
+              <p className={status.type === "success" ? "text-xs text-primary" : "text-xs text-destructive"}>
                 {status.text}
               </p>
             )}
@@ -143,20 +131,20 @@ export default function Support() {
 
         <LegalCard icon={HelpCircle} title="Frequently Asked Questions">
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="response-time" className="border-border/60">
+            <AccordionItem value="response-time" className="border-white/10">
               <AccordionTrigger className="text-left text-sm text-foreground hover:no-underline">
                 How quickly will I get a response?
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground text-[13.5px] leading-relaxed">
+              <AccordionContent className="text-[13.5px] leading-relaxed text-foreground">
                 We aim to respond as soon as possible, typically within 1 to 2 business days.
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="help-scope" className="border-border/60">
+            <AccordionItem value="help-scope" className="border-white/10">
               <AccordionTrigger className="text-left text-sm text-foreground hover:no-underline">
                 What can support help with?
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground text-[13.5px] leading-relaxed">
+              <AccordionContent className="text-[13.5px] leading-relaxed text-foreground">
                 Support can assist with account access, technical issues, and general app questions.
               </AccordionContent>
             </AccordionItem>
@@ -165,7 +153,7 @@ export default function Support() {
               <AccordionTrigger className="text-left text-sm text-foreground hover:no-underline">
                 Can I send product feedback?
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground text-[13.5px] leading-relaxed">
+              <AccordionContent className="text-[13.5px] leading-relaxed text-foreground">
                 Yes. Feature requests and product feedback are always welcome.
               </AccordionContent>
             </AccordionItem>

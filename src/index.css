@@ -1,61 +1,59 @@
+/* Rounded fallback for non-Apple browsers (SF Pro Rounded cannot be hosted for web) */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-/* Dodge App Design System — Dark/Gold Premium */
+/* Dodge app design tokens — aligned with Theme.swift */
 
 @layer base {
   :root {
-    /* Core Palette */
-    --background: 220 13% 9%;
-    --foreground: 40 20% 95%;
+    --background: 0 0% 13.3%; /* appBackground #222222 */
+    --surface: 0 0% 17.3%; /* appSurface #2C2C2C */
+    --foreground: 0 0% 100%; /* appText */
 
-    --card: 220 12% 13%;
-    --card-foreground: 40 20% 95%;
+    --card: 0 0% 22%; /* appSurfaceElevated #383838 */
+    --card-foreground: 0 0% 100%;
 
-    --popover: 220 12% 13%;
-    --popover-foreground: 40 20% 95%;
+    --popover: 0 0% 22%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Dodge Gold */
-    --primary: 43 96% 53%;
-    --primary-foreground: 30 40% 15%;
+    /* iOS systemYellow — less luminous than pure #FFFF00, closer to on-device SwiftUI .yellow */
+    --primary: 255 204 0;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 220 10% 18%;
-    --secondary-foreground: 40 20% 85%;
+    --secondary: 0 0% 26.7%; /* appSurfaceRaised #444444 */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 10% 16%;
-    --muted-foreground: 220 10% 55%;
+    --muted: 0 0% 22%;
+    --muted-foreground: 0 0% 72%; /* appTextSecondary ~ white 72% */
 
-    --accent: 43 96% 53%;
-    --accent-foreground: 30 40% 15%;
+    --accent: 255 204 0;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 40 20% 98%;
+    --destructive: 0 75% 47%; /* appRed #D9262E */
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 10% 20%;
-    --input: 220 10% 18%;
-    --ring: 43 96% 53%;
+    --border: 0 0% 100%;
+    --input: 0 0% 22%;
+    --ring: 255 204 0;
 
-    --radius: 1rem;
+    --radius: 1rem; /* 16px — slightly tighter than app 24pt cards */
 
-    /* Custom Dodge tokens */
-    --gold: 43 96% 53%;
-    --gold-dim: 43 70% 40%;
-    --gold-glow: 43 96% 53% / 0.18;
-    --surface: 220 12% 13%;
-    --surface-elevated: 220 11% 16%;
-    --surface-highlight: 220 10% 19%;
+    --gold: 255 204 0;
+    --gold-dim: 204 163 0;
+    --surface-elevated: 0 0% 22%;
+    --surface-highlight: 0 0% 26.7%;
 
-    --sidebar-background: 220 13% 9%;
-    --sidebar-foreground: 40 20% 95%;
-    --sidebar-primary: 43 96% 53%;
-    --sidebar-primary-foreground: 30 40% 15%;
-    --sidebar-accent: 220 10% 18%;
-    --sidebar-accent-foreground: 40 20% 85%;
-    --sidebar-border: 220 10% 20%;
-    --sidebar-ring: 43 96% 53%;
+    --sidebar-background: 0 0% 17.3%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 255 204 0;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 22%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 100%;
+    --sidebar-ring: 255 204 0;
   }
 }
 
@@ -65,41 +63,68 @@
   }
 
   html {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+    /* Matches SwiftUI .system(..., design: .rounded) on Apple; Nunito fallback elsewhere */
+    font-family:
+      ui-rounded,
+      -apple-system,
+      BlinkMacSystemFont,
+      "SF Pro Rounded",
+      "Nunito",
+      system-ui,
+      sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
   }
 
   body {
-    @apply bg-background text-foreground;
-    background-color: hsl(var(--background));
+    @apply bg-surface text-foreground;
+    background-color: hsl(var(--surface));
+  }
+}
+
+@layer components {
+  .app-page-heading {
+    @apply text-[28px] font-extrabold leading-tight tracking-tight text-foreground;
+    /* Theme.swift appPageHeading: .heavy + .rounded */
+  }
+
+  .app-section-label {
+    @apply text-[13px] font-semibold text-muted-foreground px-1;
+    /* Profile settings section headers */
+  }
+
+  /* Settings-style card — matches ProfilePageView SettingsSection:
+     elevated fill, 2px yellow stroke, shadow(black 25%, radius 12, y 8) */
+  .settings-card {
+    @apply rounded-2xl bg-card;
+    border: 2px solid rgb(var(--primary));
+    box-shadow: 0 8px 12px 0 rgb(0 0 0 / 0.25);
+  }
+
+  .settings-row {
+    @apply flex w-full items-center gap-3 px-[18px] py-3 text-left transition-opacity active:opacity-70;
+  }
+
+  .settings-row-icon {
+    @apply flex h-11 w-11 shrink-0 items-center justify-center text-foreground;
+  }
+
+  .settings-row-title {
+    @apply text-[17px] font-semibold leading-tight text-foreground;
+  }
+
+  .settings-row-subtitle {
+    @apply mt-0.5 text-[13px] font-medium text-muted-foreground;
+  }
+
+  .preview-notice {
+    @apply flex items-start gap-3 rounded-2xl border-2 border-primary/40 bg-primary/10 px-4 py-3 shadow-card;
   }
 }
 
 @layer utilities {
-  .card-dodge {
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius);
-    box-shadow: 0 2px 16px 0 hsl(0 0% 0% / 0.25);
-  }
-
-  .card-dodge-gold {
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--gold) / 0.45);
-    border-radius: var(--radius);
-    box-shadow: 0 2px 20px 0 hsl(var(--gold) / 0.12), 0 2px 10px 0 hsl(0 0% 0% / 0.25);
-  }
-
-  .icon-badge {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 0.5rem;
-    background: hsl(var(--gold) / 0.15);
-    color: hsl(var(--gold));
-    flex-shrink: 0;
+  .border-app {
+    border-color: rgb(255 255 255 / 0.12);
   }
 }
