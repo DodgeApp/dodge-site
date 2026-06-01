@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { FileText, Shield, LifeBuoy } from "lucide-react";
+import { FileText, Shield, LifeBuoy, Building2 } from "lucide-react";
 import dodgeLogo from "@/assets/dodge-logo.png";
 import HomeLinkCard from "@/components/HomeLinkCard";
 import PreviewNotice from "@/components/PreviewNotice";
@@ -22,6 +22,8 @@ export default function Index() {
           </p>
         </div>
 
+        <PreviewNotice />
+
         <section className="space-y-3">
           <p className="app-section-label px-1">Legal</p>
           <div className="space-y-3">
@@ -41,16 +43,22 @@ export default function Index() {
         </section>
 
         <section className="space-y-3">
-          <p className="app-section-label px-1">Support</p>
-          <HomeLinkCard
-            icon={LifeBuoy}
-            title="Support"
-            subtitle="Help, issues, and feedback"
-            onClick={() => navigate("/support")}
-          />
+          <p className="app-section-label px-1">Company</p>
+          <div className="space-y-3">
+            <HomeLinkCard
+              icon={LifeBuoy}
+              title="Support"
+              subtitle="Help, issues, and feedback"
+              onClick={() => navigate("/support")}
+            />
+            <HomeLinkCard
+              icon={Building2}
+              title="About Dodge Labs (Pty) Ltd"
+              subtitle="Who we are and what we build"
+              onClick={() => navigate("/about")}
+            />
+          </div>
         </section>
-
-        <PreviewNotice />
       </div>
     </div>
   );

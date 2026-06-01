@@ -8,99 +8,193 @@ import {
   UserCog,
   Clock,
   Mail,
+  Users,
+  Bell,
+  Server,
 } from "lucide-react";
 import LegalPageShell from "@/components/LegalPageShell";
 import LegalCard, { BulletList } from "@/components/LegalCard";
 
 export default function PrivacyPolicy() {
   return (
-    <LegalPageShell title="Privacy Policy" lastUpdated="23 March 2026">
+    <LegalPageShell title="Privacy Policy" lastUpdated="1 June 2026">
 
       <LegalCard icon={Shield} title="Introduction">
         <p>
-          Your privacy is important to us. This Privacy Policy explains how Dodge collects, uses, and
-          protects your information.
+          Dodge Labs (Pty) Ltd (&quot;Dodge&quot;, &quot;we&quot;, &quot;us&quot;) operates the Dodge mobile
+          application and related services at dodgeapp.com. This Privacy Policy describes how we collect,
+          use, store, and share personal information when you use Dodge.
+        </p>
+        <p>
+          By creating an account or using Dodge, you agree to this Privacy Policy. If you do not agree,
+          please do not use the app.
         </p>
       </LegalCard>
 
       <LegalCard icon={Database} title="Information We Collect">
-        <p>We may collect:</p>
+        <p>Depending on how you use Dodge, we may collect:</p>
         <BulletList
           items={[
-            "Account information (name, email, phone number)",
-            "Location data (real-time and background location)",
-            "Device and usage information",
+            "Account and profile information: username, first and last name, email address, phone number, and profile photo",
+            "Authentication data: one-time verification codes and related logs used to sign in, verify your email, reset your password, or change your contact details",
+            "Location data: precise GPS coordinates, including in the background when you grant permission, used for live map features and safety alerts",
+            "Movement and presence data: inferred activity (for example walking, running, driving, or stationary) and online/presence status shared with your circles",
+            "Circle and social safety data: circle memberships, shared live locations, invite codes, saved places, presence pings, and emergency or unsafe status alerts you send or receive",
+            "Community safety reports: locations and optional descriptions you submit when reporting that you feel unsafe, plus aggregated community danger reports shown on the map",
+            "Notifications data: device push tokens (APNs/FCM), notification preferences, and delivery-related metadata",
+            "Support and feedback: messages you send through the in-app support form or feedback flows, plus basic device and app version information",
+            "Optional donation information: if you donate in the app, payment references processed by our payment provider (we do not store full card details on our servers)",
+            "Technical data: app interactions, timestamps, and information needed to operate, secure, and debug the service",
           ]}
         />
       </LegalCard>
 
       <LegalCard icon={Settings2} title="How We Use Your Information">
-        <p>We use your data to:</p>
+        <p>We use personal information to:</p>
         <BulletList
           items={[
-            "Provide core app functionality",
-            "Enable location sharing with your chosen circles",
-            "Improve app performance and user experience",
+            "Create and manage your account",
+            "Authenticate you via phone or email verification",
+            "Provide circle-based live location sharing and presence features",
+            "Show your movement status and online status to circle members when enabled",
+            "Send safety-related notifications (for example proximity alerts, place arrivals or departures, circle emergencies, and report reminders)",
+            "Display community and personal safety reports on the map",
+            "Process optional donations",
+            "Respond to support requests and feedback",
+            "Maintain security, prevent abuse, enforce our terms, and comply with law",
+            "Improve reliability and performance of the app",
           ]}
         />
       </LegalCard>
 
-      {/* Highlighted card */}
-      <LegalCard icon={MapPin} title="Location Data Usage">
+      <LegalCard icon={MapPin} title="Location Data">
         <p>
-          Dodge collects and processes location data to enable safety features such as live location
-          sharing and unsafe status alerts.
+          Dodge is built around location. With your permission, we collect location in the foreground and
+          background (including when the app is not open) so we can share your position with circles you
+          join, detect proximity to reported danger areas, support place-based alerts, and refresh your
+          presence status.
+        </p>
+        <p>
+          You can limit location access in your device settings. Some features will not work without
+          location permission. Within the app, you can also control whether your location is shared with a
+          specific circle.
         </p>
         <p className="font-medium text-foreground">
-          Location data is only shared with users you explicitly choose.
+          Your live location is shared only with members of circles you belong to, subject to your
+          in-app sharing settings—not with the public internet at large.
         </p>
       </LegalCard>
 
-      <LegalCard icon={Share2} title="Data Sharing">
-        <p>We do not sell your personal data. Your information is only shared:</p>
+      <LegalCard icon={Users} title="Circles, Alerts & Community Reports">
+        <p>
+          Dodge lets you create or join private circles (limited groups of trusted contacts). Members of a
+          circle may see information you share with that circle, such as your profile details, live
+          location, movement or presence status, and safety alerts you trigger.
+        </p>
+        <p>
+          If you report feeling unsafe, we store the report location and related details. You may be
+          prompted to add a short reason later. Community danger reports from users may be visible to
+          other signed-in Dodge users on the map in aggregated form.
+        </p>
+        <p>
+          Only add people to circles with their knowledge and consent. You are responsible for how you use
+          sharing features.
+        </p>
+      </LegalCard>
+
+      <LegalCard icon={Bell} title="Push Notifications">
+        <p>
+          If you enable notifications, we use your device push token to send alerts you have opted into,
+          such as circle emergencies, proximity warnings, shared-place events, and follow-ups related to
+          safety reports. You can manage notification categories in the app and disable notifications in
+          your device settings.
+        </p>
+      </LegalCard>
+
+      <LegalCard icon={Share2} title="How We Share Information">
+        <p>We do not sell your personal information. We may share information:</p>
         <BulletList
           items={[
-            "With users in your selected circles",
-            "When required by law",
+            "With other Dodge users in your circles, as described above and according to your settings",
+            "With service providers that help us run Dodge (listed below), under contractual obligations to protect your data",
+            "When required by law, regulation, legal process, or to protect rights, safety, and security",
+            "In connection with a merger, acquisition, or sale of assets, with notice where required by law",
           ]}
         />
       </LegalCard>
 
-      <LegalCard icon={Lock} title="Data Security">
+      <LegalCard icon={Server} title="Service Providers">
+        <p>We use trusted third parties to operate Dodge, including:</p>
+        <BulletList
+          items={[
+            "Google Firebase (authentication, cloud database, file storage, cloud functions, and push messaging infrastructure)",
+            "Twilio (phone number verification and one-time codes)",
+            "Email delivery providers used by our backend to send verification and account emails",
+            "Paystack (optional in-app donations)",
+            "Apple (maps via Apple MapKit, push notification delivery on iOS, and App Store distribution)",
+            "Resend (processing messages sent through the dodgeapp.com support contact form)",
+          ]}
+        />
         <p>
-          We implement reasonable safeguards to protect your data.
-        </p>
-        <p>
-          However, no system is completely secure, and we cannot guarantee absolute security.
+          These providers process data on our behalf to deliver the service. Their own privacy policies
+          also apply to how they handle information.
         </p>
       </LegalCard>
 
-      <LegalCard icon={UserCog} title="User Control">
+      <LegalCard icon={Lock} title="Data Security & Retention">
+        <p>
+          We use technical and organisational measures designed to protect your information, including
+          access controls on our database and encrypted transport (HTTPS/TLS). No method of transmission
+          or storage is completely secure.
+        </p>
+        <p>
+          We retain personal information for as long as your account is active and as needed to provide
+          the service, resolve disputes, enforce our agreements, and meet legal obligations. When you
+          delete your account, we delete or anonymise associated data in line with our deletion process,
+          except where we must keep limited records for legal, security, or backup purposes.
+        </p>
+      </LegalCard>
+
+      <LegalCard icon={UserCog} title="Your Choices & Rights">
         <p>You can:</p>
         <BulletList
           items={[
-            "Manage who sees your location",
-            "Update or delete your account information",
-            "Disable location services through your device settings",
+            "Update your profile, phone number, or email in the app (verification may be required)",
+            "Control per-circle location sharing and notification preferences",
+            "Disable location, motion, camera, photo, or notification permissions in device settings",
+            "Delete your account from the app, which triggers removal of your profile and associated data from our systems",
+            "Contact us to ask questions or request access, correction, or deletion where applicable law provides those rights",
           ]}
         />
       </LegalCard>
 
-      <LegalCard icon={Clock} title="Data Retention">
+      <LegalCard icon={Clock} title="Children">
         <p>
-          We retain your data only as long as necessary to provide our services or comply with legal
-          obligations.
+          Dodge is not intended for children under 13, and we do not knowingly collect personal
+          information from children under 13. If you believe a child has provided us information, contact
+          us and we will take appropriate steps to delete it.
         </p>
       </LegalCard>
 
-      <LegalCard icon={Mail} title="Contact Information">
-        <p>If you have questions about this Privacy Policy, contact:</p>
+      <LegalCard icon={Shield} title="Changes to This Policy">
+        <p>
+          We may update this Privacy Policy from time to time. We will post the updated version on this
+          page and change the &quot;Last updated&quot; date. Continued use of Dodge after changes take
+          effect means you accept the updated policy.
+        </p>
+      </LegalCard>
+
+      <LegalCard icon={Mail} title="Contact Us">
+        <p>For privacy questions or requests, contact:</p>
         <a
           href="mailto:support@dodgeapp.com"
           className="mt-1 inline-block font-semibold text-primary transition-opacity hover:opacity-80"
         >
           support@dodgeapp.com
         </a>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Dodge Labs (Pty) Ltd
+        </p>
       </LegalCard>
 
     </LegalPageShell>

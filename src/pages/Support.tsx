@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { HelpCircle, Mail } from "lucide-react";
 import PageBackNav, { PAGE_CONTENT_PAD_TOP } from "@/components/PageBackNav";
 import PageHeader from "@/components/PageHeader";
+import PreviewNotice from "@/components/PreviewNotice";
 import LegalCard from "@/components/LegalCard";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
@@ -73,6 +74,7 @@ export default function Support() {
         style={{ paddingTop: PAGE_CONTENT_PAD_TOP }}
       >
         <PageHeader title="Support" subtitle="We are here to help" />
+        <PreviewNotice />
 
         <LegalCard icon={Mail} title="Contact Support">
           <p>
