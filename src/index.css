@@ -63,8 +63,8 @@
   }
 
   html {
-    /* Match header/footer (appSurfaceElevated) in safe areas & overscroll */
-    background-color: hsl(var(--card));
+    /* Match page surface in top safe area & overscroll; footer uses card */
+    background-color: hsl(var(--surface));
     /* Matches SwiftUI .system(..., design: .rounded) on Apple; Nunito fallback elsewhere */
     font-family:
       ui-rounded,
@@ -81,7 +81,7 @@
 
   body {
     @apply text-foreground;
-    background-color: hsl(var(--card));
+    background-color: hsl(var(--surface));
   }
 
   #root {
