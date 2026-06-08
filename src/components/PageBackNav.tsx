@@ -36,5 +36,5 @@ export default function PageBackNav() {
   );
 }
 
-/** Top spacing so content clears the floating back control (not used on home). */
-export const PAGE_CONTENT_PAD_TOP = `calc(env(safe-area-inset-top, 0px) + ${CONTROL_TOP_GAP_PX}px + ${CONTROL_SIZE_PX}px + 1.25rem)`;
+/** Aligns page content top with the back control top when scrolled to top (not used on home). */
+export const PAGE_CONTENT_PAD_TOP = `calc(env(safe-area-inset-top, 0px) + ${CONTROL_TOP_GAP_PX}px)`;
