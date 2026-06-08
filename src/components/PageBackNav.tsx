@@ -23,7 +23,7 @@ export default function PageBackNav() {
       type="button"
       onClick={handleBack}
       aria-label="Back"
-      className="fixed z-50 flex items-center justify-center rounded-full border border-white/10 bg-card text-foreground shadow-card transition-opacity active:opacity-70 hover:opacity-90"
+      className="fixed z-50 flex items-center justify-center rounded-full bg-white/10 text-foreground transition-opacity active:opacity-70 hover:opacity-90"
       style={{
         top: `calc(env(safe-area-inset-top, 0px) + ${CONTROL_TOP_GAP_PX}px)`,
         left: "max(1.25rem, env(safe-area-inset-left, 0px))",

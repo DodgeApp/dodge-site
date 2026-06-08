@@ -32,7 +32,7 @@
     --accent: 255 204 0;
     --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 75% 47%; /* appRed #D9262E */
+    --destructive: 357 70% 50%; /* appRed #D9262E */
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 100%;
@@ -97,16 +97,14 @@
   }
 
   .app-section-label {
-    @apply text-[13px] font-semibold text-muted-foreground px-1;
-    /* Profile settings section headers */
+    @apply text-[11px] font-bold text-muted-foreground;
+    /* ProfilePageView SettingsSection headers */
   }
 
   /* Settings-style card — matches ProfilePageView SettingsSection:
-     elevated fill, 2px yellow stroke, shadow(black 25%, radius 12, y 8) */
+     white 10% fill, shadow(black 25%, radius 12, y 8) */
   .settings-card {
-    @apply rounded-3xl bg-card;
-    border: 2px solid rgb(var(--primary));
-    box-shadow: 0 8px 12px 0 rgb(0 0 0 / 0.25);
+    @apply rounded-3xl bg-white/10 shadow-card;
   }
 
   .settings-row {
@@ -126,7 +124,7 @@
   }
 
   .preview-notice {
-    @apply flex items-start gap-3 rounded-3xl border-2 border-primary/40 bg-primary/10 px-4 py-3 shadow-card;
+    @apply flex items-start gap-3 rounded-3xl bg-white/10 px-4 py-3 shadow-card;
   }
 }
 

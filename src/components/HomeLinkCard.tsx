@@ -9,7 +9,7 @@ interface HomeLinkCardProps {
 
 export default function HomeLinkCard({ icon: Icon, title, subtitle, onClick }: HomeLinkCardProps) {
   return (
-    <button type="button" onClick={onClick} className="settings-card w-full">
+    <button type="button" onClick={onClick} className="w-full">
       <span className="settings-row">
         <span className="settings-row-icon">
           <Icon size={18} strokeWidth={2.5} />
