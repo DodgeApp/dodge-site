@@ -11,13 +11,14 @@ import {
   Users,
   Heart,
   Phone,
+  MapPinned,
 } from "lucide-react";
 import LegalPageShell from "@/components/LegalPageShell";
 import LegalCard, { BulletList } from "@/components/LegalCard";
 
 export default function TermsOfService() {
   return (
-    <LegalPageShell title="Terms of Service" lastUpdated="1 June 2026">
+    <LegalPageShell title="Terms of Service" lastUpdated="2 June 2026">
 
       <LegalCard icon={FileText} title="Agreement">
         <p>
@@ -45,7 +46,10 @@ export default function TermsOfService() {
           items={[
             "Private circles for sharing live location with people you trust",
             "Presence and movement status visible to circle members",
-            "Personal and community safety reporting on a map",
+            "Personal and community unsafe-report pins on a map",
+            "Aggregated community risk zones (safety zones) derived from pass-through and report activity",
+            "Optional pass-through contribution to help build community risk zones",
+            "Alerts when you or circle members enter published risk zones (if enabled)",
             "Emergency-style alerts to members of your circles",
             "Shared places with optional arrival and departure notifications",
             "Push notifications related to safety and circle activity",
@@ -73,8 +77,13 @@ export default function TermsOfService() {
       <LegalCard icon={MapPin} title="Location & Safety Disclaimer">
         <p>
           Dodge relies on device GPS, network conditions, and third-party map data. Location information
-          may be delayed, inaccurate, or unavailable. Alerts and reports are based on user submissions and
-          automated systems—we do not guarantee their accuracy, completeness, or timeliness.
+          may be delayed, inaccurate, or unavailable. Alerts, unsafe reports, and community risk zones are
+          based on user submissions, aggregated community activity, and automated systems—we do not
+          guarantee their accuracy, completeness, or timeliness.
+        </p>
+        <p>
+          Community risk zones reflect aggregated patterns over time. They are informational only, may
+          change as new data arrives, and may not reflect current conditions in an area.
         </p>
         <p className="font-medium text-foreground">
           You use Dodge at your own risk. Always use your own judgment and contact emergency services
@@ -82,11 +91,35 @@ export default function TermsOfService() {
         </p>
       </LegalCard>
 
+      <LegalCard icon={MapPinned} title="Community Risk Zones">
+        <p>
+          Dodge may display community <span className="font-semibold text-foreground">risk zones</span>{" "}
+          (also shown as safety zones) on the map. These are computed from aggregated unsafe reports and,
+          where users opt in, pass-through signals that an area was visited (at most once per user per
+          area per day—not a stored route).
+        </p>
+        <p>
+          Zones use rolling community counts and automated scoring to assign risk tiers and map shapes.
+          A zone is published only after enough aggregated activity exists. Unpublished or
+          &quot;testing&quot; zones may be visible if you enable that option in the app.
+        </p>
+        <p>
+          Risk zones are shown to signed-in users as community information. They do not identify which
+          individuals passed through or reported in an area. You can disable your own pass-through
+          contribution in Settings → Safety map data without affecting other Dodge features, though you
+          will no longer contribute to zone calculations.
+        </p>
+        <p>
+          Risk zone alerts (for you or circle members) are optional and separate from unsafe-pin proximity
+          alerts. Enabling them does not mean an area is objectively dangerous—use your own judgment.
+        </p>
+      </LegalCard>
+
       <LegalCard icon={AlertTriangle} title="Community Reports & User Content">
         <p>
-          Safety reports and alerts you submit may be stored and shown to other users (for example circle
-          members or signed-in users viewing map reports). Do not submit false, misleading, or malicious
-          reports.
+          Unsafe reports and alerts you submit may be stored and shown to other users (for example circle
+          members or signed-in users viewing map pins). Reports may also feed into aggregated community
+          risk zones. Do not submit false, misleading, or malicious reports.
         </p>
         <p>
           We may remove content or suspend accounts that violate these Terms or harm other users or the
@@ -112,6 +145,7 @@ export default function TermsOfService() {
             "Attempt to access another user&apos;s account or our systems without authorisation",
             "Interfere with or disrupt the app, servers, or networks",
             "Scrape, reverse engineer, or misuse the service except as allowed by law",
+            "Submit false or malicious unsafe reports or pass-through data intended to manipulate community risk zones",
           ]}
         />
       </LegalCard>

@@ -11,13 +11,14 @@ import {
   Users,
   Bell,
   Server,
+  MapPinned,
 } from "lucide-react";
 import LegalPageShell from "@/components/LegalPageShell";
 import LegalCard, { BulletList } from "@/components/LegalCard";
 
 export default function PrivacyPolicy() {
   return (
-    <LegalPageShell title="Privacy Policy" lastUpdated="1 June 2026">
+    <LegalPageShell title="Privacy Policy" lastUpdated="2 June 2026">
 
       <LegalCard icon={Shield} title="Introduction">
         <p>
@@ -40,7 +41,9 @@ export default function PrivacyPolicy() {
             "Location data: precise GPS coordinates, including in the background when you grant permission, used for live map features and safety alerts",
             "Movement and presence data: inferred activity (for example walking, running, driving, or stationary) and online/presence status shared with your circles",
             "Circle and social safety data: circle memberships, shared live locations, invite codes, saved places, presence pings, and emergency or unsafe status alerts you send or receive",
-            "Community safety reports: locations and optional descriptions you submit when reporting that you feel unsafe, plus aggregated community danger reports shown on the map",
+            "Community safety reports: locations and optional descriptions you submit when reporting that you feel unsafe, plus aggregated unsafe-report pins shown on the map",
+            "Safety zone / pass-through contribution data: if enabled, a once-per-day signal that you passed through a geographic area (area key, approximate coordinates, optional street name, and date)—not a continuous route history",
+            "Aggregated community risk zone data: area-level pass-through and report counts, risk scores, tiers, and map geometry computed by our servers from community activity (not tied to your identity on the map)",
             "Notifications data: device push tokens (APNs/FCM), notification preferences, and delivery-related metadata",
             "Support and feedback: messages you send through the in-app support form or feedback flows, plus basic device and app version information",
             "Optional donation information: if you donate in the app, payment references processed by our payment provider (we do not store full card details on our servers)",
@@ -58,7 +61,9 @@ export default function PrivacyPolicy() {
             "Provide circle-based live location sharing and presence features",
             "Show your movement status and online status to circle members when enabled",
             "Send safety-related notifications (for example proximity alerts, place arrivals or departures, circle emergencies, and report reminders)",
-            "Display community and personal safety reports on the map",
+            "Display community unsafe-report pins and aggregated risk zones on the map",
+            "Compute and update community risk zones from aggregated pass-through and report activity",
+            "Send alerts when you or circle members enter published community risk zones (if enabled)",
             "Process optional donations",
             "Respond to support requests and feedback",
             "Maintain security, prevent abuse, enforce our terms, and comply with law",
@@ -71,8 +76,8 @@ export default function PrivacyPolicy() {
         <p>
           Dodge is built around location. With your permission, we collect location in the foreground and
           background (including when the app is not open) so we can share your position with circles you
-          join, detect proximity to reported danger areas, support place-based alerts, and refresh your
-          presence status.
+          join, detect proximity to reported danger areas, evaluate entry into community risk zones,
+          support place-based alerts, and refresh your presence status.
         </p>
         <p>
           You can limit location access in your device settings. Some features will not work without
@@ -93,8 +98,8 @@ export default function PrivacyPolicy() {
         </p>
         <p>
           If you report feeling unsafe, we store the report location and related details. You may be
-          prompted to add a short reason later. Community danger reports from users may be visible to
-          other signed-in Dodge users on the map in aggregated form.
+          prompted to add a short reason later. Unsafe reports from users may be visible to other
+          signed-in Dodge users on the map as pins in aggregated form.
         </p>
         <p>
           Only add people to circles with their knowledge and consent. You are responsible for how you use
@@ -102,12 +107,47 @@ export default function PrivacyPolicy() {
         </p>
       </LegalCard>
 
+      <LegalCard icon={MapPinned} title="Safety Zones & Community Risk Areas">
+        <p>
+          Dodge can show <span className="font-semibold text-foreground">community risk zones</span> on the
+          map—highlighted areas derived from aggregated community activity, not from a single
+          person&apos;s data. These zones are built from:
+        </p>
+        <BulletList
+          items={[
+            "Unsafe reports submitted by Dodge users (each report also counts as presence in that area)",
+            "Optional pass-through contributions: if enabled in Settings → Safety map data, Dodge records at most once per day per area that you passed through, to help measure how many people travel there",
+          ]}
+        />
+        <p>
+          Pass-through contribution is <span className="font-semibold text-foreground">on by default</span>{" "}
+          but can be turned off at any time. When enabled, we store a pass event linked to your account
+          (user ID, area key, date, approximate coordinates, and optional street name). We do{" "}
+          <span className="font-semibold text-foreground">not</span> store your full route or continuous
+          location history for this feature.
+        </p>
+        <p>
+          Our servers aggregate pass-through and report counts over a rolling window (currently about 60
+          days), apply recency weighting, and compute area risk scores and tiers (for example elevated,
+          high, and very high). Published zones appear on the map once enough aggregated activity
+          exists. You may optionally enable a developer/testing view to see unpublished zones that are
+          still forming.
+        </p>
+        <p>
+          Other signed-in users see published zones and summary statistics (such as pass-through and
+          report totals), not which individuals contributed. Risk zone map overlays, detail views, and
+          related alerts are separate from individual unsafe-report pins and from circle-only live
+          location sharing.
+        </p>
+      </LegalCard>
+
       <LegalCard icon={Bell} title="Push Notifications">
         <p>
           If you enable notifications, we use your device push token to send alerts you have opted into,
-          such as circle emergencies, proximity warnings, shared-place events, and follow-ups related to
-          safety reports. You can manage notification categories in the app and disable notifications in
-          your device settings.
+          such as circle emergencies, proximity warnings, shared-place events, follow-ups related to
+          safety reports, and—if enabled—alerts when you or a circle member enter a published community
+          risk zone. You can manage notification categories in the app and disable notifications in your
+          device settings.
         </p>
       </LegalCard>
 
@@ -160,7 +200,9 @@ export default function PrivacyPolicy() {
         <BulletList
           items={[
             "Update your profile, phone number, or email in the app (verification may be required)",
-            "Control per-circle location sharing and notification preferences",
+            "Control per-circle location sharing and notification preferences (including community risk zone alerts)",
+            "Turn pass-through contribution on or off under Settings → Safety map data",
+            "Toggle risk zone map overlays and optional unpublished/testing zones in the app",
             "Disable location, motion, camera, photo, or notification permissions in device settings",
             "Delete your account from the app, which triggers removal of your profile and associated data from our systems",
             "Contact us to ask questions or request access, correction, or deletion where applicable law provides those rights",
