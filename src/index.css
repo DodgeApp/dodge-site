@@ -19,8 +19,8 @@
     --popover: 0 0% 22%;
     --popover-foreground: 0 0% 100%;
 
-    /* iOS systemYellow — less luminous than pure #FFFF00, closer to on-device SwiftUI .yellow */
-    --primary: 255 204 0;
+    /* appYellow — Theme.swift rgb(255, 190, 0) / #FFBE00 */
+    --primary: 255 190 0;
     --primary-foreground: 0 0% 0%;
 
     --secondary: 0 0% 26.7%; /* appSurfaceRaised #444444 */
@@ -29,7 +29,7 @@
     --muted: 0 0% 22%;
     --muted-foreground: 0 0% 72%; /* appTextSecondary ~ white 72% */
 
-    --accent: 255 204 0;
+    --accent: 255 190 0;
     --accent-foreground: 0 0% 0%;
 
     --destructive: 357 70% 50%; /* appRed #D9262E */
@@ -37,23 +37,23 @@
 
     --border: 0 0% 100%;
     --input: 0 0% 22%;
-    --ring: 255 204 0;
+    --ring: 255 190 0;
 
     --radius: 1.5rem; /* 24px — matches app Settings card corners */
 
-    --gold: 255 204 0;
-    --gold-dim: 204 163 0;
+    --gold: 255 190 0;
+    --gold-dim: 204 152 0;
     --surface-elevated: 0 0% 22%;
     --surface-highlight: 0 0% 26.7%;
 
     --sidebar-background: 0 0% 17.3%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 255 204 0;
+    --sidebar-primary: 255 190 0;
     --sidebar-primary-foreground: 0 0% 0%;
     --sidebar-accent: 0 0% 22%;
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 0 0% 100%;
-    --sidebar-ring: 255 204 0;
+    --sidebar-ring: 255 190 0;
   }
 }
 
