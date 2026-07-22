@@ -18,7 +18,7 @@ import LegalCard, { BulletList } from "@/components/LegalCard";
 
 export default function PrivacyPolicy() {
   return (
-    <LegalPageShell title="Privacy Policy" lastUpdated="2 June 2026">
+    <LegalPageShell title="Privacy Policy" lastUpdated="22 July 2026">
 
       <LegalCard icon={Shield} title="Introduction">
         <p>
@@ -40,7 +40,7 @@ export default function PrivacyPolicy() {
             "Authentication data: one-time verification codes and related logs used to sign in, verify your email, reset your password, or change your contact details",
             "Location data: precise GPS coordinates, including in the background when you grant permission, used for live map features and safety alerts",
             "Movement and presence data: inferred activity (for example walking, running, driving, or stationary) and online/presence status shared with your circles",
-            "Circle and social safety data: circle memberships, shared live locations, invite codes, saved places, presence pings, and emergency or unsafe status alerts you send or receive",
+            "Circle and social safety data: circle memberships, shared live locations, invite codes, saved places, presence pings, and unsafe status alerts you send or receive",
             "Community safety reports: locations and optional descriptions you submit when reporting that you feel unsafe, plus aggregated unsafe-report pins shown on the map",
             "Safety zone / pass-through contribution data: if enabled, a once-per-day signal that you passed through a geographic area (area key, approximate coordinates, optional street name, and date)—not a continuous route history",
             "Aggregated community risk zone data: area-level pass-through and report counts, risk scores, tiers, and map geometry computed by our servers from community activity (not tied to your identity on the map)",
@@ -60,7 +60,7 @@ export default function PrivacyPolicy() {
             "Authenticate you via phone or email verification",
             "Provide circle-based live location sharing and presence features",
             "Show your movement status and online status to circle members when enabled",
-            "Send safety-related notifications (for example proximity alerts, place arrivals or departures, circle emergencies, and report reminders)",
+            "Send safety-related notifications (for example proximity alerts, place arrivals or departures, circle unsafe alerts, and report reminders)",
             "Display community unsafe-report pins and aggregated risk zones on the map",
             "Compute and update community risk zones from aggregated pass-through and report activity",
             "Send alerts when you or circle members enter published community risk zones (if enabled)",
@@ -128,10 +128,12 @@ export default function PrivacyPolicy() {
         </p>
         <p>
           Our servers aggregate pass-through and report counts over a rolling window (currently about 60
-          days), apply recency weighting, and compute area risk scores and tiers (for example elevated,
-          high, and very high). Published zones appear on the map once enough aggregated activity
-          exists. You may optionally enable a developer/testing view to see unpublished zones that are
-          still forming.
+          days), apply recency weighting (so more recent activity counts for more), and compute area risk
+          scores and tiers (for example elevated, high, and very high). Zones are surfaced by unsafe
+          reports: an area must accumulate enough reports to earn a risk tier before it is published.
+          Pass-through counts do not create zones&mdash;they act as a denominator that lowers an
+          area&apos;s risk level, so busy places with few reports read as safer. You may optionally enable
+          a developer/testing view to see unpublished zones that are still forming.
         </p>
         <p>
           Other signed-in users see published zones and summary statistics (such as pass-through and
@@ -144,7 +146,7 @@ export default function PrivacyPolicy() {
       <LegalCard icon={Bell} title="Push Notifications">
         <p>
           If you enable notifications, we use your device push token to send alerts you have opted into,
-          such as circle emergencies, proximity warnings, shared-place events, follow-ups related to
+          such as circle unsafe alerts, proximity warnings, shared-place events, follow-ups related to
           safety reports, and—if enabled—alerts when you or a circle member enter a published community
           risk zone. You can manage notification categories in the app and disable notifications in your
           device settings.

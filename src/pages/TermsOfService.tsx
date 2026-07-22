@@ -18,7 +18,7 @@ import LegalCard, { BulletList } from "@/components/LegalCard";
 
 export default function TermsOfService() {
   return (
-    <LegalPageShell title="Terms of Service" lastUpdated="2 June 2026">
+    <LegalPageShell title="Terms of Service" lastUpdated="22 July 2026">
 
       <LegalCard icon={FileText} title="Agreement">
         <p>
@@ -47,10 +47,10 @@ export default function TermsOfService() {
             "Private circles for sharing live location with people you trust",
             "Presence and movement status visible to circle members",
             "Personal and community unsafe-report pins on a map",
-            "Aggregated community risk zones (safety zones) derived from pass-through and report activity",
-            "Optional pass-through contribution to help build community risk zones",
+            "Aggregated community risk zones (safety zones) derived from unsafe reports and pass-through activity",
+            "Optional pass-through contribution to help calibrate community risk zones",
             "Alerts when you or circle members enter published risk zones (if enabled)",
-            "Emergency-style alerts to members of your circles",
+            "Unsafe alerts to members of your circles",
             "Shared places with optional arrival and departure notifications",
             "Push notifications related to safety and circle activity",
             "Optional voluntary donations to support development",
@@ -99,9 +99,11 @@ export default function TermsOfService() {
           area per day—not a stored route).
         </p>
         <p>
-          Zones use rolling community counts and automated scoring to assign risk tiers and map shapes.
-          A zone is published only after enough aggregated activity exists. Unpublished or
-          &quot;testing&quot; zones may be visible if you enable that option in the app.
+          Zones use rolling community counts, recency weighting, and automated scoring to assign risk
+          tiers and map shapes. Zones are surfaced by unsafe reports&mdash;an area must accumulate enough
+          reports to earn a risk tier before it is published&mdash;while pass-through signals lower an
+          area&apos;s risk score rather than create zones. Unpublished or &quot;testing&quot; zones may be
+          visible if you enable that option in the app.
         </p>
         <p>
           Risk zones are shown to signed-in users as community information. They do not identify which
