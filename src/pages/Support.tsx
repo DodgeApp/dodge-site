@@ -37,6 +37,7 @@ export default function Support() {
         name: name.trim(),
         email: email.trim(),
         message: message.trim(),
+        company: typeof trap === "string" ? trap : "",
       }),
     })
       .then(async (response) => {

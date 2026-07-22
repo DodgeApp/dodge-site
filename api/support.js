@@ -3,10 +3,45 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
 const MAX_MESSAGE_LENGTH = 5000;
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 5;
+
+/** Best-effort in-memory rate limit (per serverless instance). */
+const rateLimitBuckets = new Map();
 
 function json(res, status, body) {
   res.status(status).setHeader("Content-Type", "application/json");
   res.send(JSON.stringify(body));
+}
+
+function clientIp(req) {
+  const forwarded = req.headers["x-forwarded-for"];
+  if (typeof forwarded === "string" && forwarded.trim()) {
+    return forwarded.split(",")[0].trim();
+  }
+  return req.socket?.remoteAddress || "unknown";
+}
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const bucket = rateLimitBuckets.get(ip) || { windowStartedAt: now, count: 0 };
+  if (now - bucket.windowStartedAt >= RATE_LIMIT_WINDOW_MS) {
+    bucket.windowStartedAt = now;
+    bucket.count = 0;
+  }
+  bucket.count += 1;
+  rateLimitBuckets.set(ip, bucket);
+
+  // Opportunistic cleanup to keep the map bounded.
+  if (rateLimitBuckets.size > 2000) {
+    for (const [key, value] of rateLimitBuckets) {
+      if (now - value.windowStartedAt >= RATE_LIMIT_WINDOW_MS) {
+        rateLimitBuckets.delete(key);
+      }
+    }
+  }
+
+  return bucket.count > RATE_LIMIT_MAX_REQUESTS;
 }
 
 function parseBody(req) {
@@ -26,7 +61,20 @@ export default async function handler(req, res) {
     return json(res, 405, { error: "Method not allowed." });
   }
 
-  const { name = "", email = "", message = "" } = parseBody(req);
+  const ip = clientIp(req);
+  if (isRateLimited(ip)) {
+    return json(res, 429, {
+      error: "Too many support requests. Please try again later or email support@dodgeapp.com.",
+    });
+  }
+
+  const { name = "", email = "", message = "", website = "", company = "" } = parseBody(req);
+
+  // Honeypot: bots often fill hidden fields; ignore silently.
+  if (String(website || "").trim() || String(company || "").trim()) {
+    return json(res, 200, { ok: true });
+  }
+
   const trimmedName = String(name).trim().slice(0, MAX_NAME_LENGTH);
   const trimmedEmail = String(email).trim().slice(0, MAX_EMAIL_LENGTH);
   const trimmedMessage = String(message).trim().slice(0, MAX_MESSAGE_LENGTH);
