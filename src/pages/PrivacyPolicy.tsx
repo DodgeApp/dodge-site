@@ -18,7 +18,7 @@ import LegalCard, { BulletList } from "@/components/LegalCard";
 
 export default function PrivacyPolicy() {
   return (
-    <LegalPageShell title="Privacy Policy" lastUpdated="22 July 2026">
+    <LegalPageShell title="Privacy Policy" lastUpdated="30 July 2026">
 
       <LegalCard icon={Shield} title="Introduction">
         <p>
@@ -172,7 +172,8 @@ export default function PrivacyPolicy() {
             "Google Firebase (authentication, cloud database, file storage, cloud functions, and push messaging infrastructure)",
             "Twilio (phone number verification and one-time codes)",
             "Email delivery providers used by our backend to send verification and account emails",
-            "Paystack (optional in-app donations)",
+            "Paystack (optional in-app donations for South African users / ZAR)",
+            "PayPal (optional in-app donations for users outside South Africa / USD)",
             "Apple (maps via Apple MapKit, push notification delivery on iOS, and App Store distribution)",
             "Resend (processing messages sent through the dodgeapp.com support contact form)",
           ]}
