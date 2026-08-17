@@ -18,7 +18,7 @@ export default function Index() {
           />
           <h1 className="app-page-heading">Dodge</h1>
           <p className="max-w-xs text-center text-sm font-medium text-muted-foreground">
-            Stay aware, Stay connected, Stay Safe
+            Stay aware, stay connected, stay safe.
           </p>
         </div>
 
