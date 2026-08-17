@@ -18,7 +18,7 @@ export default function LegalCard({ icon: Icon, title, children }: LegalCardProp
   );
 }
 
-export function BulletList({ items }: { items: string[] }) {
+export function BulletList({ items }: { items: React.ReactNode[] }) {
   return (
     <ul className="mt-1 space-y-1.5">
       {items.map((item, i) => (
@@ -28,5 +28,14 @@ export function BulletList({ items }: { items: string[] }) {
         </li>
       ))}
     </ul>
+  );
+}
+
+export function Clause({ n, children }: { n: string; children: React.ReactNode }) {
+  return (
+    <p>
+      <span className="font-semibold text-muted-foreground">{n} </span>
+      {children}
+    </p>
   );
 }

@@ -9,6 +9,8 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import TermsOfService from "./pages/TermsOfService.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
+import PaymentTerms from "./pages/PaymentTerms.tsx";
+import EndUserLicence from "./pages/EndUserLicence.tsx";
 import Support from "./pages/Support.tsx";
 import About from "./pages/About.tsx";
 import SiteFooter from "./components/SiteFooter.tsx";
@@ -50,6 +52,8 @@ const App = () => {
                 <Route path="/" element={<Index />} />
                 <Route path="/terms" element={<TermsOfService />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/payment-terms" element={<PaymentTerms />} />
+                <Route path="/eula" element={<EndUserLicence />} />
                 <Route path="/support" element={<Support />} />
                 <Route path="/about" element={<About />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

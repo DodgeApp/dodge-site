@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { FileText, Shield, LifeBuoy, Building2 } from "lucide-react";
+import { FileText, Shield, LifeBuoy, Building2, CreditCard, Smartphone } from "lucide-react";
 import dodgeLogo from "@/assets/dodge-logo.png";
 import HomeLinkCard from "@/components/HomeLinkCard";
-import PreviewNotice from "@/components/PreviewNotice";
 import SettingsSectionLabel from "@/components/SettingsSectionLabel";
 
 export default function Index() {
@@ -23,11 +22,9 @@ export default function Index() {
           </p>
         </div>
 
-        <PreviewNotice />
-
         <section className="space-y-2.5">
           <SettingsSectionLabel icon={FileText}>Legal</SettingsSectionLabel>
-          <div className="settings-card overflow-hidden">
+          <div className="settings-card divide-y divide-white/10 overflow-hidden">
             <HomeLinkCard
               icon={FileText}
               title="Terms of Service"
@@ -40,12 +37,24 @@ export default function Index() {
               subtitle="How we handle your data"
               onClick={() => navigate("/privacy")}
             />
+            <HomeLinkCard
+              icon={CreditCard}
+              title="Payment Terms"
+              subtitle="Subscriptions & contributions"
+              onClick={() => navigate("/payment-terms")}
+            />
+            <HomeLinkCard
+              icon={Smartphone}
+              title="End User Licence Agreement"
+              subtitle="Apple App Store licence"
+              onClick={() => navigate("/eula")}
+            />
           </div>
         </section>
 
         <section className="space-y-2.5">
           <SettingsSectionLabel icon={Building2}>Company</SettingsSectionLabel>
-          <div className="settings-card overflow-hidden">
+          <div className="settings-card divide-y divide-white/10 overflow-hidden">
             <HomeLinkCard
               icon={LifeBuoy}
               title="Support"

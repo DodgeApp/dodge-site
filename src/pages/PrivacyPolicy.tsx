@@ -1,247 +1,460 @@
 import {
-  Shield,
-  Database,
-  Settings2,
-  MapPin,
-  Share2,
-  Lock,
-  UserCog,
-  Clock,
-  Mail,
-  Users,
   Bell,
-  Server,
+  Clock,
+  Database,
+  FileText,
+  Lock,
+  MapPin,
   MapPinned,
+  Scale,
+  Server,
+  Settings2,
+  Share2,
+  Shield,
+  UserCog,
+  Users,
 } from "lucide-react";
 import LegalPageShell from "@/components/LegalPageShell";
-import LegalCard, { BulletList } from "@/components/LegalCard";
+import LegalCard, { BulletList, Clause } from "@/components/LegalCard";
+import {
+  LegalContactCard,
+  PolicyLink,
+  RelatedLegalCard,
+  SupportEmail,
+} from "@/components/LegalBits";
+import { COMPANY_NAME, LEGAL_LAST_UPDATED } from "@/lib/legal";
 
 export default function PrivacyPolicy() {
   return (
-    <LegalPageShell title="Privacy Policy" lastUpdated="30 July 2026">
-
-      <LegalCard icon={Shield} title="Introduction">
+    <LegalPageShell title="Privacy Policy" lastUpdated={LEGAL_LAST_UPDATED}>
+      <LegalCard icon={Shield} title="1. Introduction">
         <p>
-          Dodge Labs (Pty) Ltd (&quot;Dodge&quot;, &quot;we&quot;, &quot;us&quot;) operates the Dodge mobile
-          application and related services at dodgeapp.com. This Privacy Policy describes how we collect,
-          use, store, and share personal information when you use Dodge.
+          {COMPANY_NAME} (&quot;we,&quot; &quot;our,&quot; &quot;us&quot;) operates the Dodge mobile
+          application (hereinafter called &quot;Dodge&quot;) and related services at dodgeapp.com, and is
+          committed to protecting your privacy. This Privacy Policy explains how we collect, use, store,
+          disclose and safeguard your information when you use Dodge.
+        </p>
+        <p>
+          We comply with the Protection of Personal Information Act, 4 of 2013 (POPIA) of South Africa, the
+          General Data Protection Regulation (GDPR) of the European Union, the Apple App Store compliance
+          guidelines and other applicable global privacy laws.
         </p>
         <p>
           By creating an account or using Dodge, you agree to this Privacy Policy. If you do not agree,
-          please do not use the app.
+          please do not use Dodge.
         </p>
+        <p>We have appointed an Information Officer as required in terms of POPIA.</p>
       </LegalCard>
 
-      <LegalCard icon={Database} title="Information We Collect">
+      <LegalCard icon={Database} title="2. Information we collect">
         <p>Depending on how you use Dodge, we may collect:</p>
         <BulletList
           items={[
-            "Account and profile information: username, first and last name, email address, phone number, and profile photo",
-            "Authentication data: one-time verification codes and related logs used to sign in, verify your email, reset your password, or change your contact details",
-            "Location data: precise GPS coordinates, including in the background when you grant permission, used for live map features and safety alerts",
-            "Movement and presence data: inferred activity (for example walking, running, driving, or stationary) and online/presence status shared with your circles",
-            "Circle and social safety data: circle memberships, shared live locations, invite codes, saved places, presence pings, and unsafe status alerts you send or receive",
-            "Community safety reports: locations and optional descriptions you submit when reporting that you feel unsafe, plus aggregated unsafe-report pins shown on the map",
-            "Safety zone / pass-through contribution data: if enabled, a once-per-day signal that you passed through a geographic area (area key, approximate coordinates, optional street name, and date)—not a continuous route history",
-            "Aggregated community risk zone data: area-level pass-through and report counts, risk scores, tiers, and map geometry computed by our servers from community activity (not tied to your identity on the map)",
-            "Notifications data: device push tokens (APNs/FCM), notification preferences, and delivery-related metadata",
-            "Support and feedback: messages you send through the in-app support form or feedback flows, plus basic device and app version information",
-            "Optional donation information: if you donate in the app, payment references processed by our payment provider (we do not store full card details on our servers)",
-            "Technical data: app interactions, timestamps, and information needed to operate, secure, and debug the service",
+            "Personal Information: Full Name, email address, phone number, profile details, including a profile photo.",
+            "Usage Data: App activity, device type, operating system, IP Address.",
+            "Communications: Messages shared within trusted groups.",
+            "Authentication data: one-time verification codes and related logs used to sign in, verify your email, reset your password, or change your contact details.",
+            "Location data: precise GPS coordinates, including in the background when you grant permission, used for live map features and safety alerts.",
+            "Movement and presence data: inferred activity (for example walking, running, driving, or stationary) and online/presence status shared with your circles.",
+            "Circle and social safety data: circle memberships, shared live locations, invite codes, saved places, presence pings, and unsafe status alerts you send or receive.",
+            "Community safety reports: locations and optional descriptions you submit when reporting that you feel unsafe, plus aggregated unsafe-report pins shown on the map.",
+            "Safety zone / pass-through contribution data: if enabled, a once-per-day signal that you passed through a geographic area (area key, approximate coordinates, optional street name, and date)—not a continuous route history.",
+            "Aggregated community risk zone data: area-level pass-through and report counts, risk scores, tiers, and map geometry computed by our servers from community activity (not tied to your identity on the map).",
+            "Notifications data: device push tokens (APNs/FCM), notification preferences, and delivery-related metadata.",
+            "Support and feedback: messages you send through the in-app support form or feedback flows, plus basic device and app version information.",
+            "Voluntary Contributions: if you request voluntary contributions for the benefit of Dodge Labs in the App, payment references are processed by our payment provider, the Apple App Store. We do not store full card details on our servers.",
+            "Payment information: If you purchase a subscription through the Apple App Store, your subscription will automatically renew unless cancelled at least 24 hours before the end of the current billing cycle. You can manage or cancel your subscription at any time through your iOS device settings. Refunds for App Store purchases are handled directly by Apple in accordance with their policies.",
+            "Technical data: app interactions, timestamps, and information needed to operate, secure, and debug the service.",
           ]}
         />
       </LegalCard>
 
-      <LegalCard icon={Settings2} title="How We Use Your Information">
-        <p>We use personal information to:</p>
+      <LegalCard icon={Settings2} title="3. How we use your information">
+        <p>We process your information to:</p>
         <BulletList
           items={[
-            "Create and manage your account",
-            "Authenticate you via phone or email verification",
-            "Provide circle-based live location sharing and presence features",
-            "Show your movement status and online status to circle members when enabled",
-            "Send safety-related notifications (for example proximity alerts, place arrivals or departures, circle unsafe alerts, and report reminders)",
-            "Display community unsafe-report pins and aggregated risk zones on the map",
-            "Compute and update community risk zones from aggregated pass-through and report activity",
-            "Send alerts when you or circle members enter published community risk zones (if enabled)",
-            "Process optional donations",
-            "Respond to support requests and feedback",
-            "Maintain security, prevent abuse, enforce our terms, and comply with law",
-            "Improve reliability and performance of the app",
+            "Provide and improve App functionality.",
+            "Enable secure communication within trusted groups.",
+            "Comply with legal obligations.",
+            "Send updates, notifications, or support messages (with consent).",
+            "Prevent fraud, abuse, or unauthorised access.",
+            "Create and manage your account.",
+            "Authenticate you/your details via phone or email verification.",
+            "Provide circle-based live location sharing and presence features.",
+            "Show your movement status and online status to circle members when enabled.",
+            "Send safety-related notifications (for example proximity alerts, place arrivals or departures, circle unsafe alerts, and report reminders).",
+            "Display community unsafe-report pins and aggregated risk zones on the map.",
+            "Compute and update community risk zones from aggregated pass-through and report activity.",
+            "Send alerts when you or circle members enter published community risk zones (if enabled).",
+            "Process voluntary contributions (if applicable) and process payments (if applicable).",
+            "Respond to support requests and feedback.",
+            "Maintain security, prevent abuse, enforce our terms, and comply with law.",
+            "Improve reliability and performance of Dodge.",
           ]}
         />
       </LegalCard>
 
-      <LegalCard icon={MapPin} title="Location Data">
+      <LegalCard icon={Scale} title="4. Legal basis for processing">
+        <p>We process personal data under the following legal bases:</p>
+        <Clause n="4.1">Consent (GDPR Art. 6(1)(a)): For optional features and marketing.</Clause>
+        <Clause n="4.2">Contractual necessity (GDPR Art. 6(1)(b)): To provide App services.</Clause>
+        <Clause n="4.3">Legal Obligation (GDPR Art. 6(1)(c)): To comply with laws.</Clause>
+        <Clause n="4.4">Legitimate Interests (GDPR Art. 6(1)(f)): To improve and secure Dodge.</Clause>
+      </LegalCard>
+
+      <LegalCard icon={Share2} title="5. Data sharing and transfers">
+        <Clause n="5.1">We do not sell your personal information/data.</Clause>
+        <Clause n="5.2">
+          Data may be shared with trusted service providers (hosting, analytics, payment processors).
+        </Clause>
+        <Clause n="5.3">
+          Where personal data is transferred outside South Africa or the EU, we rely on appropriate
+          safeguards such as adequacy decisions, Standard Contractual Clauses, or binding corporate rules
+          to ensure your information remains protected in line with POPIA and the GDPR.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon={UserCog} title="6. Your rights">
+        <Clause n="6.1">Depending on your jurisdiction, you may have rights to:</Clause>
+        <BulletList
+          items={[
+            "Access your data",
+            "Correct inaccurate data",
+            "Request deletion (“right to be forgotten”)",
+            "Restrict or object to processing",
+            "Data portability",
+            "Withdraw consent at any time",
+          ]}
+        />
+        <Clause n="6.2">
+          Users located in the EU retain all rights under the GDPR regardless of the governing law of these
+          Terms. This includes the right to lodge a complaint with a supervisory authority in their country
+          of residence.
+        </Clause>
+        <Clause n="6.3">
+          In addition to GDPR and POPIA, users outside South Africa and the EU may also have rights under
+          their local consumer protection or privacy laws. We will respect applicable rights where required
+          by law.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon={Clock} title="7. Children's data">
+        <Clause n="7.1">
+          Dodge is not directed to children under 13 (or under 16 in the EU). We do not knowingly collect
+          data from minors without parental or guardian consent.
+        </Clause>
+        <Clause n="7.2">
+          For users located in the EU, if you are under 16 years old, we require verifiable parental or
+          guardian consent before collecting or processing your personal information.
+        </Clause>
+        <Clause n="7.3">
+          Verification may include confirmation through email, phone, or other appropriate methods.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon={MapPin} title="8. Location data">
+        <Clause n="8.1">
+          Dodge is built around location-based functionality. With your permission, we collect your
+          location both in the foreground and in the background, including when the Dodge app is not open.
+          This enables us to share your location with circles you have joined, detect when you are near
+          reported danger areas, determine whether you enter designated community risk zones, provide
+          location-based alerts, and update your presence status.
+        </Clause>
+        <Clause n="8.2">
+          You may restrict or disable location access through your device settings. Please note that
+          certain Dodge features may not function properly without location permission. Within Dodge, you
+          can also manage and control whether your location is shared with members of a particular circle.
+        </Clause>
+        <Clause n="8.3">
+          Your live location is shared only with members of the circles you have joined, in accordance with
+          your in-app location-sharing settings. Your live location is not made available to the public or
+          shared with the public internet at large.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon={Users} title="9. Circles, alerts & community reports">
+        <Clause n="9.1">
+          Dodge allows you to create or join private circles consisting of trusted contacts. Members of a
+          circle may have access to information that you choose to share with that circle, including your
+          profile information, live location, movement or presence status, and safety alerts that you
+          initiate.
+        </Clause>
+        <Clause n="9.2">
+          If you report that you feel unsafe, Dodge may collect and retain the location of the report and
+          other information relating to the report. You may subsequently be prompted to provide a brief
+          reason or additional details. Safety reports submitted by users may be displayed on the Dodge map
+          to other signed-in Dodge users as aggregated pins. Such reports are not intended to identify the
+          individual who submitted the report.
+        </Clause>
+        <Clause n="9.3">
+          You should only add individuals to a private circle where they are aware of and have consented to
+          being included. You are responsible for using Dodge&apos;s circle and sharing features
+          appropriately and for ensuring that your use of these features respects the privacy and
+          preferences of other users.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon={MapPinned} title="10. Safety zones and community risk areas">
+        <Clause n="10.1">
+          Dodge may display community risk zones on the map. These are highlighted areas generated from
+          aggregated community activity and are not based on the information or activity of any single
+          individual. Community risk zones are generated using:
+        </Clause>
+        <BulletList
+          items={[
+            "Unsafe reports submitted by Dodge users. Each unsafe report also contributes to the measure of activity or presence within the relevant area; and",
+            "Optional pass-through contributions, which allow Dodge to measure the volume of people travelling through an area. If this feature is enabled under Settings → Safety Map Data, Dodge records no more than one pass-through event per day for each area you pass through.",
+          ]}
+        />
+        <Clause n="10.2">
+          Pass-through contribution is enabled by default, but you may disable it at any time through your
+          settings. When enabled, a pass-through event may be associated with your account and may include
+          your user ID, the relevant area key, the date of the event, approximate coordinates, and, where
+          available, the relevant street name. Dodge does not use this feature to store your complete route
+          or maintain a continuous history of your movements.
+        </Clause>
+        <Clause n="10.3">
+          Our servers aggregate pass-through and unsafe-report data over a rolling period, currently
+          approximately 60 days. We apply recency weighting so that more recent activity has a greater
+          influence on the calculation and use the aggregated information to calculate area risk scores and
+          corresponding risk tiers, such as Elevated, High, and Very High.
+        </Clause>
+        <Clause n="10.4">
+          We combine community reports and travel activity to show general safety patterns. These maps are
+          for information only and should not replace your own judgment.
+        </Clause>
+        <Clause n="10.5">
+          A community risk zone is created and published only when an area has accumulated a sufficient
+          number of unsafe reports to meet the applicable threshold for a risk tier. Pass-through activity
+          does not, by itself, create a community risk zone. Instead, pass-through activity provides
+          context regarding the volume of people travelling through an area and is used as a denominator in
+          the risk calculation. Consequently, an area with substantial pass-through activity but relatively
+          few unsafe reports may have a lower assessed risk level.
+        </Clause>
+        <Clause n="10.6">
+          Where available, you may optionally enable a developer or testing view to see unpublished zones
+          that are still being formed and have not yet met the threshold for publication.
+        </Clause>
+        <Clause n="10.7">
+          Other signed-in Dodge users may see published community risk zones and aggregated summary
+          information, such as pass-through and unsafe-report totals. They will not be able to identify
+          which individuals contributed to those totals.
+        </Clause>
+        <Clause n="10.8">
+          Community risk-zone map overlays, detailed zone information, and related alerts are separate from
+          individual unsafe-report pins and from live location sharing. Your live location is shared only
+          with members of the relevant private circles, subject to your in-app sharing settings.
+        </Clause>
+        <Clause n="10.9">
+          Community risk zones and alerts are generated through aggregated reports and pass-through
+          contributions. These are informational only and do not involve automated decision-making that
+          produces legal or similarly significant effects on individual users.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon={Bell} title="11. Push notifications">
+        <Clause n="11.1">
+          If you enable push notifications, we use your device&apos;s push notification token to deliver
+          alerts and notifications that you have opted to receive. These may include circle safety alerts,
+          proximity warnings, shared-place events, follow-up notifications relating to safety reports, and,
+          where enabled, notifications when you or a member of one of your circles enters a published
+          community risk zone.
+        </Clause>
+        <Clause n="11.2">
+          You can manage notification categories and preferences within Dodge and may disable notifications
+          through your device settings.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon={Share2} title="12. How we share information">
+        <p>We may share information:</p>
+        <Clause n="12.1">
+          With other Dodge users in your private circles, in accordance with the features described in this
+          Privacy Policy and your in-app sharing settings;
+        </Clause>
+        <Clause n="12.2">
+          With service providers that assist us in operating and delivering Dodge, subject to contractual
+          or other appropriate obligations relating to the protection and processing of your information;
+        </Clause>
+        <Clause n="12.3">
+          Where disclosure is required or permitted by applicable law, regulation, legal process, or where
+          reasonably necessary to protect our rights, the rights of our users, or the safety and security
+          of Dodge and its users; and
+        </Clause>
+        <Clause n="12.4">
+          In connection with a merger, acquisition, restructuring, financing, or sale of all or part of our
+          business or assets, subject to providing notice where required by applicable law.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon={Server} title="13. Service providers">
+        <p>We use trusted third-party service providers to operate and support Dodge, including:</p>
+        <BulletList
+          items={[
+            "Google Firebase – authentication, cloud database, file storage, cloud functions, and push notification infrastructure;",
+            "Twilio – telephone number verification and delivery of one-time verification codes;",
+            "Email delivery providers – used by our backend to send verification, account, and service-related emails;",
+            "Apple – maps through Apple MapKit, push-notification delivery on iOS, and App Store distribution; and",
+            "Resend – processing and delivery of messages submitted through the Dodge support contact form on dodgeapp.com.",
+          ]}
+        />
         <p>
-          Dodge is built around location. With your permission, we collect location in the foreground and
-          background (including when the app is not open) so we can share your position with circles you
-          join, detect proximity to reported danger areas, evaluate entry into community risk zones,
-          support place-based alerts, and refresh your presence status.
+          These service providers process information on our behalf to provide, maintain, and support
+          Dodge. Their respective privacy policies may also apply to their processing of your information.
         </p>
+      </LegalCard>
+
+      <LegalCard icon={Lock} title="14. Data security and retention">
+        <Clause n="14.1">
+          We retain personal information only for as long as reasonably necessary to fulfil the purposes
+          described in this Privacy Policy, provide and maintain Dodge, or comply with applicable legal
+          obligations. Subject to applicable law, you may request deletion of your personal information at
+          any time.
+        </Clause>
+        <Clause n="14.2">
+          We implement reasonable technical and organisational measures designed to protect your information
+          against unauthorised access, loss, misuse, alteration, or disclosure. These measures include
+          access controls and encrypted transmission using HTTPS/TLS. However, no method of transmitting or
+          storing information is completely secure, and we cannot guarantee absolute security.
+        </Clause>
+        <Clause n="14.3">
+          We generally retain personal information for as long as your account remains active and for as
+          long as reasonably necessary to provide the service, resolve disputes, enforce our agreements,
+          maintain security, and comply with legal and regulatory obligations.
+        </Clause>
+        <Clause n="14.4">
+          If you delete your account, we will delete or anonymise associated personal information in
+          accordance with our account-deletion procedures, except where we are required or permitted by law
+          to retain limited information for legal, regulatory, security, fraud-prevention,
+          dispute-resolution, or backup purposes.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon={UserCog} title="15. Your choices and rights">
+        <p>Subject to applicable law, you may:</p>
+        <Clause n="15.1">
+          Update your profile, telephone number, or email address within the Dodge app, although
+          verification may be required;
+        </Clause>
+        <Clause n="15.2">
+          Control per-circle location-sharing and notification preferences for individual circles,
+          including preferences relating to community risk-zone alerts;
+        </Clause>
+        <Clause n="15.3">
+          Enable or disable your contribution of pass-through data under Settings → Safety Map Data;
+        </Clause>
+        <Clause n="15.4">
+          Enable or disable community risk-zone map overlays and, where available, optional unpublished or
+          testing zones within the app;
+        </Clause>
+        <Clause n="15.5">
+          Enable, restrict, or disable location, motion, camera, photo, and notification permissions
+          through your device settings;
+        </Clause>
+        <Clause n="15.6">
+          Delete your Dodge account through the app, which will initiate the removal or anonymisation of
+          your profile and associated information in accordance with our deletion procedures; and
+        </Clause>
+        <Clause n="15.7">
+          Contact us with questions or requests relating to your personal information, including requests
+          for access, correction, deletion, or other rights available to you under applicable law.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon={Clock} title="16. Child data handling provisions">
+        <Clause n="16.1">
+          Dodge is not intended for use by children under the age of 13, and we do not knowingly collect or
+          process personal information relating to children under 13.
+        </Clause>
+        <Clause n="16.2">
+          If you are under 18, you must have parental or guardian consent to use Dodge. By providing
+          consent, parents or guardians agree to:
+        </Clause>
+        <BulletList
+          items={[
+            "Supervise the child’s use of Dodge and ensure compliance with this Agreement, referenced documents, and applicable laws.",
+            "Accept full responsibility and liability for the child’s compliance and use of the Services.",
+            "Accept all disclaimers, waivers, and limitations of liability on both their own behalf and the child’s behalf.",
+          ]}
+        />
+        <Clause n="16.3">
+          For users located in the EU, if you are under 16 years old, parental or guardian consent must be
+          verifiable in accordance with GDPR requirements, before you may use Dodge.
+        </Clause>
+        <Clause n="16.4">
+          If you believe that a child under the age of 13 has provided us with personal information, please
+          contact us promptly. We will investigate the matter and, where required by applicable law, take
+          appropriate steps to delete the information.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon={Lock} title="17. Security">
         <p>
-          You can limit location access in your device settings. Some features will not work without
-          location permission. Within the app, you can also control whether your location is shared with a
-          specific circle.
+          We implement reasonable technical and organisational safeguards designed to protect personal
+          information, including encryption, secure infrastructure, access controls, and other appropriate
+          security measures. Despite these safeguards, no electronic transmission or storage system can be
+          guaranteed to be completely secure.
         </p>
+      </LegalCard>
+
+      <LegalCard icon={Shield} title="18. Data breach notification">
+        <Clause n="18.1">
+          If we become aware of a personal-information security breach that is required to be notified
+          under applicable law, we will take appropriate steps to assess, contain, investigate, and
+          remediate the breach and will notify affected users, regulators, or other relevant parties within
+          the timeframes and in the manner required by applicable law.
+        </Clause>
+        <Clause n="18.2">
+          Where applicable, this may include the notification requirements under the GDPR and the
+          Protection of Personal Information Act, 2013 (POPIA). We will not state a fixed notification
+          period unless that period is applicable to the particular breach and required by the relevant
+          law.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon={FileText} title="19. Changes to this Privacy Policy">
+        <Clause n="19.1">
+          We may update this Privacy Policy from time to time to reflect changes to Dodge, our processing
+          activities, legal requirements, or other operational requirements. We will post the updated
+          version in the Dodge app and/or on our website and will update the &quot;Last updated&quot; date
+          accordingly.
+        </Clause>
+        <Clause n="19.2">
+          Where required by applicable law, we will provide additional notice of material changes. Your
+          continued use of Dodge after an updated Privacy Policy becomes effective will be subject to the
+          updated policy.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon={FileText} title="20. Electronic acceptance of terms">
+        <p>
+          By selecting &quot;Accept,&quot; &quot;Agree,&quot; after reviewing the Privacy Policy, you
+          acknowledge that:
+        </p>
+        <Clause n="20.1">You have read and understood the Privacy Policy.</Clause>
+        <Clause n="20.2">You agree to be legally bound by the Privacy Policy.</Clause>
+        <Clause n="20.3">
+          You consent to the use of electronic records and communications in connection with Dodge, to the
+          extent permitted by law.
+        </Clause>
+        <Clause n="20.4">
+          You agree to comply with all applicable laws and regulations when using Dodge.
+        </Clause>
         <p className="font-medium text-foreground">
-          Your live location is shared only with members of circles you belong to, subject to your
-          in-app sharing settings—not with the public internet at large.
+          If you do not agree with the contents of this Privacy Policy, you must refrain from creating an
+          account or using Dodge.
         </p>
       </LegalCard>
 
-      <LegalCard icon={Users} title="Circles, Alerts & Community Reports">
-        <p>
-          Dodge lets you create or join private circles (limited groups of trusted contacts). Members of a
-          circle may see information you share with that circle, such as your profile details, live
-          location, movement or presence status, and safety alerts you trigger.
-        </p>
-        <p>
-          If you report feeling unsafe, we store the report location and related details. You may be
-          prompted to add a short reason later. Unsafe reports from users may be visible to other
-          signed-in Dodge users on the map as pins in aggregated form.
-        </p>
-        <p>
-          Only add people to circles with their knowledge and consent. You are responsible for how you use
-          sharing features.
-        </p>
-      </LegalCard>
-
-      <LegalCard icon={MapPinned} title="Safety Zones & Community Risk Areas">
-        <p>
-          Dodge can show <span className="font-semibold text-foreground">community risk zones</span> on the
-          map—highlighted areas derived from aggregated community activity, not from a single
-          person&apos;s data. These zones are built from:
-        </p>
-        <BulletList
-          items={[
-            "Unsafe reports submitted by Dodge users (each report also counts as presence in that area)",
-            "Optional pass-through contributions: if enabled in Settings → Safety map data, Dodge records at most once per day per area that you passed through, to help measure how many people travel there",
-          ]}
-        />
-        <p>
-          Pass-through contribution is <span className="font-semibold text-foreground">on by default</span>{" "}
-          but can be turned off at any time. When enabled, we store a pass event linked to your account
-          (user ID, area key, date, approximate coordinates, and optional street name). We do{" "}
-          <span className="font-semibold text-foreground">not</span> store your full route or continuous
-          location history for this feature.
-        </p>
-        <p>
-          Our servers aggregate pass-through and report counts over a rolling window (currently about 60
-          days), apply recency weighting (so more recent activity counts for more), and compute area risk
-          scores and tiers (for example elevated, high, and very high). Zones are surfaced by unsafe
-          reports: an area must accumulate enough reports to earn a risk tier before it is published.
-          Pass-through counts do not create zones&mdash;they act as a denominator that lowers an
-          area&apos;s risk level, so busy places with few reports read as safer. You may optionally enable
-          a developer/testing view to see unpublished zones that are still forming.
-        </p>
-        <p>
-          Other signed-in users see published zones and summary statistics (such as pass-through and
-          report totals), not which individuals contributed. Risk zone map overlays, detail views, and
-          related alerts are separate from individual unsafe-report pins and from circle-only live
-          location sharing.
-        </p>
-      </LegalCard>
-
-      <LegalCard icon={Bell} title="Push Notifications">
-        <p>
-          If you enable notifications, we use your device push token to send alerts you have opted into,
-          such as circle unsafe alerts, proximity warnings, shared-place events, follow-ups related to
-          safety reports, and—if enabled—alerts when you or a circle member enter a published community
-          risk zone. You can manage notification categories in the app and disable notifications in your
-          device settings.
-        </p>
-      </LegalCard>
-
-      <LegalCard icon={Share2} title="How We Share Information">
-        <p>We do not sell your personal information. We may share information:</p>
-        <BulletList
-          items={[
-            "With other Dodge users in your circles, as described above and according to your settings",
-            "With service providers that help us run Dodge (listed below), under contractual obligations to protect your data",
-            "When required by law, regulation, legal process, or to protect rights, safety, and security",
-            "In connection with a merger, acquisition, or sale of assets, with notice where required by law",
-          ]}
-        />
-      </LegalCard>
-
-      <LegalCard icon={Server} title="Service Providers">
-        <p>We use trusted third parties to operate Dodge, including:</p>
-        <BulletList
-          items={[
-            "Google Firebase (authentication, cloud database, file storage, cloud functions, and push messaging infrastructure)",
-            "Twilio (phone number verification and one-time codes)",
-            "Email delivery providers used by our backend to send verification and account emails",
-            "Paystack (optional in-app donations for South African users / ZAR)",
-            "PayPal (optional in-app donations for users outside South Africa / USD)",
-            "Apple (maps via Apple MapKit, push notification delivery on iOS, and App Store distribution)",
-            "Resend (processing messages sent through the dodgeapp.com support contact form)",
-          ]}
-        />
-        <p>
-          These providers process data on our behalf to deliver the service. Their own privacy policies
-          also apply to how they handle information.
-        </p>
-      </LegalCard>
-
-      <LegalCard icon={Lock} title="Data Security & Retention">
-        <p>
-          We use technical and organisational measures designed to protect your information, including
-          access controls on our database and encrypted transport (HTTPS/TLS). No method of transmission
-          or storage is completely secure.
-        </p>
-        <p>
-          We retain personal information for as long as your account is active and as needed to provide
-          the service, resolve disputes, enforce our agreements, and meet legal obligations. When you
-          delete your account, we delete or anonymise associated data in line with our deletion process,
-          except where we must keep limited records for legal, security, or backup purposes.
-        </p>
-      </LegalCard>
-
-      <LegalCard icon={UserCog} title="Your Choices & Rights">
-        <p>You can:</p>
-        <BulletList
-          items={[
-            "Update your profile, phone number, or email in the app (verification may be required)",
-            "Control per-circle location sharing and notification preferences (including community risk zone alerts)",
-            "Turn pass-through contribution on or off under Settings → Safety map data",
-            "Toggle risk zone map overlays and optional unpublished/testing zones in the app",
-            "Disable location, motion, camera, photo, or notification permissions in device settings",
-            "Delete your account from the app, which triggers removal of your profile and associated data from our systems",
-            "Contact us to ask questions or request access, correction, or deletion where applicable law provides those rights",
-          ]}
-        />
-      </LegalCard>
-
-      <LegalCard icon={Clock} title="Children">
-        <p>
-          Dodge is not intended for children under 13, and we do not knowingly collect personal
-          information from children under 13. If you believe a child has provided us information, contact
-          us and we will take appropriate steps to delete it.
-        </p>
-      </LegalCard>
-
-      <LegalCard icon={Shield} title="Changes to This Policy">
-        <p>
-          We may update this Privacy Policy from time to time. We will post the updated version on this
-          page and change the &quot;Last updated&quot; date. Continued use of Dodge after changes take
-          effect means you accept the updated policy.
-        </p>
-      </LegalCard>
-
-      <LegalCard icon={Mail} title="Contact Us">
-        <p>For privacy questions or requests, contact:</p>
-        <a
-          href="mailto:support@dodgeapp.com"
-          className="mt-1 inline-block font-semibold text-primary transition-opacity hover:opacity-80"
-        >
-          support@dodgeapp.com
-        </a>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Dodge Labs (Pty) Ltd
-        </p>
-      </LegalCard>
-
+      <RelatedLegalCard current="privacy" />
+      <LegalContactCard
+        showInformationOfficer
+        intro={
+          <>
+            Dodge welcomes comments, questions, concerns or suggestions. Contact us at <SupportEmail />.
+          </>
+        }
+      />
     </LegalPageShell>
   );
 }

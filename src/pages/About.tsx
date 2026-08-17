@@ -1,6 +1,7 @@
 import { Building2, Compass, Shield, Mail, Instagram } from "lucide-react";
 import ContentPageShell from "@/components/ContentPageShell";
 import LegalCard from "@/components/LegalCard";
+import { PolicyLink } from "@/components/LegalBits";
 
 const INSTAGRAM_URL = "https://www.instagram.com/dodge.app";
 
@@ -49,7 +50,8 @@ export default function About() {
         <p>
           Dodge is built around consent and small groups. Location and alerts are shared within circles
           you control, not broadcast publicly. We use industry-standard infrastructure (including Google
-          Firebase) and explain our practices clearly in our Privacy Policy.
+          Firebase) and explain our practices clearly in our{" "}
+          <PolicyLink to="/privacy">Privacy Policy</PolicyLink>.
         </p>
         <p>
           We do not sell your personal information. Safety technology only works when people trust it—we
