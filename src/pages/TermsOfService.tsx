@@ -8,6 +8,7 @@ import {
   MapPin,
   MapPinned,
   RefreshCw,
+  Route,
   Scale,
   ShieldCheck,
   Smartphone,
@@ -21,7 +22,6 @@ import {
   LegalContactCard,
   PolicyLink,
   RelatedLegalCard,
-  SupportEmail,
 } from "@/components/LegalBits";
 import { COMPANY_NAME, LEGAL_LAST_UPDATED } from "@/lib/legal";
 
@@ -47,6 +47,7 @@ export default function TermsOfService() {
             "Risk-zone alerts when you or a member of your circle enters a published community risk zone, where this feature is enabled;",
             "Unsafe alerts sent to members of your circles;",
             "Shared places, including optional arrival and departure notifications;",
+            "Trip history showing completed journeys, which you may share with circle members who can see your location;",
             "Push notifications relating to safety, location, and circle activity; and",
             "Voluntary Contributions to support the development and operation of Dodge.",
           ]}
@@ -346,6 +347,10 @@ export default function TermsOfService() {
           Dodge are governed by our <PolicyLink to="/privacy">Privacy Policy</PolicyLink> and applicable
           data-protection laws.
         </Clause>
+        <Clause n="5.8.5">
+          Trip history uses the same location permission as other Dodge features. You can disable trip
+          recording, or stop sharing trips with circles, in Settings → Safety Map Data.
+        </Clause>
       </LegalCard>
 
       <LegalCard icon={Gavel} title="5.9 Jurisdiction and applicable laws">
@@ -631,15 +636,45 @@ export default function TermsOfService() {
           You can leave a circle or stop sharing your location with a circle using in-app controls. Circle
           creators and members must respect each other&apos;s privacy and local laws.
         </p>
+        <p>
+          If trip sharing is enabled, circle members who can see your location may also view your recent
+          trips. Trip sharing can be turned off independently of live location sharing under Settings →
+          Safety Map Data.
+        </p>
+      </LegalCard>
+
+      <LegalCard icon={Route} title="Trip history">
+        <p>
+          Dodge may automatically detect completed journeys and show them as trip history. A trip summary
+          may include start and end times, a simplified route, distance, inferred transport mode, and short
+          place labels. Trip history is a record of past journeys, not live tracking, and must not be
+          relied on as a complete or real-time account of a person&apos;s movements.
+        </p>
+        <p>
+          Routes, times, and place labels may be delayed, incomplete, or inaccurate. Road-snapped paths and
+          geocoded labels are generated using device location and third-party map data and may not match
+          the path actually taken.
+        </p>
+        <p>
+          By default, members of circles with whom you share your location may view your trips from the
+          last 3 days. Your longer personal history remains visible only to you. You can turn trip history
+          off, or stop sharing it with circles, under Settings → Safety Map Data. Turning trip history off
+          clears saved trips.
+        </p>
+        <p>
+          Do not use trip history to monitor, locate, or harass anyone without their knowledge and consent.
+          Further detail on how trip data is collected, stored, shared, and deleted is set out in our{" "}
+          <PolicyLink to="/privacy">Privacy Policy</PolicyLink>.
+        </p>
       </LegalCard>
 
       <LegalCard icon={MapPin} title="14. Location & safety disclaimer">
         <Clause n="14.1">Dodge relies on device GPS, network conditions, and third-party map data.</Clause>
         <Clause n="14.2">Location information may be delayed, inaccurate, or unavailable.</Clause>
         <Clause n="14.3">
-          Alerts, unsafe reports, and community risk zones are based on user submissions, aggregated
-          activity, and automated systems. Dodge does not guarantee their accuracy, completeness, or
-          timeliness.
+          Alerts, unsafe reports, community risk zones, and trip history are based on user submissions,
+          device sensors, aggregated activity, and automated systems. Dodge does not guarantee their
+          accuracy, completeness, or timeliness.
         </Clause>
         <Clause n="14.4">
           Community risk zones reflect aggregated patterns over time. They are informational only, may
@@ -894,13 +929,7 @@ export default function TermsOfService() {
       </LegalCard>
 
       <RelatedLegalCard current="terms" />
-      <LegalContactCard
-        intro={
-          <>
-            Dodge welcomes comments, questions, concerns or suggestions. Contact us at <SupportEmail />.
-          </>
-        }
-      />
+      <LegalContactCard intro="Dodge welcomes comments, questions, concerns or suggestions." />
     </LegalPageShell>
   );
 }

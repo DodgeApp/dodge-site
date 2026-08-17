@@ -280,7 +280,7 @@ export default function EndUserLicence() {
       </LegalCard>
 
       <RelatedLegalCard current="eula" />
-      <LegalContactCard intro={<>Dodge welcomes comments, questions, concerns or suggestions. Contact us at <SupportEmail />.</>} />
+      <LegalContactCard intro="Dodge welcomes comments, questions, concerns or suggestions." />
     </LegalPageShell>
   );
 }

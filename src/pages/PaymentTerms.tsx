@@ -15,7 +15,6 @@ import {
   LegalContactCard,
   PolicyLink,
   RelatedLegalCard,
-  SupportEmail,
 } from "@/components/LegalBits";
 import { COMPANY_NAME, LEGAL_LAST_UPDATED } from "@/lib/legal";
 
@@ -270,14 +269,7 @@ export default function PaymentTerms() {
       </LegalCard>
 
       <RelatedLegalCard current="payment" />
-      <LegalContactCard
-        intro={
-          <>
-            For questions concerning Dodge subscriptions, voluntary contributions, purchases or
-            payment-related issues, you may contact us at <SupportEmail />.
-          </>
-        }
-      />
+      <LegalContactCard intro="For questions concerning Dodge subscriptions, voluntary contributions, purchases or payment-related issues, we would like to hear from you." />
     </LegalPageShell>
   );
 }

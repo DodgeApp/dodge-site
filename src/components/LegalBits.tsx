@@ -49,15 +49,21 @@ export function LegalContactCard({
   showInformationOfficer?: boolean;
 }) {
   return (
-    <LegalCard icon={Mail} title="Contact Us">
+    <LegalCard icon={Mail} title="Get in touch">
       <p>{intro}</p>
-      {showInformationOfficer && <p className="font-semibold text-foreground">Information Officer</p>}
+      {showInformationOfficer && (
+        <p>
+          <span className="text-muted-foreground">Information Officer: </span>
+          <span className="font-semibold text-foreground">{COMPANY_NAME}</span>
+        </p>
+      )}
       <p>
         <span className="text-muted-foreground">Email: </span>
         <SupportEmail />
       </p>
-      <p>{COMPANY_NAME}</p>
-      <p className="text-sm text-muted-foreground">Business Address: {BUSINESS_ADDRESS}</p>
+      <p className="text-sm text-muted-foreground">
+        {COMPANY_NAME} · {BUSINESS_ADDRESS}
+      </p>
     </LegalCard>
   );
 }

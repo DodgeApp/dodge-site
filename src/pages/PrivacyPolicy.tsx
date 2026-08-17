@@ -6,6 +6,7 @@ import {
   Lock,
   MapPin,
   MapPinned,
+  Route,
   Scale,
   Server,
   Settings2,
@@ -20,7 +21,6 @@ import {
   LegalContactCard,
   PolicyLink,
   RelatedLegalCard,
-  SupportEmail,
 } from "@/components/LegalBits";
 import { COMPANY_NAME, LEGAL_LAST_UPDATED } from "@/lib/legal";
 
@@ -54,8 +54,9 @@ export default function PrivacyPolicy() {
             "Usage Data: App activity, device type, operating system, IP Address.",
             "Communications: Messages shared within trusted groups.",
             "Authentication data: one-time verification codes and related logs used to sign in, verify your email, reset your password, or change your contact details.",
-            "Location data: precise GPS coordinates, including in the background when you grant permission, used for live map features and safety alerts.",
+            "Location data: precise GPS coordinates, including in the background when you grant permission, used for live map features, safety alerts, and, if enabled, trip history.",
             "Movement and presence data: inferred activity (for example walking, running, driving, or stationary) and online/presence status shared with your circles.",
+            "Trip history data: if enabled, completed journey summaries including start and end times, start and end coordinates, a simplified route, distance, inferred transport mode, and short place labels (for example a street name). High-frequency GPS samples used to detect trips remain on your device and are not uploaded.",
             "Circle and social safety data: circle memberships, shared live locations, invite codes, saved places, presence pings, and unsafe status alerts you send or receive.",
             "Community safety reports: locations and optional descriptions you submit when reporting that you feel unsafe, plus aggregated unsafe-report pins shown on the map.",
             "Safety zone / pass-through contribution data: if enabled, a once-per-day signal that you passed through a geographic area (area key, approximate coordinates, optional street name, and date)—not a continuous route history.",
@@ -81,6 +82,7 @@ export default function PrivacyPolicy() {
             "Create and manage your account.",
             "Authenticate you/your details via phone or email verification.",
             "Provide circle-based live location sharing and presence features.",
+            "Detect completed journeys and show trip history to you, and, if you enable sharing, to circle members who can see your location.",
             "Show your movement status and online status to circle members when enabled.",
             "Send safety-related notifications (for example proximity alerts, place arrivals or departures, circle unsafe alerts, and report reminders).",
             "Display community unsafe-report pins and aggregated risk zones on the map.",
@@ -158,7 +160,8 @@ export default function PrivacyPolicy() {
           location both in the foreground and in the background, including when the Dodge app is not open.
           This enables us to share your location with circles you have joined, detect when you are near
           reported danger areas, determine whether you enter designated community risk zones, provide
-          location-based alerts, and update your presence status.
+          location-based alerts, update your presence status, and, if trip history is enabled, detect
+          completed journeys.
         </Clause>
         <Clause n="8.2">
           You may restrict or disable location access through your device settings. Please note that
@@ -172,12 +175,40 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
+      <LegalCard icon={Route} title="Trip history">
+        <p>
+          When trip history is enabled, Dodge automatically detects completed journeys on your primary
+          signed-in device and builds a personal trip summary. Trip history is a record of past journeys.
+          It is not live tracking and is separate from circle live-location sharing.
+        </p>
+        <p>
+          High-frequency location samples used to detect trips remain on your device for a short period
+          (currently about 3 days) and are not uploaded. Completed trip summaries may include start and
+          end times, start and end coordinates, a simplified route, distance, inferred transport mode, and
+          short place labels. Those summaries are stored on your device and synced to our servers so you
+          can see them on your other devices. We generally keep completed trip summaries for about 30
+          days.
+        </p>
+        <p>
+          To generate place labels and align routes to roads, Dodge may send relevant coordinates to Apple
+          location and mapping services on your device. Map preview images for trip cards are generated on
+          your device and are not uploaded.
+        </p>
+        <p>
+          By default, members of circles with whom you share your location may view your trips from the
+          last 3 days. Your full 30-day history remains visible only to you. You can turn trip history off,
+          or stop sharing trips with circles, under Settings → Safety Map Data. Turning trip history off
+          stops recording and deletes saved trips. Turning sharing off removes trips from other
+          members&apos; view while keeping your local history.
+        </p>
+      </LegalCard>
+
       <LegalCard icon={Users} title="9. Circles, alerts & community reports">
         <Clause n="9.1">
           Dodge allows you to create or join private circles consisting of trusted contacts. Members of a
           circle may have access to information that you choose to share with that circle, including your
-          profile information, live location, movement or presence status, and safety alerts that you
-          initiate.
+          profile information, live location, movement or presence status, safety alerts that you
+          initiate, and, where trip sharing is enabled, your recent trip history.
         </Clause>
         <Clause n="9.2">
           If you report that you feel unsafe, Dodge may collect and retain the location of the report and
@@ -294,7 +325,7 @@ export default function PrivacyPolicy() {
             "Google Firebase – authentication, cloud database, file storage, cloud functions, and push notification infrastructure;",
             "Twilio – telephone number verification and delivery of one-time verification codes;",
             "Email delivery providers – used by our backend to send verification, account, and service-related emails;",
-            "Apple – maps through Apple MapKit, push-notification delivery on iOS, and App Store distribution; and",
+            "Apple – maps through Apple MapKit (including reverse geocoding and road-routing used for trip history), push-notification delivery on iOS, and App Store distribution; and",
             "Resend – processing and delivery of messages submitted through the Dodge support contact form on dodgeapp.com.",
           ]}
         />
@@ -328,6 +359,13 @@ export default function PrivacyPolicy() {
           to retain limited information for legal, regulatory, security, fraud-prevention,
           dispute-resolution, or backup purposes.
         </Clause>
+        <Clause n="14.5">
+          Completed trip summaries are generally retained for about 30 days on your device and on our
+          servers, then deleted automatically. Circle members who can see your location may view shared
+          trips from the last 3 days only. High-frequency trip-detection samples remain on your device for
+          a short period (currently about 3 days) and are not uploaded. If you turn trip history off, or
+          delete your account, we delete associated trip data in accordance with our deletion procedures.
+        </Clause>
       </LegalCard>
 
       <LegalCard icon={UserCog} title="15. Your choices and rights">
@@ -342,6 +380,10 @@ export default function PrivacyPolicy() {
         </Clause>
         <Clause n="15.3">
           Enable or disable your contribution of pass-through data under Settings → Safety Map Data;
+        </Clause>
+        <Clause n="15.3A">
+          Enable or disable trip history, and separately enable or disable sharing of trip history with
+          circle members, under Settings → Safety Map Data;
         </Clause>
         <Clause n="15.4">
           Enable or disable community risk-zone map overlays and, where available, optional unpublished or
@@ -449,11 +491,7 @@ export default function PrivacyPolicy() {
       <RelatedLegalCard current="privacy" />
       <LegalContactCard
         showInformationOfficer
-        intro={
-          <>
-            Dodge welcomes comments, questions, concerns or suggestions. Contact us at <SupportEmail />.
-          </>
-        }
+        intro="For privacy questions or requests, we would like to hear from you."
       />
     </LegalPageShell>
   );
