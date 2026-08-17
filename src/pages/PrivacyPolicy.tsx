@@ -186,8 +186,7 @@ export default function PrivacyPolicy() {
           (currently about 3 days) and are not uploaded. Completed trip summaries may include start and
           end times, start and end coordinates, a simplified route, distance, inferred transport mode, and
           short place labels. Those summaries are stored on your device and synced to our servers so you
-          can see them on your other devices. We generally keep completed trip summaries for about 30
-          days.
+          can see them on your other devices. We generally keep completed trip summaries for about 3 days.
         </p>
         <p>
           To generate place labels and align routes to roads, Dodge may send relevant coordinates to Apple
@@ -195,11 +194,11 @@ export default function PrivacyPolicy() {
           your device and are not uploaded.
         </p>
         <p>
-          By default, members of circles with whom you share your location may view your trips from the
-          last 3 days. Your full 30-day history remains visible only to you. You can turn trip history off,
-          or stop sharing trips with circles, under Settings → Safety Map Data. Turning trip history off
-          stops recording and deletes saved trips. Turning sharing off removes trips from other
-          members&apos; view while keeping your local history.
+          You and, if sharing is enabled, members of circles with whom you share your location may view
+          trips from the last 3 days. You can turn trip history off, or stop sharing trips with circles,
+          under Settings → Safety Map Data. Turning trip history off stops recording and deletes saved
+          trips. Turning sharing off removes trips from other members&apos; view while keeping your local
+          history.
         </p>
       </LegalCard>
 
@@ -360,11 +359,12 @@ export default function PrivacyPolicy() {
           dispute-resolution, or backup purposes.
         </Clause>
         <Clause n="14.5">
-          Completed trip summaries are generally retained for about 30 days on your device and on our
-          servers, then deleted automatically. Circle members who can see your location may view shared
-          trips from the last 3 days only. High-frequency trip-detection samples remain on your device for
-          a short period (currently about 3 days) and are not uploaded. If you turn trip history off, or
-          delete your account, we delete associated trip data in accordance with our deletion procedures.
+          Completed trip summaries are generally retained for about 3 days on your device and on our
+          servers, then deleted automatically. Circle members who can see your location may view the same
+          3-day window when sharing is enabled. High-frequency trip-detection samples remain on your device
+          for a short period (currently about 3 days) and are not uploaded. If you turn trip history off,
+          or delete your account, we delete associated trip data in accordance with our deletion
+          procedures.
         </Clause>
       </LegalCard>
 

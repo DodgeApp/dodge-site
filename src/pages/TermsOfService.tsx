@@ -656,10 +656,9 @@ export default function TermsOfService() {
           the path actually taken.
         </p>
         <p>
-          By default, members of circles with whom you share your location may view your trips from the
-          last 3 days. Your longer personal history remains visible only to you. You can turn trip history
-          off, or stop sharing it with circles, under Settings → Safety Map Data. Turning trip history off
-          clears saved trips.
+          You and, if sharing is enabled, members of circles with whom you share your location may view
+          trips from the last 3 days. You can turn trip history off, or stop sharing it with circles, under
+          Settings → Safety Map Data. Turning trip history off clears saved trips.
         </p>
         <p>
           Do not use trip history to monitor, locate, or harass anyone without their knowledge and consent.
