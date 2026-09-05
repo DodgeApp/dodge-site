@@ -87,6 +87,9 @@ export default {
       },
       boxShadow: {
         card: "0 8px 12px 0 rgb(0 0 0 / 0.25)",
+        glow: "0 6px 20px -4px rgb(var(--primary) / 0.45), 0 0 42px -10px rgb(var(--primary) / 0.30)",
+        "glow-strong":
+          "0 8px 26px -4px rgb(var(--primary) / 0.60), 0 0 52px -10px rgb(var(--primary) / 0.40)",
       },
       keyframes: {
         "accordion-down": {

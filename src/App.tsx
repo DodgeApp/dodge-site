@@ -13,6 +13,7 @@ import PaymentTerms from "./pages/PaymentTerms.tsx";
 import EndUserLicence from "./pages/EndUserLicence.tsx";
 import Support from "./pages/Support.tsx";
 import About from "./pages/About.tsx";
+import Legal from "./pages/Legal.tsx";
 import SiteFooter from "./components/SiteFooter.tsx";
 
 const queryClient = new QueryClient();
@@ -56,6 +57,7 @@ const App = () => {
                 <Route path="/eula" element={<EndUserLicence />} />
                 <Route path="/support" element={<Support />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/legal" element={<Legal />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
