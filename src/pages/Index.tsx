@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Building2, CreditCard, Download, Heart, Info, LifeBuoy, Scale } from "lucide-react";
+import { Building2, CreditCard, Download, Heart, Info, LifeBuoy, Scale, Wallet } from "lucide-react";
 import dodgeLogo from "@/assets/dodge-logo.png";
 import HomeLinkCard from "@/components/HomeLinkCard";
 import SettingsSectionLabel from "@/components/SettingsSectionLabel";
@@ -63,7 +63,7 @@ export default function Index() {
               )}
               {PAYPAL_URL && (
                 <HomeLinkCard
-                  icon={Heart}
+                  icon={Wallet}
                   title="Contribute via PayPal"
                   subtitle="Help keep Dodge running"
                   href={PAYPAL_URL}
