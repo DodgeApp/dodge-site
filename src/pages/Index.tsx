@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { Building2, Download, Heart, Info, LifeBuoy, Scale } from "lucide-react";
+import { Building2, CreditCard, Download, Heart, Info, LifeBuoy, Scale } from "lucide-react";
 import dodgeLogo from "@/assets/dodge-logo.png";
 import HomeLinkCard from "@/components/HomeLinkCard";
 import SettingsSectionLabel from "@/components/SettingsSectionLabel";
 import { Button } from "@/components/ui/button";
 import { trackLinkClick } from "@/lib/analytics";
-import { APP_STORE_URL, MINIMUM_IOS_VERSION, PAYPAL_URL } from "@/lib/links";
+import { APP_STORE_URL, MINIMUM_IOS_VERSION, PAYPAL_URL, PAYSTACK_URL } from "@/lib/links";
 
 export default function Index() {
   const navigate = useNavigate();
@@ -48,17 +48,28 @@ export default function Index() {
           </p>
         </div>
 
-        {PAYPAL_URL && (
+        {(PAYSTACK_URL || PAYPAL_URL) && (
           <section className="space-y-2.5">
             <SettingsSectionLabel icon={Heart}>Support Dodge</SettingsSectionLabel>
             <div className="settings-card overflow-hidden">
-              <HomeLinkCard
-                icon={Heart}
-                title="Contribute via PayPal"
-                subtitle="Help keep Dodge running"
-                href={PAYPAL_URL}
-                onClick={() => trackLinkClick("paypal")}
-              />
+              {PAYSTACK_URL && (
+                <HomeLinkCard
+                  icon={CreditCard}
+                  title="Contribute via Paystack"
+                  subtitle="Cards and EFT in South Africa"
+                  href={PAYSTACK_URL}
+                  onClick={() => trackLinkClick("paystack")}
+                />
+              )}
+              {PAYPAL_URL && (
+                <HomeLinkCard
+                  icon={Heart}
+                  title="Contribute via PayPal"
+                  subtitle="Help keep Dodge running"
+                  href={PAYPAL_URL}
+                  onClick={() => trackLinkClick("paypal")}
+                />
+              )}
             </div>
           </section>
         )}

@@ -3,6 +3,11 @@ export const APP_STORE_ID = "6762295432";
 export const APP_STORE_URL = `https://apps.apple.com/app/id${APP_STORE_ID}`;
 export const MINIMUM_IOS_VERSION = "18.4";
 
+export const PAYSTACK_PAGE_SLUG: string = "dodgelabs";
+export const PAYSTACK_URL: string = PAYSTACK_PAGE_SLUG
+  ? `https://paystack.com/pay/${PAYSTACK_PAGE_SLUG}`
+  : "";
+
 /** Set to your PayPal.me handle to show the contribute card; it stays hidden while blank. */
 export const PAYPAL_ME_HANDLE: string = "dodgelabs";
 export const PAYPAL_URL: string = PAYPAL_ME_HANDLE
