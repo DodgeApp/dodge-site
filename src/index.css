@@ -1,5 +1,6 @@
-/* Rounded fallback for non-Apple browsers (SF Pro Rounded cannot be hosted for web) */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+/* Rounded fallback for non-Apple browsers (SF Pro Rounded cannot be hosted for web);
+   Inter matches the Android app and is only downloaded when html.android uses it */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -66,7 +67,7 @@
     /* Match page surface in top safe area & overscroll; footer uses card */
     background-color: hsl(var(--surface));
     /* Matches SwiftUI .system(..., design: .rounded) on Apple; Nunito fallback elsewhere */
-    font-family:
+    --font-sans:
       ui-rounded,
       -apple-system,
       BlinkMacSystemFont,
@@ -74,9 +75,15 @@
       "Nunito",
       system-ui,
       sans-serif;
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-synthesis: none;
+  }
+
+  /* Set by the inline script in index.html; matches the Android app's Inter */
+  html.android {
+    --font-sans: "Inter", system-ui, sans-serif;
   }
 
   body {

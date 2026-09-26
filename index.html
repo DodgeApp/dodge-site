@@ -2,6 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Before first paint, so Android never flashes the Apple/Nunito stack -->
+    <script>
+      if (
+        (navigator.userAgentData && navigator.userAgentData.platform === "Android") ||
+        /Android/i.test(navigator.userAgent)
+      ) {
+        document.documentElement.classList.add("android");
+      }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#2C2C2C" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
