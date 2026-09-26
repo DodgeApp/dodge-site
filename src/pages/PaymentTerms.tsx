@@ -32,8 +32,10 @@ export default function PaymentTerms() {
 
       <LegalCard icon={Store} title="Payments through Apple">
         <p>
-          All subscriptions, voluntary contributions and other paid features or services offered through
-          Dodge are purchased exclusively through the Apple App Store and its In-App Purchase system.
+          On iPhone, all subscriptions, voluntary contributions and other paid features or services offered
+          through Dodge are purchased exclusively through the Apple App Store and its In-App Purchase
+          system. Purchases in the Android app are covered in &quot;Payments through Google Play&quot;
+          below.
         </p>
         <p>
           We do not collect or process subscriptions or other In-App payments directly. Payments are
@@ -48,6 +50,26 @@ export default function PaymentTerms() {
           Your use of Dodge remains subject to these Payment Terms, the Dodge{" "}
           <PolicyLink to="/terms">Terms of Service</PolicyLink> and{" "}
           <PolicyLink to="/privacy">Privacy Policy</PolicyLink>, as well as the applicable Apple Terms.
+        </p>
+      </LegalCard>
+
+      <LegalCard icon={Store} title="Payments through Google Play">
+        <p>
+          On Android, all subscriptions, voluntary contributions and other paid features or services
+          offered through Dodge are purchased exclusively through Google Play and Google Play Billing, under
+          the Google Play Terms of Service and the Google Payments Terms of Service.
+        </p>
+        <p>
+          We do not collect or process these payments directly. Google processes the payment, charges your
+          selected payment method, issues receipts and, where applicable, handles refunds under the Google
+          Play refund policies. You can manage or cancel subscriptions in the Google Play Store app under
+          Payments &amp; subscriptions.
+        </p>
+        <p>
+          For purchases made in the Android app, references in these Payment Terms to Apple, the App Store,
+          the In-App Purchase system, your Apple account, or the iOS App mean Google, Google Play, Google
+          Play Billing, your Google account, and the Android app. The clauses about Apple as a third-party
+          beneficiary do not apply to Google.
         </p>
       </LegalCard>
 

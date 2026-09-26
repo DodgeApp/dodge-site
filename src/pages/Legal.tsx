@@ -30,7 +30,7 @@ export default function Legal() {
         <HomeLinkCard
           icon={Smartphone}
           title="End User Licence Agreement"
-          subtitle="Apple App Store licence"
+          subtitle="iPhone licence (Apple App Store)"
           onClick={() => navigate("/eula")}
         />
       </div>

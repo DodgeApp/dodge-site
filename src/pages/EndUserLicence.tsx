@@ -22,6 +22,15 @@ import { BUSINESS_ADDRESS, COMPANY_NAME, LEGAL_LAST_UPDATED } from "@/lib/legal"
 export default function EndUserLicence() {
   return (
     <LegalPageShell title="End User Licence Agreement" lastUpdated={LEGAL_LAST_UPDATED}>
+      <LegalCard icon={Smartphone} title="iPhone licence">
+        <p>
+          This EULA is the licence for Dodge on iPhone and other Apple devices, obtained through the Apple
+          App Store. If you use Dodge on Android, your licence is set out in sections 6 and 7A of our{" "}
+          <PolicyLink to="/terms">Terms of Service</PolicyLink>, together with the Google Play Terms of
+          Service.
+        </p>
+      </LegalCard>
+
       <LegalCard icon={Store} title="1. Apple App Store and licence">
         <Clause n="1.1">
           This End User Licence Agreement (&quot;EULA&quot;) is an agreement between you and {COMPANY_NAME}{" "}
