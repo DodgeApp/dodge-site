@@ -211,8 +211,7 @@ export default function PrivacyPolicy() {
         </Clause>
         <Clause n="8A.4">
           Background location is used only for the features described in this Privacy Policy. It is not
-          used for advertising, and it is not sold. [TODO(Declan): confirm this matches the in-app
-          prominent disclosure text and the Play Console location permissions declaration.]
+          used for advertising, and it is not sold.
         </Clause>
       </LegalCard>
 
@@ -464,7 +463,7 @@ export default function PrivacyPolicy() {
             "Trip summaries: about 3 days, as described above.",
             "Pass-through contributions: individual pass-through records are deleted after 14 days, and area-level daily totals, which do not identify you, after 90 days.",
             "Unsafe reports: kept so they can continue to inform community risk zones. When you delete your account, your user ID and username are removed from your reports, so they no longer identify you.",
-            "Support messages: as long as needed to resolve your request. [TODO(Declan): confirm the support retention period.]",
+            "Support messages: in-app feedback is deleted when you delete your account, and support emails, including those sent through the form on our website, are kept for up to 12 months.",
             "Backups: we keep daily backups of our database for 7 days, so deleted data may remain in a backup for up to 7 days before it is removed.",
           ]}
         />
@@ -561,10 +560,9 @@ export default function PrivacyPolicy() {
           appropriate steps to delete the information.
         </Clause>
         <Clause n="16.5">
-          Dodge is not designed for children and does not take part in Google Play&apos;s Designed for
-          Families programme or Apple&apos;s Kids category. [TODO(Declan): confirm the target age group
-          selected in the Play Console and the content rating questionnaire answers, and that they match
-          these age rules.]
+          Dodge is not designed for children. In Google Play, Dodge&apos;s target age group is 13 and over,
+          and Dodge does not take part in Google Play&apos;s Designed for Families programme or Apple&apos;s
+          Kids category.
         </Clause>
       </LegalCard>
 
