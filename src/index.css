@@ -6,6 +6,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Set by the inline script in index.html; matches the Android app's Inter.
+   Outside @layer so Tailwind never purges it (the class only appears in index.html). */
+html.android {
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
 /* Dodge app design tokens — aligned with Theme.swift */
 
 @layer base {
@@ -79,11 +85,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-synthesis: none;
-  }
-
-  /* Set by the inline script in index.html; matches the Android app's Inter */
-  html.android {
-    --font-sans: "Inter", system-ui, sans-serif;
   }
 
   body {
