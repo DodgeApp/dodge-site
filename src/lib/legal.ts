@@ -1,4 +1,4 @@
-export const LEGAL_LAST_UPDATED = "17 August 2026";
+export const LEGAL_LAST_UPDATED = "26 September 2026";
 export const SUPPORT_EMAIL = "support@dodgeapp.com";
 export const BUSINESS_ADDRESS = "40 Bell Road, Kenilworth, Cape Town";
 export const COMPANY_NAME = "Dodge Labs (Pty) Ltd";

@@ -12,6 +12,7 @@ import {
   Settings2,
   Share2,
   Shield,
+  Trash2,
   UserCog,
   Users,
 } from "lucide-react";
@@ -21,6 +22,7 @@ import {
   LegalContactCard,
   PolicyLink,
   RelatedLegalCard,
+  SupportEmail,
 } from "@/components/LegalBits";
 import { COMPANY_NAME, LEGAL_LAST_UPDATED } from "@/lib/legal";
 
@@ -37,7 +39,11 @@ export default function PrivacyPolicy() {
         <p>
           We comply with the Protection of Personal Information Act, 4 of 2013 (POPIA) of South Africa, the
           General Data Protection Regulation (GDPR) of the European Union, the Apple App Store compliance
-          guidelines and other applicable global privacy laws.
+          guidelines, the Google Play Developer Program Policies and other applicable global privacy laws.
+        </p>
+        <p>
+          Dodge is available on iPhone through the Apple App Store and on Android through Google Play.
+          This Privacy Policy applies to both. Where the Android app works differently, we say so.
         </p>
         <p>
           By creating an account or using Dodge, you agree to this Privacy Policy. If you do not agree,
@@ -62,9 +68,13 @@ export default function PrivacyPolicy() {
             "Safety zone / pass-through contribution data: if enabled, a once-per-day signal that you passed through a geographic area (area key, approximate coordinates, optional street name, and date)—not a continuous route history.",
             "Aggregated community risk zone data: area-level pass-through and report counts, risk scores, tiers, and map geometry computed by our servers from community activity (not tied to your identity on the map).",
             "Notifications data: device push tokens (APNs/FCM), notification preferences, and delivery-related metadata.",
+            "Photos and camera: the profile photo you take with your camera or choose from your photo library. On Android, Dodge uses the system photo picker, so it only receives the photo you select and does not access the rest of your library.",
+            "Address and place searches: text you type into a place or address search field, which is sent to Google Places on Android (and Apple on iOS) to suggest matching places.",
+            "App integrity data: on Android, Firebase App Check uses Google Play Integrity to confirm that requests come from a genuine, unmodified copy of Dodge on a genuine device. This produces device and app attestation signals that are processed by Google.",
+            "Analytics data: on Android, Google Analytics for Firebase may collect app usage events, device model, operating system version, an app instance identifier, and approximate location derived from your IP address. [TODO(Declan): confirm whether Analytics collection is enabled in release builds, what events are logged, and whether iOS uses it too.]",
             "Support and feedback: messages you send through the in-app support form or feedback flows, plus basic device and app version information.",
-            "Voluntary Contributions: if you request voluntary contributions for the benefit of Dodge Labs in the App, payment references are processed by our payment provider, the Apple App Store. We do not store full card details on our servers.",
-            "Payment information: If you purchase a subscription through the Apple App Store, your subscription will automatically renew unless cancelled at least 24 hours before the end of the current billing cycle. You can manage or cancel your subscription at any time through your iOS device settings. Refunds for App Store purchases are handled directly by Apple in accordance with their policies.",
+            "Voluntary Contributions: if you request voluntary contributions for the benefit of Dodge Labs in the App, payment references are processed by our payment provider, the Apple App Store or Google Play (Google Play Billing). We do not store full card details on our servers. [TODO(Declan): in-app tips are not yet live on Android; confirm Google Play Billing product ids before launch or remove the Google Play reference.]",
+            "Payment information: If you purchase a subscription through the Apple App Store, your subscription will automatically renew unless cancelled at least 24 hours before the end of the current billing cycle. You can manage or cancel your subscription at any time through your iOS device settings. Refunds for App Store purchases are handled directly by Apple in accordance with their policies. If you purchase through Google Play, the purchase is processed by Google Play Billing, you can manage or cancel subscriptions in the Google Play Store app under Payments & subscriptions, and refunds are handled by Google under the Google Play refund policies.",
             "Technical data: app interactions, timestamps, and information needed to operate, secure, and debug the service.",
           ]}
         />
@@ -107,7 +117,8 @@ export default function PrivacyPolicy() {
       <LegalCard icon={Share2} title="5. Data sharing and transfers">
         <Clause n="5.1">We do not sell your personal information/data.</Clause>
         <Clause n="5.2">
-          Data may be shared with trusted service providers (hosting, analytics, payment processors).
+          Data may be shared with trusted service providers (hosting, analytics, payment processors). The
+          providers we use are listed in section 13.
         </Clause>
         <Clause n="5.3">
           Where personal data is transferred outside South Africa or the EU, we rely on appropriate
@@ -175,6 +186,36 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
+      <LegalCard icon={MapPin} id="background-location" title="8A. Background location on Android">
+        <p className="font-medium text-foreground">
+          Dodge collects location data to enable circle location sharing, circle safety alerts, community
+          risk-zone alerts, presence status, and, if enabled, trip history, even when the app is closed or
+          not in use.
+        </p>
+        <Clause n="8A.1">
+          On Android, background location is only collected if you choose &quot;Allow all the time&quot;
+          in your device&apos;s location settings. Before asking, Dodge shows an in-app notice explaining
+          what is collected and why. You can choose &quot;Allow only while using the app&quot; instead;
+          Dodge will still work while open, but circle members will not see your live location and you
+          will not receive location-based safety alerts while the app is closed.
+        </Clause>
+        <Clause n="8A.2">
+          Android only delivers background location to a foreground service, so while Dodge is sharing
+          your location in the background it shows an ongoing notification. Stopping location sharing, or
+          changing the permission in your device settings, stops background collection.
+        </Clause>
+        <Clause n="8A.3">
+          Dodge also asks for the physical activity permission on Android, used with your location to
+          work out whether you are walking, running, driving, or stationary, for movement status and trip
+          detection. You can refuse it; movement status may then be less accurate.
+        </Clause>
+        <Clause n="8A.4">
+          Background location is used only for the features described in this Privacy Policy. It is not
+          used for advertising, and it is not sold. [TODO(Declan): confirm this matches the in-app
+          prominent disclosure text and the Play Console location permissions declaration.]
+        </Clause>
+      </LegalCard>
+
       <LegalCard icon={Route} title="Trip history">
         <p>
           When trip history is enabled, Dodge automatically detects completed journeys on your primary
@@ -190,8 +231,9 @@ export default function PrivacyPolicy() {
         </p>
         <p>
           To generate place labels and align routes to roads, Dodge may send relevant coordinates to Apple
-          location and mapping services on your device. Map preview images for trip cards are generated on
-          your device and are not uploaded.
+          location and mapping services on your device, or, on Android, to the Android geocoder, which is
+          typically provided by Google. Map preview images for trip cards are generated on your device and
+          are not uploaded.
         </p>
         <p>
           You and, if sharing is enabled, members of circles with whom you share your location may view
@@ -290,6 +332,11 @@ export default function PrivacyPolicy() {
           where enabled, notifications when you or a member of one of your circles enters a published
           community risk zone.
         </Clause>
+        <Clause n="11.1A">
+          Push notifications are delivered through Apple Push Notification service on iOS and Firebase
+          Cloud Messaging on Android. On Android, Dodge also uses silent Firebase Cloud Messaging messages
+          to refresh your presence for your circles; these are not shown to you.
+        </Clause>
         <Clause n="11.2">
           You can manage notification categories and preferences within Dodge and may disable notifications
           through your device settings.
@@ -321,7 +368,9 @@ export default function PrivacyPolicy() {
         <p>We use trusted third-party service providers to operate and support Dodge, including:</p>
         <BulletList
           items={[
-            "Google Firebase – authentication, cloud database, file storage, cloud functions, and push notification infrastructure;",
+            "Google Firebase – Firebase Authentication (sign-in), Cloud Firestore (cloud database), Cloud Storage for Firebase (profile photos), Cloud Functions for Firebase (backend services), Firebase Cloud Messaging (push notifications on Android and delivery infrastructure), Firebase App Check with Google Play Integrity (app integrity on Android), and Google Analytics for Firebase (app analytics on Android);",
+            "Google Maps Platform – on Android, the Maps SDK for Android displays the map, and the Places API suggests places from the text you type into search fields;",
+            "Google Play – Android app distribution and, where available, Google Play Billing for in-app purchases;",
             "Twilio – telephone number verification and delivery of one-time verification codes;",
             "Email delivery providers – used by our backend to send verification, account, and service-related emails;",
             "Apple – maps through Apple MapKit (including reverse geocoding and road-routing used for trip history), push-notification delivery on iOS, and App Store distribution; and",
@@ -330,7 +379,46 @@ export default function PrivacyPolicy() {
         />
         <p>
           These service providers process information on our behalf to provide, maintain, and support
-          Dodge. Their respective privacy policies may also apply to their processing of your information.
+          Dodge. Their respective privacy policies may also apply to their processing of your information,
+          including the{" "}
+          <a
+            href="https://policies.google.com/privacy"
+            className="font-semibold text-primary transition-opacity hover:opacity-80"
+          >
+            Google Privacy Policy
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://firebase.google.com/support/privacy"
+            className="font-semibold text-primary transition-opacity hover:opacity-80"
+          >
+            Privacy and Security in Firebase
+          </a>
+          . [TODO(Declan): confirm the Firebase and Google Cloud region(s) where data is stored.]
+        </p>
+      </LegalCard>
+
+      <LegalCard icon={Database} id="data-safety" title="13A. Data collected and shared (Google Play Data safety)">
+        <p>
+          This summary matches what we declare in the Google Play Data safety section. All data is
+          encrypted in transit, and you can ask us to delete it (see section 15A).
+        </p>
+        <BulletList
+          items={[
+            "Location (precise and approximate): collected for app functionality and account management; shared with circle members you choose; not optional if you use location features.",
+            "Personal info (name, email address, phone number, user ID): collected for app functionality, account management, and security.",
+            "Photos: your profile photo, collected for app functionality and shown to your circle members; optional.",
+            "Messages and user content: unsafe reports, circle content, and support messages, collected for app functionality and support.",
+            "App activity (in-app interactions, in-app search history) and app info and performance: collected for analytics, app functionality, and security. [TODO(Declan): confirm whether crash logs or diagnostics are collected; Crashlytics is not in the Android app.]",
+            "Device or other IDs (push token, app instance ID, App Check attestation): collected for app functionality, security, and analytics.",
+            "Purchase history: only if you make an in-app purchase, processed by Apple or Google.",
+          ]}
+        />
+        <p>
+          &quot;Shared&quot; in Google Play&apos;s sense means transferred to a third party other than a
+          service provider acting on our behalf. We share your location, profile, and status only with the
+          circle members you choose. We do not sell data or use it for advertising. [TODO(Declan): check
+          this list against the final Play Console Data safety form before publishing.]
         </p>
       </LegalCard>
 
@@ -366,6 +454,18 @@ export default function PrivacyPolicy() {
           or delete your account, we delete associated trip data in accordance with our deletion
           procedures.
         </Clause>
+        <Clause n="14.6">In summary, we keep:</Clause>
+        <BulletList
+          items={[
+            "Account, profile, profile photo, and circle data: while your account is active, then deleted when you delete your account.",
+            "Live location and presence: only the latest position and status are kept, replaced as they update, and deleted with your account.",
+            "Trip summaries: about 3 days, as described above.",
+            "Pass-through contributions and unsafe reports: used in a rolling window of about 60 days for community risk zones. [TODO(Declan): confirm how long raw records are stored and whether they are deleted or anonymised when an account is deleted.]",
+            "Analytics data: kept by Google Analytics for Firebase for our configured retention period. [TODO(Declan): state the configured retention period.]",
+            "Support messages: as long as needed to resolve your request. [TODO(Declan): confirm the support retention period.]",
+            "Backups: [TODO(Declan): state whether backups exist and how long deleted data may remain in them.]",
+          ]}
+        />
       </LegalCard>
 
       <LegalCard icon={UserCog} title="15. Your choices and rights">
@@ -390,7 +490,8 @@ export default function PrivacyPolicy() {
           testing zones within the app;
         </Clause>
         <Clause n="15.5">
-          Enable, restrict, or disable location, motion, camera, photo, and notification permissions
+          Enable, restrict, or disable location (including background location, &quot;Allow all the
+          time&quot; on Android), motion or physical activity, camera, photo, and notification permissions
           through your device settings;
         </Clause>
         <Clause n="15.6">
@@ -400,6 +501,30 @@ export default function PrivacyPolicy() {
         <Clause n="15.7">
           Contact us with questions or requests relating to your personal information, including requests
           for access, correction, deletion, or other rights available to you under applicable law.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon={Trash2} id="delete-account" title="15A. Deleting your account and data">
+        <Clause n="15A.1">
+          In the app (iPhone and Android): open Settings, choose Delete account, confirm your password, and
+          select Permanently delete account. This deletes your profile and personal information, your
+          membership in all circles, your profile picture, and your location history.
+        </Clause>
+        <Clause n="15A.2">
+          On the web, without the app: email <SupportEmail /> from the email address on your account, or
+          use the form on our <PolicyLink to="/support">Support page</PolicyLink>, with the subject
+          &quot;Delete my account&quot;. We will verify that the request comes from the account holder and
+          then delete the account and its data. You can find these instructions at
+          https://dodgeapp.com/privacy#delete-account.
+        </Clause>
+        <Clause n="15A.3">
+          You can also ask us to delete some of your data without deleting your account, for example your
+          trip history or profile photo, by contacting us in the same way.
+        </Clause>
+        <Clause n="15A.4">
+          Some information may be kept after deletion, as described in section 14, for example where the
+          law requires it, or aggregated risk-zone counts that no longer identify you. [TODO(Declan): state
+          how long a deletion takes to complete, including requests made on the web.]
         </Clause>
       </LegalCard>
 
@@ -427,6 +552,12 @@ export default function PrivacyPolicy() {
           If you believe that a child under the age of 13 has provided us with personal information, please
           contact us promptly. We will investigate the matter and, where required by applicable law, take
           appropriate steps to delete the information.
+        </Clause>
+        <Clause n="16.5">
+          Dodge is not designed for children and does not take part in Google Play&apos;s Designed for
+          Families programme or Apple&apos;s Kids category. [TODO(Declan): confirm the target age group
+          selected in the Play Console and the content rating questionnaire answers, and that they match
+          these age rules.]
         </Clause>
       </LegalCard>
 
