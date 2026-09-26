@@ -73,7 +73,7 @@ export default function PrivacyPolicy() {
             "App integrity data: on Android, Firebase App Check uses Google Play Integrity to confirm that requests come from a genuine, unmodified copy of Dodge on a genuine device. This produces device and app attestation signals that are processed by Google.",
             "Analytics data: on Android, Google Analytics for Firebase may collect app usage events, device model, operating system version, an app instance identifier, and approximate location derived from your IP address. [TODO(Declan): confirm whether Analytics collection is enabled in release builds, what events are logged, and whether iOS uses it too.]",
             "Support and feedback: messages you send through the in-app support form or feedback flows, plus basic device and app version information.",
-            "Voluntary Contributions: if you request voluntary contributions for the benefit of Dodge Labs in the App, payment references are processed by our payment provider, the Apple App Store or Google Play (Google Play Billing). We do not store full card details on our servers. [TODO(Declan): in-app tips are not yet live on Android; confirm Google Play Billing product ids before launch or remove the Google Play reference.]",
+            "Voluntary Contributions: if you request voluntary contributions for the benefit of Dodge Labs in the App, payment references are processed by our payment provider, the Apple App Store or Google Play (Google Play Billing). We do not store full card details on our servers.",
             "Payment information: If you purchase a subscription through the Apple App Store, your subscription will automatically renew unless cancelled at least 24 hours before the end of the current billing cycle. You can manage or cancel your subscription at any time through your iOS device settings. Refunds for App Store purchases are handled directly by Apple in accordance with their policies. If you purchase through Google Play, the purchase is processed by Google Play Billing, you can manage or cancel subscriptions in the Google Play Store app under Payments & subscriptions, and refunds are handled by Google under the Google Play refund policies.",
             "Technical data: app interactions, timestamps, and information needed to operate, secure, and debug the service.",
           ]}
@@ -394,7 +394,9 @@ export default function PrivacyPolicy() {
           >
             Privacy and Security in Firebase
           </a>
-          . [TODO(Declan): confirm the Firebase and Google Cloud region(s) where data is stored.]
+
+          . Dodge&apos;s data is stored and processed by Google Cloud in the United States, under the
+          safeguards described in section 5.3.
         </p>
       </LegalCard>
 

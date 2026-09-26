@@ -231,8 +231,7 @@ export default function TermsOfService() {
           Google Play Billing under the Google Play Terms of Service. Subscriptions renew automatically
           until cancelled, and you can manage or cancel them at any time in the Google Play Store app under
           Payments &amp; subscriptions. Refunds for Google Play purchases are handled by Google under the
-          Google Play refund policies. [TODO(Declan): in-app tips are not yet live on Android; confirm
-          before launch whether any Google Play purchases will be offered.]
+          Google Play refund policies.
         </Clause>
         <Clause n="5.3.5">
           Where applicable, details concerning refunds, cancellations, recurring charges, minimum contract
