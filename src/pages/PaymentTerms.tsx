@@ -118,7 +118,17 @@ export default function PaymentTerms() {
         <p>
           Voluntary Contributions made through the iOS version of Dodge will be processed exclusively
           through Apple&apos;s App Store and applicable In-App Purchase system. Apple will process the
-          applicable payment in accordance with its terms and policies.
+          applicable payment in accordance with its terms and policies. Voluntary Contributions made
+          through the Android version of Dodge will be processed through Google Play Billing, as described
+          in &quot;Payments through Google Play&quot;.
+        </p>
+        <p>
+          You may also make a Voluntary Contribution through our website, dodgeapp.com, which links to
+          Paystack and PayPal. Those payments are made on Paystack&apos;s or PayPal&apos;s own sites and are
+          processed by them under their terms and policies. Refunds, receipts and payment disputes for
+          website contributions are handled through the provider you paid with, and you can also contact us
+          at the address below. The in-app provisions of these Payment Terms about Apple and Google do not
+          apply to website contributions.
         </p>
         <p>
           Voluntary Contributions will be offered as once-off contributions and may be made at such amounts

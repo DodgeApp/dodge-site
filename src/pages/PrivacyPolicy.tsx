@@ -73,7 +73,7 @@ export default function PrivacyPolicy() {
             "App integrity data: on Android, Firebase App Check uses Google Play Integrity to confirm that requests come from a genuine, unmodified copy of Dodge on a genuine device. This produces device and app attestation signals that are processed by Google.",
             "No analytics or crash reporting: Dodge does not use analytics or crash-reporting SDKs on iOS or Android, and does not collect usage analytics, crash logs, or diagnostics.",
             "Support and feedback: messages you send through the in-app support form or feedback flows, plus basic device and app version information.",
-            "Voluntary Contributions: if you request voluntary contributions for the benefit of Dodge Labs in the App, payment references are processed by our payment provider, the Apple App Store or Google Play (Google Play Billing). We do not store full card details on our servers.",
+            "Voluntary Contributions: if you request voluntary contributions for the benefit of Dodge Labs in the App, payment references are processed by our payment provider, the Apple App Store or Google Play (Google Play Billing). If you contribute through dodgeapp.com, your payment is made on Paystack or PayPal, and we receive the details they share with merchants, such as your name, email address, the amount, and a payment reference. We do not store full card details on our servers.",
             "Payment information: If you purchase a subscription through the Apple App Store, your subscription will automatically renew unless cancelled at least 24 hours before the end of the current billing cycle. You can manage or cancel your subscription at any time through your iOS device settings. Refunds for App Store purchases are handled directly by Apple in accordance with their policies. If you purchase through Google Play, the purchase is processed by Google Play Billing, you can manage or cancel subscriptions in the Google Play Store app under Payments & subscriptions, and refunds are handled by Google under the Google Play refund policies.",
             "Technical data: app interactions, timestamps, and information needed to operate, secure, and debug the service.",
           ]}
@@ -373,6 +373,7 @@ export default function PrivacyPolicy() {
             "Twilio – telephone number verification and delivery of one-time verification codes;",
             "Email delivery providers – used by our backend to send verification, account, and service-related emails;",
             "Apple – maps through Apple MapKit (including reverse geocoding and road-routing used for trip history), push-notification delivery on iOS, and App Store distribution; and",
+            "Paystack and PayPal – processing voluntary contributions made through dodgeapp.com. They act under their own terms and privacy policies when you pay on their sites;",
             "Resend – processing and delivery of messages submitted through the Dodge support contact form on dodgeapp.com.",
           ]}
         />

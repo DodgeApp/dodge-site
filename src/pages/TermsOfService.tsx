@@ -765,8 +765,8 @@ export default function TermsOfService() {
           support the ongoing development, maintenance and operation of Dodge. This contribution is
           optional and does not provide access to additional features or services. In the app, contributions
           are processed by the Apple App Store on iPhone and by Google Play Billing on Android, where
-          available. Voluntary contributions
-          are also governed by our <PolicyLink to="/payment-terms">Payment Terms</PolicyLink>.
+          available. On our website, dodgeapp.com, contributions are made through Paystack or PayPal under
+          their own terms. Voluntary contributions are also governed by our <PolicyLink to="/payment-terms">Payment Terms</PolicyLink>.
         </Clause>
       </LegalCard>
 
@@ -891,7 +891,7 @@ export default function TermsOfService() {
         <p>
           Dodge integrates with third-party services (including cloud hosting, maps, messaging, and
           payments) for example the Apple App Store, Google Play, Google Play Billing, Google Maps Platform,
-          and Google Firebase. Your use of those services may be subject to their own
+          Google Firebase, Paystack, and PayPal. Your use of those services may be subject to their own
           terms. We are not responsible for third-party services outside our reasonable control.
         </p>
       </LegalCard>
