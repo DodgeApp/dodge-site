@@ -213,7 +213,7 @@ export default function TermsOfService() {
         <Clause n="5.3.2">
           By submitting a payment instruction, you authorise the relevant payment provider to process the
           transaction in line with the information you provide. Payments are processed securely via trusted
-          third-party providers, e.g. Apple App Store.
+          third-party providers, e.g. Apple App Store or Google Play (Google Play Billing).
         </Clause>
         <Clause n="5.3.3">
           Payment processing may be handled by third-party providers. Their terms and privacy policies will
@@ -225,6 +225,13 @@ export default function TermsOfService() {
           cancelled at least 24 hours before the end of the current billing cycle. You can manage or cancel
           your subscription at any time through your iOS device settings. Refunds for App Store purchases
           are handled directly by Apple under their policies.
+        </Clause>
+        <Clause n="5.3.4A">
+          If you make a purchase or subscribe through the Android app, the transaction is processed by
+          Google Play Billing under the Google Play Terms of Service. Subscriptions renew automatically
+          until cancelled, and you can manage or cancel them at any time in the Google Play Store app under
+          Payments &amp; subscriptions. Refunds for Google Play purchases are handled by Google under the
+          Google Play refund policies.
         </Clause>
         <Clause n="5.3.5">
           Where applicable, details concerning refunds, cancellations, recurring charges, minimum contract
@@ -510,6 +517,28 @@ export default function TermsOfService() {
         </p>
       </LegalCard>
 
+      <LegalCard icon={Smartphone} title="7A. Mobile software from Google Play">
+        <p>For Mobile Software obtained via Google Play (&quot;Google Play-Sourced Software&quot;):</p>
+        <Clause n="7A.1">
+          These Terms are between you and Dodge Labs, not Google. Dodge Labs, and not Google, is
+          responsible for the Mobile Software and its content, maintenance, support, and warranties.
+        </Clause>
+        <Clause n="7A.2">
+          Your download and use of the Mobile Software must also comply with the Google Play Terms of
+          Service and any other Google terms that apply to you. Where they conflict with these Terms in
+          respect of your use of Google Play, the Google Play terms prevail to that extent.
+        </Clause>
+        <Clause n="7A.3">
+          Purchases made in the Android app are processed through Google Play Billing, as described in
+          clause 5.3.4A and our <PolicyLink to="/payment-terms">Payment Terms</PolicyLink>.
+        </Clause>
+        <Clause n="7A.4">
+          Google has no obligation to provide maintenance or support for the Mobile Software, and is not
+          responsible for product liability, regulatory compliance, consumer protection, or intellectual
+          property claims relating to it, except where the law requires otherwise.
+        </Clause>
+      </LegalCard>
+
       <LegalCard icon={ShieldCheck} title="8. Lawful and responsible use">
         <Clause n="8.1">You agree to use Dodge only for lawful purposes and in accordance with these Terms.</Clause>
         <Clause n="8.2">
@@ -586,7 +615,8 @@ export default function TermsOfService() {
         <Clause n="11.3">
           Where personal data is transferred outside South Africa or the EU, we implement safeguards such
           as Standard Contractual Clauses or equivalent legal mechanisms to ensure protection in line with
-          POPIA, GDPR, other applicable laws, and Apple App Store guidelines.
+          POPIA, GDPR, other applicable laws, Apple App Store guidelines, and Google Play Developer
+          Program Policies.
         </Clause>
       </LegalCard>
 
@@ -595,7 +625,11 @@ export default function TermsOfService() {
           You are responsible for all activity on your account and must promptly notify us if you suspect
           unauthorised access.
         </Clause>
-        <Clause n="12.2">You may terminate your use of Dodge at any time by deleting your account.</Clause>
+        <Clause n="12.2">
+          You may terminate your use of Dodge at any time by deleting your account in the app under
+          Settings → Delete account, or on the web by following the steps at{" "}
+          <PolicyLink to="/privacy#delete-account">dodgeapp.com/privacy#delete-account</PolicyLink>.
+        </Clause>
         <Clause n="12.3">If you do not agree to an amendment to these Terms, you may stop using Dodge.</Clause>
         <Clause n="12.4">We may restrict, suspend, or terminate your access to Dodge if:</Clause>
         <BulletList
@@ -729,8 +763,10 @@ export default function TermsOfService() {
         <Clause n="17.1">
           If you find Dodge useful, you may make a once-off voluntary contribution to {COMPANY_NAME} to
           support the ongoing development, maintenance and operation of Dodge. This contribution is
-          optional and does not provide access to additional features or services. Voluntary contributions
-          are also governed by our <PolicyLink to="/payment-terms">Payment Terms</PolicyLink>.
+          optional and does not provide access to additional features or services. In the app, contributions
+          are processed by the Apple App Store on iPhone and by Google Play Billing on Android, where
+          available. On our website, dodgeapp.com, contributions are made through Paystack or PayPal under
+          their own terms. Voluntary contributions are also governed by our <PolicyLink to="/payment-terms">Payment Terms</PolicyLink>.
         </Clause>
       </LegalCard>
 
@@ -854,7 +890,8 @@ export default function TermsOfService() {
       <LegalCard icon={Smartphone} title="25. Third-party services">
         <p>
           Dodge integrates with third-party services (including cloud hosting, maps, messaging, and
-          payments) for example the Apple App Store. Your use of those services may be subject to their own
+          payments) for example the Apple App Store, Google Play, Google Play Billing, Google Maps Platform,
+          Google Firebase, Paystack, and PayPal. Your use of those services may be subject to their own
           terms. We are not responsible for third-party services outside our reasonable control.
         </p>
       </LegalCard>

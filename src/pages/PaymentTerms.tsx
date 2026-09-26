@@ -32,8 +32,10 @@ export default function PaymentTerms() {
 
       <LegalCard icon={Store} title="Payments through Apple">
         <p>
-          All subscriptions, voluntary contributions and other paid features or services offered through
-          Dodge are purchased exclusively through the Apple App Store and its In-App Purchase system.
+          On iPhone, all subscriptions, voluntary contributions and other paid features or services offered
+          through Dodge are purchased exclusively through the Apple App Store and its In-App Purchase
+          system. Purchases in the Android app are covered in &quot;Payments through Google Play&quot;
+          below.
         </p>
         <p>
           We do not collect or process subscriptions or other In-App payments directly. Payments are
@@ -48,6 +50,26 @@ export default function PaymentTerms() {
           Your use of Dodge remains subject to these Payment Terms, the Dodge{" "}
           <PolicyLink to="/terms">Terms of Service</PolicyLink> and{" "}
           <PolicyLink to="/privacy">Privacy Policy</PolicyLink>, as well as the applicable Apple Terms.
+        </p>
+      </LegalCard>
+
+      <LegalCard icon={Store} title="Payments through Google Play">
+        <p>
+          On Android, all subscriptions, voluntary contributions and other paid features or services
+          offered through Dodge are purchased exclusively through Google Play and Google Play Billing, under
+          the Google Play Terms of Service and the Google Payments Terms of Service.
+        </p>
+        <p>
+          We do not collect or process these payments directly. Google processes the payment, charges your
+          selected payment method, issues receipts and, where applicable, handles refunds under the Google
+          Play refund policies. You can manage or cancel subscriptions in the Google Play Store app under
+          Payments &amp; subscriptions.
+        </p>
+        <p>
+          For purchases made in the Android app, references in these Payment Terms to Apple, the App Store,
+          the In-App Purchase system, your Apple account, or the iOS App mean Google, Google Play, Google
+          Play Billing, your Google account, and the Android app. The clauses about Apple as a third-party
+          beneficiary do not apply to Google.
         </p>
       </LegalCard>
 
@@ -96,7 +118,17 @@ export default function PaymentTerms() {
         <p>
           Voluntary Contributions made through the iOS version of Dodge will be processed exclusively
           through Apple&apos;s App Store and applicable In-App Purchase system. Apple will process the
-          applicable payment in accordance with its terms and policies.
+          applicable payment in accordance with its terms and policies. Voluntary Contributions made
+          through the Android version of Dodge will be processed through Google Play Billing, as described
+          in &quot;Payments through Google Play&quot;.
+        </p>
+        <p>
+          You may also make a Voluntary Contribution through our website, dodgeapp.com, which links to
+          Paystack and PayPal. Those payments are made on Paystack&apos;s or PayPal&apos;s own sites and are
+          processed by them under their terms and policies. Refunds, receipts and payment disputes for
+          website contributions are handled through the provider you paid with, and you can also contact us
+          at the address below. The in-app provisions of these Payment Terms about Apple and Google do not
+          apply to website contributions.
         </p>
         <p>
           Voluntary Contributions will be offered as once-off contributions and may be made at such amounts

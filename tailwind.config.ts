@@ -17,15 +17,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: [
-          "ui-rounded",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "SF Pro Rounded",
-          "Nunito",
-          "system-ui",
-          "sans-serif",
-        ],
+        sans: ["var(--font-sans)"],
       },
       colors: {
         border: "hsl(var(--border) / 0.12)",

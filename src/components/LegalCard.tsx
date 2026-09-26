@@ -4,12 +4,13 @@ import SettingsSectionLabel from "@/components/SettingsSectionLabel";
 interface LegalCardProps {
   icon: LucideIcon;
   title: string;
+  id?: string;
   children: React.ReactNode;
 }
 
-export default function LegalCard({ icon: Icon, title, children }: LegalCardProps) {
+export default function LegalCard({ icon: Icon, title, id, children }: LegalCardProps) {
   return (
-    <section className="space-y-2.5">
+    <section id={id} className="scroll-mt-6 space-y-2.5">
       <SettingsSectionLabel icon={Icon}>{title}</SettingsSectionLabel>
       <div className="settings-card p-5">
         <div className="space-y-2.5 text-[15px] leading-relaxed text-foreground">{children}</div>
