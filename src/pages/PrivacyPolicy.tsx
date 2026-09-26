@@ -71,7 +71,7 @@ export default function PrivacyPolicy() {
             "Photos and camera: the profile photo you take with your camera or choose from your photo library. On Android, Dodge uses the system photo picker, so it only receives the photo you select and does not access the rest of your library.",
             "Address and place searches: text you type into a place or address search field, which is sent to Google Places on Android (and Apple on iOS) to suggest matching places.",
             "App integrity data: on Android, Firebase App Check uses Google Play Integrity to confirm that requests come from a genuine, unmodified copy of Dodge on a genuine device. This produces device and app attestation signals that are processed by Google.",
-            "Analytics data: on Android, Google Analytics for Firebase may collect app usage events, device model, operating system version, an app instance identifier, and approximate location derived from your IP address. [TODO(Declan): confirm whether Analytics collection is enabled in release builds, what events are logged, and whether iOS uses it too.]",
+            "No analytics or crash reporting: Dodge does not use analytics or crash-reporting SDKs on iOS or Android, and does not collect usage analytics, crash logs, or diagnostics.",
             "Support and feedback: messages you send through the in-app support form or feedback flows, plus basic device and app version information.",
             "Voluntary Contributions: if you request voluntary contributions for the benefit of Dodge Labs in the App, payment references are processed by our payment provider, the Apple App Store or Google Play (Google Play Billing). We do not store full card details on our servers.",
             "Payment information: If you purchase a subscription through the Apple App Store, your subscription will automatically renew unless cancelled at least 24 hours before the end of the current billing cycle. You can manage or cancel your subscription at any time through your iOS device settings. Refunds for App Store purchases are handled directly by Apple in accordance with their policies. If you purchase through Google Play, the purchase is processed by Google Play Billing, you can manage or cancel subscriptions in the Google Play Store app under Payments & subscriptions, and refunds are handled by Google under the Google Play refund policies.",
@@ -368,7 +368,7 @@ export default function PrivacyPolicy() {
         <p>We use trusted third-party service providers to operate and support Dodge, including:</p>
         <BulletList
           items={[
-            "Google Firebase – Firebase Authentication (sign-in), Cloud Firestore (cloud database), Cloud Storage for Firebase (profile photos), Cloud Functions for Firebase (backend services), Firebase Cloud Messaging (push notifications on Android and delivery infrastructure), Firebase App Check with Google Play Integrity (app integrity on Android), and Google Analytics for Firebase (app analytics on Android);",
+            "Google Firebase – Firebase Authentication (sign-in), Cloud Firestore (cloud database), Cloud Storage for Firebase (profile photos), Cloud Functions for Firebase (backend services), Firebase Cloud Messaging (push notifications on Android and delivery infrastructure), and Firebase App Check with Google Play Integrity (app integrity on Android);",
             "Google Maps Platform – on Android, the Maps SDK for Android displays the map, and the Places API suggests places from the text you type into search fields;",
             "Google Play – Android app distribution and, where available, Google Play Billing for in-app purchases;",
             "Twilio – telephone number verification and delivery of one-time verification codes;",
@@ -411,8 +411,8 @@ export default function PrivacyPolicy() {
             "Personal info (name, email address, phone number, user ID): collected for app functionality, account management, and security.",
             "Photos: your profile photo, collected for app functionality and shown to your circle members; optional.",
             "Messages and user content: unsafe reports, circle content, and support messages, collected for app functionality and support.",
-            "App activity (in-app interactions, in-app search history) and app info and performance: collected for analytics, app functionality, and security. [TODO(Declan): confirm whether crash logs or diagnostics are collected; Crashlytics is not in the Android app.]",
-            "Device or other IDs (push token, app instance ID, App Check attestation): collected for app functionality, security, and analytics.",
+            "App activity (place and address searches): collected for app functionality. We do not collect crash logs, diagnostics, or usage analytics.",
+            "Device or other IDs (push token, App Check attestation): collected for app functionality and security.",
             "Purchase history: only if you make an in-app purchase, processed by Apple or Google.",
           ]}
         />
@@ -462,10 +462,10 @@ export default function PrivacyPolicy() {
             "Account, profile, profile photo, and circle data: while your account is active, then deleted when you delete your account.",
             "Live location and presence: only the latest position and status are kept, replaced as they update, and deleted with your account.",
             "Trip summaries: about 3 days, as described above.",
-            "Pass-through contributions and unsafe reports: used in a rolling window of about 60 days for community risk zones. [TODO(Declan): confirm how long raw records are stored and whether they are deleted or anonymised when an account is deleted.]",
-            "Analytics data: kept by Google Analytics for Firebase for our configured retention period. [TODO(Declan): state the configured retention period.]",
+            "Pass-through contributions: individual pass-through records are deleted after 14 days, and area-level daily totals, which do not identify you, after 90 days.",
+            "Unsafe reports: kept so they can continue to inform community risk zones. When you delete your account, your user ID and username are removed from your reports, so they no longer identify you.",
             "Support messages: as long as needed to resolve your request. [TODO(Declan): confirm the support retention period.]",
-            "Backups: [TODO(Declan): state whether backups exist and how long deleted data may remain in them.]",
+            "Backups: we keep daily backups of our database for 7 days, so deleted data may remain in a backup for up to 7 days before it is removed.",
           ]}
         />
       </LegalCard>
@@ -524,9 +524,14 @@ export default function PrivacyPolicy() {
           trip history or profile photo, by contacting us in the same way.
         </Clause>
         <Clause n="15A.4">
+          Deleting your account in the app takes effect immediately. We complete deletion requests made on
+          the web within 30 days of verifying them. Deleted data may remain in our backups for up to 7
+          days.
+        </Clause>
+        <Clause n="15A.5">
           Some information may be kept after deletion, as described in section 14, for example where the
-          law requires it, or aggregated risk-zone counts that no longer identify you. [TODO(Declan): state
-          how long a deletion takes to complete, including requests made on the web.]
+          law requires it, unsafe reports with your user ID and username removed, or aggregated risk-zone
+          counts that no longer identify you.
         </Clause>
       </LegalCard>
 
