@@ -419,8 +419,7 @@ export default function PrivacyPolicy() {
         <p>
           &quot;Shared&quot; in Google Play&apos;s sense means transferred to a third party other than a
           service provider acting on our behalf. We share your location, profile, and status only with the
-          circle members you choose. We do not sell data or use it for advertising. [TODO(Declan): check
-          this list against the final Play Console Data safety form before publishing.]
+          circle members you choose. We do not sell data or use it for advertising.
         </p>
       </LegalCard>
 
