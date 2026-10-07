@@ -5,7 +5,14 @@ import HomeLinkCard from "@/components/HomeLinkCard";
 import SettingsSectionLabel from "@/components/SettingsSectionLabel";
 import { Button } from "@/components/ui/button";
 import { trackLinkClick } from "@/lib/analytics";
-import { APP_STORE_URL, MINIMUM_IOS_VERSION, PAYPAL_URL, PAYSTACK_URL } from "@/lib/links";
+import {
+  APP_STORE_URL,
+  MINIMUM_ANDROID_VERSION,
+  MINIMUM_IOS_VERSION,
+  PAYPAL_URL,
+  PAYSTACK_URL,
+  PLAY_STORE_URL,
+} from "@/lib/links";
 
 export default function Index() {
   const navigate = useNavigate();
@@ -27,25 +34,47 @@ export default function Index() {
           </div>
         </div>
 
-        <div className="space-y-2.5">
-          <Button
-            asChild
-            variant="dodge"
-            className="h-[68px] w-full shadow-glow transition-shadow hover:shadow-glow-strong"
-          >
-            <a
-              href={APP_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackLinkClick("app_store")}
+        <div className="space-y-4">
+          <div className="space-y-2.5">
+            <Button
+              asChild
+              variant="dodge"
+              className="h-[68px] w-full shadow-glow transition-shadow hover:shadow-glow-strong"
             >
-              <Download strokeWidth={2.75} aria-hidden />
-              Download on the App Store
-            </a>
-          </Button>
-          <p className="text-center text-xs font-medium text-muted-foreground">
-            Free on iPhone · Requires iOS {MINIMUM_IOS_VERSION} or later
-          </p>
+              <a
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackLinkClick("app_store")}
+              >
+                <Download strokeWidth={2.75} aria-hidden />
+                Download on the App Store
+              </a>
+            </Button>
+            <p className="text-center text-xs font-medium text-muted-foreground">
+              Free on iPhone · Requires iOS {MINIMUM_IOS_VERSION} or later
+            </p>
+          </div>
+          <div className="space-y-2.5">
+            <Button
+              asChild
+              variant="dodge"
+              className="h-[68px] w-full shadow-glow transition-shadow hover:shadow-glow-strong"
+            >
+              <a
+                href={PLAY_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackLinkClick("play_store")}
+              >
+                <Download strokeWidth={2.75} aria-hidden />
+                Download on Google Play
+              </a>
+            </Button>
+            <p className="text-center text-xs font-medium text-muted-foreground">
+              Free on Android · Requires Android {MINIMUM_ANDROID_VERSION} or later
+            </p>
+          </div>
         </div>
 
         {(PAYSTACK_URL || PAYPAL_URL) && (
