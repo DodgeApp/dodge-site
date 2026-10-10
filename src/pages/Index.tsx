@@ -13,16 +13,16 @@ export default function Index() {
   return (
     <div className="flex min-h-[calc(100svh-5.5rem)] flex-col items-center justify-center px-5 py-12 sm:py-16">
       <div className="w-full max-w-lg animate-fade-in space-y-8">
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex items-center gap-3.5 sm:gap-5">
           <img
             src={dodgeLogo}
-            alt="Dodge"
-            className="h-20 w-20 rounded-[22px] shadow-card"
+            alt=""
+            className="h-16 w-16 shrink-0 rounded-[18px] shadow-card sm:h-20 sm:w-20 sm:rounded-[22px]"
           />
-          <div className="flex flex-col items-center">
-            <h1 className="app-page-heading">Dodge</h1>
-            <p className="mt-1 max-w-xs text-center text-sm font-medium text-muted-foreground">
-              Stay aware, stay connected, stay safe.
+          <div className="flex min-w-0 flex-col items-start text-left">
+            <h1 className="app-page-heading sm:text-[34px]">Dodge</h1>
+            <p className="mt-1 text-[15px] font-medium leading-tight text-muted-foreground sm:mt-1.5 sm:text-lg">
+              Community Safety
             </p>
           </div>
         </div>
@@ -31,7 +31,7 @@ export default function Index() {
           <Button
             asChild
             variant="dodge"
-            className="h-[68px] w-full shadow-glow transition-shadow hover:shadow-glow-strong"
+            className="h-[56px] w-full shadow-glow transition-shadow hover:shadow-glow-strong"
           >
             <a
               href={DOWNLOAD_URL}
