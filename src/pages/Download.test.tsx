@@ -37,7 +37,7 @@ describe("Download page", () => {
     expect(screen.getByRole("link", { name: "Download" })).toHaveAttribute("href", DOWNLOAD_URL);
     expect(screen.queryByRole("link", { name: "Download on the App Store" })).not.toBeInTheDocument();
     expect(screen.queryByRole("link", { name: "Download on Google Play" })).not.toBeInTheDocument();
-    expect(screen.getByText("Free on iPhone and Android")).toBeInTheDocument();
+    expect(screen.getByText("Free on iOS and Android")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Contribute via Paystack/ })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Contribute via PayPal/ })).toBeInTheDocument();
     expect(replace).not.toHaveBeenCalled();
