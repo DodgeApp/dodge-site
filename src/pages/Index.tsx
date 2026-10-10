@@ -13,17 +13,21 @@ export default function Index() {
   return (
     <div className="flex min-h-[calc(100svh-5.5rem)] flex-col items-center justify-center px-5 py-12 sm:py-16">
       <div className="w-full max-w-lg animate-fade-in space-y-8">
-        <div className="flex items-center gap-3.5 sm:gap-5">
-          <img
-            src={dodgeLogo}
-            alt=""
-            className="h-16 w-16 shrink-0 rounded-[18px] shadow-card sm:h-20 sm:w-20 sm:rounded-[22px]"
-          />
-          <div className="flex min-w-0 flex-col items-start text-left">
-            <h1 className="app-page-heading sm:text-[34px]">Dodge</h1>
-            <p className="mt-1 text-[15px] font-medium leading-tight text-muted-foreground sm:mt-1.5 sm:text-lg">
-              Community Safety
-            </p>
+        <div className="w-full [container-type:inline-size]">
+          <div className="flex items-center gap-[4cqw]">
+            <img
+              src={dodgeLogo}
+              alt=""
+              className="h-[31.5cqw] w-[31.5cqw] shrink-0 rounded-[22%] shadow-card"
+            />
+            <div className="flex min-w-0 flex-col items-start text-left">
+              <h1 className="whitespace-nowrap text-[21.7cqw] font-extrabold leading-none tracking-tight text-foreground">
+                Dodge
+              </h1>
+              <p className="mt-[1.15cqw] whitespace-nowrap text-[7.94cqw] font-medium leading-none text-muted-foreground">
+                Community Safety
+              </p>
+            </div>
           </div>
         </div>
 
@@ -44,7 +48,7 @@ export default function Index() {
             </a>
           </Button>
           <p className="text-center text-xs font-medium text-muted-foreground">
-            Free on iPhone and Android
+            Free on iOS and Android
           </p>
         </div>
 
