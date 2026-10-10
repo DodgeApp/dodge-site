@@ -11,6 +11,19 @@
         document.documentElement.classList.add("android");
       }
     </script>
+    <!-- circle-invite-download: same choice as src/lib/store-redirect.ts and vercel.json -->
+    <script>
+      (function () {
+        var path = location.pathname.replace(/\/+$/, "") || "/";
+        if (path !== "/download") return;
+        var ua = navigator.userAgent || "";
+        if (/iPhone|iPad|iPod/i.test(ua)) {
+          location.replace("https://apps.apple.com/app/id6762295432");
+        } else if (/Android/i.test(ua)) {
+          location.replace("https://play.google.com/store/apps/details?id=com.dodgeapp.app");
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#2C2C2C" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

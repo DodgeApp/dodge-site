@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import dodgeLogo from "@/assets/dodge-logo.png";
 import Index from "./pages/Index.tsx";
+import Download from "./pages/Download.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import TermsOfService from "./pages/TermsOfService.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
@@ -52,6 +53,7 @@ const App = () => {
             <div className="flex min-h-0 flex-1 flex-col">
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/download" element={<Download />} />
                 <Route path="/terms" element={<TermsOfService />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/payment-terms" element={<PaymentTerms />} />
