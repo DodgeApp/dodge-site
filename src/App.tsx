@@ -50,7 +50,7 @@ const App = () => {
         <BrowserRouter>
           <ScrollToTopOnRouteChange />
           <div className="flex min-h-dvh flex-col bg-surface">
-            <div className="flex min-h-0 flex-1 flex-col">
+            <div className="flex flex-1 flex-col">
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/download" element={<Download />} />

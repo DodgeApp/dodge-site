@@ -7,7 +7,7 @@ export default function Legal() {
   const navigate = useNavigate();
 
   return (
-    <ContentPageShell showLogo title="Legal" subtitle="Policies and agreements for Dodge">
+    <ContentPageShell title="Legal" subtitle="Policies and agreements for Dodge">
       <div className="settings-card overflow-hidden">
         <HomeLinkCard
           icon={FileText}

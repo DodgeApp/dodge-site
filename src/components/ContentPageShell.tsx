@@ -10,7 +10,7 @@ interface ContentPageShellProps {
 
 export default function ContentPageShell({ title, subtitle, showLogo, children }: ContentPageShellProps) {
   return (
-    <div className="relative min-h-screen bg-surface font-sans">
+    <div className="relative bg-surface font-sans">
       <PageBackNav />
 
       <main
