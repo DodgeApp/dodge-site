@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/links";
+import { APP_STORE_URL, DOWNLOAD_URL, PLAY_STORE_URL } from "@/lib/links";
 import Download from "./Download";
 
 const IPHONE =
@@ -26,7 +26,7 @@ describe("Download page", () => {
     vi.stubGlobal("location", { ...window.location, replace });
   });
 
-  it("shows both stores for a desktop browser", () => {
+  it("shows one download button for a desktop browser", () => {
     setUserAgent(DESKTOP);
     render(
       <MemoryRouter>
@@ -34,14 +34,12 @@ describe("Download page", () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole("link", { name: "Download on the App Store" })).toHaveAttribute(
-      "href",
-      APP_STORE_URL,
-    );
-    expect(screen.getByRole("link", { name: "Download on Google Play" })).toHaveAttribute(
-      "href",
-      PLAY_STORE_URL,
-    );
+    expect(screen.getByRole("link", { name: "Download" })).toHaveAttribute("href", DOWNLOAD_URL);
+    expect(screen.queryByRole("link", { name: "Download on the App Store" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "Download on Google Play" })).not.toBeInTheDocument();
+    expect(screen.getByText("Free on iPhone and Android")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Contribute via Paystack/ })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Contribute via PayPal/ })).toBeInTheDocument();
     expect(replace).not.toHaveBeenCalled();
   });
 
@@ -54,7 +52,7 @@ describe("Download page", () => {
     );
 
     expect(replace).toHaveBeenCalledWith(APP_STORE_URL);
-    expect(screen.queryByRole("link", { name: "Download on the App Store" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "Download" })).not.toBeInTheDocument();
   });
 
   it("sends an Android phone straight to Google Play", () => {
@@ -66,6 +64,6 @@ describe("Download page", () => {
     );
 
     expect(replace).toHaveBeenCalledWith(PLAY_STORE_URL);
-    expect(screen.queryByRole("link", { name: "Download on Google Play" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "Download" })).not.toBeInTheDocument();
   });
 });
