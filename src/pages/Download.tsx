@@ -5,7 +5,7 @@ import { storeUrlForUserAgent } from "@/lib/store-redirect";
 /**
  * Circle invites share this path. Phones are redirected at the edge; this
  * page repeats that for local dev and sends every other browser to the homepage,
- * which links to both stores.
+ * which links back here.
  */
 export default function Download() {
   const storeUrl = storeUrlForUserAgent(
