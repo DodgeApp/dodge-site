@@ -94,7 +94,8 @@ html.android {
 
   #root {
     min-height: 100%;
-    min-height: 100dvh;
+    /* svh does not grow when the mobile toolbar hides. dvh does, which stretches the gap above the footer as you scroll. */
+    min-height: 100svh;
   }
 }
 
