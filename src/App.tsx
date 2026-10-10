@@ -49,7 +49,7 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <ScrollToTopOnRouteChange />
-          <div className="flex min-h-dvh flex-col bg-surface">
+          <div className="flex min-h-svh flex-col bg-surface">
             <div className="flex flex-1 flex-col">
               <Routes>
                 <Route path="/" element={<Index />} />
