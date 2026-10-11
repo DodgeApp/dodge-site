@@ -10,6 +10,7 @@ function linearMeasure(text: string, size: number, role: LockupRole): GlyphInk {
     width,
     ascent: size * (role === "title" ? 0.75 : 0.72),
     descent: size * (role === "title" ? 0.22 : 0.2),
+    shift: 0,
   };
 }
 

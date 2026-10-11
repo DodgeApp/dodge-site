@@ -2,8 +2,10 @@
  * Same search as the iOS welcome lockup (`LockupMetrics` in AuthFlowView).
  * The logo and both font sizes move together: each line is as wide as the
  * text column beside the logo, and the ink of the two lines plus the gap
- * between them matches the logo. Callers shift each line so the glyph top
- * lines up with the logo, not the line box.
+ * between them matches the logo. Callers place each line on its font
+ * bounding box, then move the drawn line by `shift` so the painted top
+ * meets the logo. Changing the line's position to chase that pixel hints
+ * the glyphs again and skips the edge.
  */
 
 export const LOCKUP_GAP_FRACTION = 0.04;
@@ -11,10 +13,15 @@ export const LOCKUP_LINE_GAP_FRACTION = 0.0115;
 
 export type GlyphInk = {
   width: number;
-  /** Distance from the baseline up to the top of the painted glyphs. */
+  /** Distance from the baseline up to the top painted pixel. */
   ascent: number;
-  /** Distance from the baseline down to the bottom of the painted glyphs. */
+  /** Distance from the baseline down to the bottom painted pixel. */
   descent: number;
+  /**
+   * How far the painted top sits above the font bounding box, in the same
+   * units as `ascent`. Positive moves the already drawn line down onto the icon.
+   */
+  shift: number;
 };
 
 export type LockupRole = "title" | "subtitle";
@@ -28,8 +35,10 @@ export type LockupFit = {
   subtitleSize: number;
   dodgeAscent: number;
   dodgeInkHeight: number;
+  dodgeShift: number;
   subtitleAscent: number;
   subtitleInkHeight: number;
+  subtitleShift: number;
 };
 
 export type MeasureGlyph = (text: string, size: number, role: LockupRole) => GlyphInk;
@@ -67,8 +76,10 @@ export function solveLockup(columnWidth: number, measure: MeasureGlyph): LockupF
     subtitleSize: subtitle,
     dodgeAscent: dodge.ascent,
     dodgeInkHeight: dodge.ascent + dodge.descent,
+    dodgeShift: dodge.shift,
     subtitleAscent: safety.ascent,
     subtitleInkHeight: safety.ascent + safety.descent,
+    subtitleShift: safety.shift,
   };
 }
 

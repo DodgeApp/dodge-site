@@ -17,17 +17,99 @@ function measureGlyphs(family: string) {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
   if (!context) return null;
+  const cache = new Map<string, GlyphInk>();
 
   return (text: string, size: number, role: LockupRole): GlyphInk => {
     const weight = role === "title" ? 800 : 500;
     const tracking = role === "title" ? TITLE_TRACKING : 0;
+    const dpr = window.devicePixelRatio || 1;
+    const key = `${text}|${size}|${weight}|${dpr}`;
+    const cached = cache.get(key);
+    if (cached) return cached;
+
     context.font = `${weight} ${size}px ${family}`;
     const metrics = context.measureText(text);
-    return {
-      width: metrics.width + Math.max(text.length - 1, 0) * tracking * size,
-      ascent: metrics.actualBoundingBoxAscent || 0,
-      descent: metrics.actualBoundingBoxDescent || 0,
+    const metricAscent = metrics.actualBoundingBoxAscent || 0;
+    const metricDescent = metrics.actualBoundingBoxDescent || 0;
+    const width = metrics.width + Math.max(text.length - 1, 0) * tracking * size;
+    // Width is read for every size guess. The painted pixels are read only
+    // when the logo is matched to the ink, so those guesses stay on the advance.
+    let painted: { ascent: number; descent: number; shift: number } | undefined;
+    const resolve = () => (painted ??= paintedVertical(family, text, size, weight, metricAscent, metricDescent));
+    const ink: GlyphInk = {
+      width,
+      get ascent() {
+        return resolve().ascent;
+      },
+      get descent() {
+        return resolve().descent;
+      },
+      get shift() {
+        return resolve().shift;
+      },
     };
+    cache.set(key, ink);
+    return ink;
+  };
+}
+
+/**
+ * Device pixels of a hinted draw, compared with the font bounding box.
+ * The canvas is scaled by the device pixel ratio and the type is set in CSS
+ * pixels; sizing the font in device pixels instead does not match the screen.
+ * The baseline sits on a whole CSS pixel, which is where the line box lands
+ * when its top is the font box. `shift` is how far the painted top sits above
+ * that box. A pixel counts once it is at least half covered.
+ */
+function paintedVertical(
+  family: string,
+  text: string,
+  size: number,
+  weight: number,
+  metricAscent: number,
+  metricDescent: number,
+): { ascent: number; descent: number; shift: number } {
+  const fallback = { ascent: metricAscent, descent: metricDescent, shift: 0 };
+  if (metricAscent <= 0) return fallback;
+  const dpr = window.devicePixelRatio || 1;
+  const canvas = document.createElement("canvas");
+  const baseline = Math.round(size * 1.2);
+  const pad = Math.ceil(size);
+  const cssWidth = Math.ceil(size * text.length) + pad;
+  const cssHeight = Math.ceil(size * 3);
+  canvas.width = Math.max(1, Math.ceil(cssWidth * dpr));
+  canvas.height = Math.max(1, Math.ceil(cssHeight * dpr));
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  if (!ctx) return fallback;
+  ctx.scale(dpr, dpr);
+  ctx.font = `${weight} ${size}px ${family}`;
+  ctx.textBaseline = "alphabetic";
+  ctx.fillStyle = "#000";
+  ctx.fillText(text, pad / 2, baseline);
+  const { data, width, height } = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  let top = -1;
+  let bottom = -1;
+  for (let y = 0; y < height; y += 1) {
+    const row = y * width * 4;
+    let covered = false;
+    for (let x = 0; x < width; x += 1) {
+      if (data[row + x * 4 + 3] >= 128) {
+        covered = true;
+        break;
+      }
+    }
+    if (covered) {
+      if (top < 0) top = y;
+      bottom = y;
+    }
+  }
+  if (top < 0 || bottom < 0) return fallback;
+  const overhangPx = baseline * dpr - metricAscent * dpr - top;
+  const belowPx = bottom + 1 - (baseline * dpr + metricDescent * dpr);
+  return {
+    ascent: metricAscent + overhangPx / dpr,
+    descent: metricDescent + belowPx / dpr,
+    shift: overhangPx / dpr,
   };
 }
 
@@ -61,7 +143,8 @@ export default function HomeBrandLockup() {
           Math.abs(prev.column - column) < 0.5 &&
           Math.abs(prev.titleSize - solved.titleSize) < 0.05 &&
           Math.abs(prev.logo - solved.logo) < 0.05 &&
-          Math.abs(prev.dodgeAscent - solved.dodgeAscent) < 0.05
+          Math.abs(prev.dodgeAscent - solved.dodgeAscent) < 0.05 &&
+          Math.abs(prev.dodgeShift - solved.dodgeShift) < 0.01
         ) {
           return prev;
         }
@@ -96,10 +179,13 @@ export default function HomeBrandLockup() {
     const titleProbe = titleProbeRef.current;
     const subtitleProbe = subtitleProbeRef.current;
     if (!titleProbe || !subtitleProbe) return;
-    // The probe sits on the baseline. Ink starts `ascent` above that, so the
-    // line box's top is not the alignment edge.
-    const titleOffset = fit.dodgeAscent - titleProbe.offsetTop;
-    const subtitleOffset = fit.dodgeInkHeight + fit.lineGap - (subtitleProbe.offsetTop - fit.subtitleAscent);
+    // The probe sits on the baseline. Place the font bounding box, not the
+    // painted pixel: the painted top is `shift` above that box, and a
+    // translate moves the drawn line down onto the icon.
+    const dodgeBox = fit.dodgeAscent - fit.dodgeShift;
+    const subtitleBox = fit.subtitleAscent - fit.subtitleShift;
+    const titleOffset = dodgeBox - titleProbe.offsetTop;
+    const subtitleOffset = fit.dodgeInkHeight + fit.lineGap - (subtitleProbe.offsetTop - subtitleBox);
     setFit((current) => {
       if (!current || current.aligned) return current;
       return { ...current, titleOffset, subtitleOffset, aligned: true };
@@ -122,6 +208,7 @@ export default function HomeBrandLockup() {
         style={{
           left: textLeft ?? "35.5cqw",
           top: fit?.titleOffset ?? 0,
+          transform: fit?.aligned ? `translateY(${fit.dodgeShift}px)` : undefined,
           fontSize: fit?.titleSize ?? "21.7cqw",
           fontWeight: 800,
           letterSpacing: fit ? fit.titleSize * TITLE_TRACKING : "-0.025em",
@@ -135,6 +222,7 @@ export default function HomeBrandLockup() {
         style={{
           left: textLeft ?? "35.5cqw",
           top: fit?.subtitleOffset ?? "23cqw",
+          transform: fit?.aligned ? `translateY(${fit.subtitleShift}px)` : undefined,
           fontSize: fit?.subtitleSize ?? "7.94cqw",
           fontWeight: 500,
         }}
