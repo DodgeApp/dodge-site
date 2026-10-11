@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Building2, CreditCard, Download, Heart, Info, LifeBuoy, Scale, Wallet } from "lucide-react";
-import dodgeLogo from "@/assets/dodge-logo.png";
+import HomeBrandLockup from "@/components/HomeBrandLockup";
 import HomeLinkCard from "@/components/HomeLinkCard";
 import SettingsSectionLabel from "@/components/SettingsSectionLabel";
 import { Button } from "@/components/ui/button";
@@ -13,23 +13,7 @@ export default function Index() {
   return (
     <div className="flex min-h-[calc(100svh-5.5rem)] flex-col items-center justify-center px-5 py-12 sm:py-16">
       <div className="w-full max-w-lg animate-fade-in space-y-8">
-        <div className="w-full [container-type:inline-size]">
-          <div className="flex items-center gap-[4cqw]">
-            <img
-              src={dodgeLogo}
-              alt=""
-              className="h-[31.5cqw] w-[31.5cqw] shrink-0 rounded-[22%] shadow-card"
-            />
-            <div className="flex min-w-0 flex-col items-start text-left">
-              <h1 className="whitespace-nowrap text-[21.7cqw] font-extrabold leading-none tracking-tight text-foreground">
-                Dodge
-              </h1>
-              <p className="mt-[1.15cqw] whitespace-nowrap text-[7.94cqw] font-medium leading-none text-muted-foreground">
-                Community Safety
-              </p>
-            </div>
-          </div>
-        </div>
+        <HomeBrandLockup />
 
         <div className="space-y-2.5">
           <Button
