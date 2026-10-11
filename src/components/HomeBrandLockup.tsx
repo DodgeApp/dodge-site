@@ -1,128 +1,60 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import dodgeLogo from "@/assets/dodge-logo.png";
-import { solveLockup, type GlyphInk, type LockupFit, type LockupRole } from "@/lib/lockup-metrics";
+import {
+  LOCKUP_SUBTITLE,
+  LOCKUP_TITLE,
+  solveLockup,
+  type LineInk,
+  type LockupFit,
+  type LockupRole,
+  type MeasureLine,
+} from "@/lib/lockup-metrics";
 
-const TITLE = "Dodge";
-const SUBTITLE = "Community Safety";
 const TITLE_TRACKING = -0.025;
+const WEIGHT: Record<LockupRole, number> = { title: 800, subtitle: 500 };
 
-type PlacedLockup = LockupFit & {
-  column: number;
-  titleOffset: number;
-  subtitleOffset: number;
-  aligned: boolean;
-};
+type PlacedLockup = LockupFit & { column: number };
 
-function measureGlyphs(family: string) {
-  const canvas = document.createElement("canvas");
-  const context = canvas.getContext("2d");
-  if (!context) return null;
-  const cache = new Map<string, GlyphInk>();
-
-  return (text: string, size: number, role: LockupRole): GlyphInk => {
-    const weight = role === "title" ? 800 : 500;
-    const tracking = role === "title" ? TITLE_TRACKING : 0;
-    const dpr = window.devicePixelRatio || 1;
-    const key = `${text}|${size}|${weight}|${dpr}`;
-    const cached = cache.get(key);
-    if (cached) return cached;
-
-    context.font = `${weight} ${size}px ${family}`;
-    const metrics = context.measureText(text);
-    const metricAscent = metrics.actualBoundingBoxAscent || 0;
-    const metricDescent = metrics.actualBoundingBoxDescent || 0;
-    const width = metrics.width + Math.max(text.length - 1, 0) * tracking * size;
-    // Width is read for every size guess. The painted pixels are read only
-    // when the logo is matched to the ink, so those guesses stay on the advance.
-    let painted: { ascent: number; descent: number; shift: number } | undefined;
-    const resolve = () => (painted ??= paintedVertical(family, text, size, weight, metricAscent, metricDescent));
-    const ink: GlyphInk = {
-      width,
-      get ascent() {
-        return resolve().ascent;
-      },
-      get descent() {
-        return resolve().descent;
-      },
-      get shift() {
-        return resolve().shift;
-      },
-    };
-    cache.set(key, ink);
-    return ink;
-  };
-}
+/** Where the browser put each line's baseline inside its own box, for the sizes in `fit`. */
+type Baselines = { titleSize: number; subtitleSize: number; title: number; subtitle: number };
 
 /**
- * Device pixels of a hinted draw, compared with the font bounding box.
- * The canvas is scaled by the device pixel ratio and the type is set in CSS
- * pixels; sizing the font in device pixels instead does not match the screen.
- * The baseline sits on a whole CSS pixel, which is where the line box lands
- * when its top is the font box. `shift` is how far the painted top sits above
- * that box. A pixel counts once it is at least half covered.
+ * Glyph outlines from canvas `measureText`, in the face the page uses. CSS
+ * letter-spacing follows every character, so it moves the last glyph's ink
+ * right by (n - 1) steps and leaves the first glyph where it is.
  */
-function paintedVertical(
-  family: string,
-  text: string,
-  size: number,
-  weight: number,
-  metricAscent: number,
-  metricDescent: number,
-): { ascent: number; descent: number; shift: number } {
-  const fallback = { ascent: metricAscent, descent: metricDescent, shift: 0 };
-  if (metricAscent <= 0) return fallback;
-  const dpr = window.devicePixelRatio || 1;
-  const canvas = document.createElement("canvas");
-  const baseline = Math.round(size * 1.2);
-  const pad = Math.ceil(size);
-  const cssWidth = Math.ceil(size * text.length) + pad;
-  const cssHeight = Math.ceil(size * 3);
-  canvas.width = Math.max(1, Math.ceil(cssWidth * dpr));
-  canvas.height = Math.max(1, Math.ceil(cssHeight * dpr));
-  const ctx = canvas.getContext("2d", { willReadFrequently: true });
-  if (!ctx) return fallback;
-  ctx.scale(dpr, dpr);
-  ctx.font = `${weight} ${size}px ${family}`;
-  ctx.textBaseline = "alphabetic";
-  ctx.fillStyle = "#000";
-  ctx.fillText(text, pad / 2, baseline);
-  const { data, width, height } = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  let top = -1;
-  let bottom = -1;
-  for (let y = 0; y < height; y += 1) {
-    const row = y * width * 4;
-    let covered = false;
-    for (let x = 0; x < width; x += 1) {
-      if (data[row + x * 4 + 3] >= 128) {
-        covered = true;
-        break;
-      }
-    }
-    if (covered) {
-      if (top < 0) top = y;
-      bottom = y;
-    }
-  }
-  if (top < 0 || bottom < 0) return fallback;
-  const overhangPx = baseline * dpr - metricAscent * dpr - top;
-  const belowPx = bottom + 1 - (baseline * dpr + metricDescent * dpr);
-  return {
-    ascent: metricAscent + overhangPx / dpr,
-    descent: metricDescent + belowPx / dpr,
-    shift: overhangPx / dpr,
+function lineMeasurer(family: string) {
+  const context = document.createElement("canvas").getContext("2d");
+  if (!context) return null;
+  const font = (role: LockupRole, size: number) => `${WEIGHT[role]} ${size}px ${family}`;
+
+  const measure: MeasureLine = (text, size, role): LineInk => {
+    context.font = font(role, size);
+    const line = context.measureText(text);
+    const tracking = role === "title" ? TITLE_TRACKING * size : 0;
+    return {
+      left: -line.actualBoundingBoxLeft,
+      right: line.actualBoundingBoxRight + Math.max(text.length - 1, 0) * tracking,
+      cap: context.measureText("H").actualBoundingBoxAscent,
+      descent: Math.max(line.actualBoundingBoxDescent, 0),
+    };
   };
+
+  return measure;
 }
 
 /**
- * Homepage welcome lockup. The artwork is the app logo, and the type is
- * placed like the iOS welcome screen: the top of "Dodge" meets the top of
- * the logo, and the two lines plus the gap between them are as tall as it.
+ * Homepage lockup, same as the app welcome screen: the logo, then "Dodge" over
+ * "Community Safety". The row is the full column (the Download button's width),
+ * both lines end on its right edge, and the logo runs from the top of the D to
+ * the bottom of "Community Safety".
  */
 export default function HomeBrandLockup() {
   const rootRef = useRef<HTMLDivElement>(null);
-  const titleProbeRef = useRef<HTMLSpanElement>(null);
-  const subtitleProbeRef = useRef<HTMLSpanElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
   const [fit, setFit] = useState<PlacedLockup | null>(null);
+  const [baselines, setBaselines] = useState<Baselines | null>(null);
 
   useLayoutEffect(() => {
     const root = rootRef.current;
@@ -131,30 +63,19 @@ export default function HomeBrandLockup() {
     const solve = () => {
       const column = root.clientWidth;
       if (column < 2) return;
-      const family = getComputedStyle(root).fontFamily;
-      const measure = measureGlyphs(family);
+      const measure = lineMeasurer(getComputedStyle(root).fontFamily);
       if (!measure) return;
-      const sample = measure(TITLE, 100, "title");
-      if (sample.width <= 0 || sample.ascent <= 0) return;
       const solved = solveLockup(column, measure);
       setFit((prev) => {
         if (
           prev &&
           Math.abs(prev.column - column) < 0.5 &&
-          Math.abs(prev.titleSize - solved.titleSize) < 0.05 &&
-          Math.abs(prev.logo - solved.logo) < 0.05 &&
-          Math.abs(prev.dodgeAscent - solved.dodgeAscent) < 0.05 &&
-          Math.abs(prev.dodgeShift - solved.dodgeShift) < 0.01
+          Math.abs(prev.titleSize - solved.titleSize) < 0.01 &&
+          Math.abs(prev.subtitleSize - solved.subtitleSize) < 0.01
         ) {
           return prev;
         }
-        return {
-          ...solved,
-          column,
-          titleOffset: 0,
-          subtitleOffset: 0,
-          aligned: false,
-        };
+        return { ...solved, column };
       });
     };
 
@@ -174,61 +95,75 @@ export default function HomeBrandLockup() {
     };
   }, []);
 
+  // Read from a zero-size probe on each baseline: the browser rounds the font's
+  // ascent and descent when it builds the line box, so this is not derivable
+  // from the metrics alone.
   useLayoutEffect(() => {
-    if (!fit || fit.aligned) return;
-    const titleProbe = titleProbeRef.current;
-    const subtitleProbe = subtitleProbeRef.current;
-    if (!titleProbe || !subtitleProbe) return;
-    // The probe sits on the baseline. Place the font bounding box, not the
-    // painted pixel: the painted top is `shift` above that box, and a
-    // translate moves the drawn line down onto the icon.
-    const dodgeBox = fit.dodgeAscent - fit.dodgeShift;
-    const subtitleBox = fit.subtitleAscent - fit.subtitleShift;
-    const titleOffset = dodgeBox - titleProbe.offsetTop;
-    const subtitleOffset = fit.dodgeInkHeight + fit.lineGap - (subtitleProbe.offsetTop - subtitleBox);
-    setFit((current) => {
-      if (!current || current.aligned) return current;
-      return { ...current, titleOffset, subtitleOffset, aligned: true };
-    });
+    const title = titleRef.current;
+    const subtitle = subtitleRef.current;
+    if (!fit || !title || !subtitle) return;
+    const baselineIn = (line: HTMLElement) => {
+      const probe = line.lastElementChild as HTMLElement;
+      return probe.getBoundingClientRect().top - line.getBoundingClientRect().top;
+    };
+    const next = {
+      titleSize: fit.titleSize,
+      subtitleSize: fit.subtitleSize,
+      title: baselineIn(title),
+      subtitle: baselineIn(subtitle),
+    };
+    setBaselines((prev) =>
+      prev &&
+      prev.titleSize === next.titleSize &&
+      prev.subtitleSize === next.subtitleSize &&
+      Math.abs(prev.title - next.title) < 0.01 &&
+      Math.abs(prev.subtitle - next.subtitle) < 0.01
+        ? prev
+        : next,
+    );
   }, [fit]);
 
-  const logo = fit?.logo;
-  const textLeft = fit ? fit.logo + fit.gap : undefined;
+  const placed = fit && baselines?.titleSize === fit.titleSize && baselines.subtitleSize === fit.subtitleSize;
+  const textX = fit ? fit.logo + fit.gap : 0;
 
   return (
-    <div ref={rootRef} className="relative w-full" style={logo ? { height: logo } : { height: "31.5cqw" }}>
+    <div
+      ref={rootRef}
+      className="relative w-full"
+      style={{ height: fit?.logo ?? "31.5cqw", visibility: placed ? undefined : "hidden" }}
+    >
       <img
         src={dodgeLogo}
         alt=""
         className="absolute left-0 top-0 rounded-[22%] shadow-card"
-        style={logo ? { width: logo, height: logo } : { width: "31.5cqw", height: "31.5cqw" }}
+        style={fit ? { width: fit.logo, height: fit.logo } : { width: "31.5cqw", height: "31.5cqw" }}
       />
       <h1
+        ref={titleRef}
         className="absolute m-0 whitespace-nowrap font-extrabold leading-none text-foreground"
         style={{
-          left: textLeft ?? "35.5cqw",
-          top: fit?.titleOffset ?? 0,
-          transform: fit?.aligned ? `translateY(${fit.dodgeShift}px)` : undefined,
-          fontSize: fit?.titleSize ?? "21.7cqw",
-          fontWeight: 800,
-          letterSpacing: fit ? fit.titleSize * TITLE_TRACKING : "-0.025em",
+          left: fit ? textX - fit.titleLeft : 0,
+          top: fit && baselines ? fit.titleBaseline - baselines.title : 0,
+          fontSize: fit?.titleSize,
+          fontWeight: WEIGHT.title,
+          letterSpacing: `${TITLE_TRACKING}em`,
         }}
       >
-        {TITLE}
-        <span ref={titleProbeRef} aria-hidden="true" className="inline-block h-0 w-0 align-baseline" />
+        {LOCKUP_TITLE}
+        <span aria-hidden="true" className="inline-block h-0 w-0 align-baseline" />
       </h1>
       <p
+        ref={subtitleRef}
         className="absolute m-0 whitespace-nowrap font-medium leading-none text-muted-foreground"
         style={{
-          left: textLeft ?? "35.5cqw",
-          top: fit?.subtitleOffset ?? "23cqw",
-          transform: fit?.aligned ? `translateY(${fit.subtitleShift}px)` : undefined,
-          fontSize: fit?.subtitleSize ?? "7.94cqw",
-          fontWeight: 500,
+          left: fit ? textX - fit.subtitleLeft : 0,
+          top: fit && baselines ? fit.subtitleBaseline - baselines.subtitle : 0,
+          fontSize: fit?.subtitleSize,
+          fontWeight: WEIGHT.subtitle,
         }}
       >
-        {SUBTITLE}
-        <span ref={subtitleProbeRef} aria-hidden="true" className="inline-block h-0 w-0 align-baseline" />
+        {LOCKUP_SUBTITLE}
+        <span aria-hidden="true" className="inline-block h-0 w-0 align-baseline" />
       </p>
     </div>
   );
