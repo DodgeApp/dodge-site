@@ -15,6 +15,32 @@ export default function Index() {
       <div className="w-full max-w-lg animate-fade-in space-y-8">
         <HomeBrandLockup />
 
+        {(PAYSTACK_URL || PAYPAL_URL) && (
+          <section className="space-y-2.5">
+            <SettingsSectionLabel icon={Heart}>Support Dodge</SettingsSectionLabel>
+            <div className="settings-card overflow-hidden">
+              {PAYSTACK_URL && (
+                <HomeLinkCard
+                  icon={CreditCard}
+                  title="Contribute via Paystack"
+                  subtitle="Cards and EFT in South Africa"
+                  href={PAYSTACK_URL}
+                  onClick={() => trackLinkClick("paystack")}
+                />
+              )}
+              {PAYPAL_URL && (
+                <HomeLinkCard
+                  icon={Wallet}
+                  title="Contribute via PayPal"
+                  subtitle="Cards and PayPal outside South Africa"
+                  href={PAYPAL_URL}
+                  onClick={() => trackLinkClick("paypal")}
+                />
+              )}
+            </div>
+          </section>
+        )}
+
         <div className="space-y-2.5">
           <Button
             asChild
@@ -35,32 +61,6 @@ export default function Index() {
             Free on iOS and Android
           </p>
         </div>
-
-        {(PAYSTACK_URL || PAYPAL_URL) && (
-          <section className="space-y-2.5">
-            <SettingsSectionLabel icon={Heart}>Support Dodge</SettingsSectionLabel>
-            <div className="settings-card overflow-hidden">
-              {PAYSTACK_URL && (
-                <HomeLinkCard
-                  icon={CreditCard}
-                  title="Contribute via Paystack"
-                  subtitle="Cards and EFT in South Africa"
-                  href={PAYSTACK_URL}
-                  onClick={() => trackLinkClick("paystack")}
-                />
-              )}
-              {PAYPAL_URL && (
-                <HomeLinkCard
-                  icon={Wallet}
-                  title="Contribute via PayPal"
-                  subtitle="Help keep Dodge running"
-                  href={PAYPAL_URL}
-                  onClick={() => trackLinkClick("paypal")}
-                />
-              )}
-            </div>
-          </section>
-        )}
 
         <section className="space-y-2.5">
           <SettingsSectionLabel icon={Info}>More</SettingsSectionLabel>
