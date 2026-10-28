@@ -135,7 +135,7 @@ export default function HomeBrandLockup() {
       <img
         src={dodgeLogo}
         alt=""
-        className="absolute left-0 top-0 rounded-[22%] shadow-card"
+        className="absolute left-0 top-0 rounded-[22%] shadow-glow"
         style={fit ? { width: fit.logo, height: fit.logo } : { width: "31.5cqw", height: "31.5cqw" }}
       />
       <h1
