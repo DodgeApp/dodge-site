@@ -5,11 +5,11 @@ import {
   PolicyLink,
   RelatedLegalCard,
 } from "@/components/LegalBits";
-import { COMPANY_NAME, LEGAL_LAST_UPDATED } from "@/lib/legal";
+import { COMPANY_NAME, TERMS_LAST_UPDATED } from "@/lib/legal";
 
 export default function TermsOfService() {
   return (
-    <LegalPageShell title="Terms of Service" lastUpdated={LEGAL_LAST_UPDATED}>
+    <LegalPageShell title="Terms of Service" lastUpdated={TERMS_LAST_UPDATED}>
       <LegalCard icon="description" title="1. Introduction">
         <p>
           {COMPANY_NAME} (&quot;Dodge&quot;, &quot;we&quot;, &quot;us&quot; or &quot;our&quot;) provides the
@@ -24,7 +24,7 @@ export default function TermsOfService() {
             "Private circles that allow you to share your live location with people you trust;",
             "Presence and movement status that may be visible to members of your circles, subject to your settings;",
             "Personal and community unsafe-report pins displayed on a map;",
-            "Aggregated community risk zones (safety zones) generated from aggregated unsafe reports and pass-through activity;",
+            "Aggregated community risk zones (safety zones) derived from pooled unsafe reports and pass-through activity, in which nearby supported map cells may be combined into one zone;",
             "Optional pass-through contributions to assist in assessing and calibrating community risk zones;",
             "Risk-zone alerts when you or a member of your circle enters a published community risk zone, where this feature is enabled;",
             "Unsafe alerts sent to members of your circles;",
@@ -703,28 +703,41 @@ export default function TermsOfService() {
 
       <LegalCard icon="map" title="15. Community risk zones">
         <Clause n="15.1">
-          Dodge may display community risk zones (also shown as safety zones) on the map.
+          Dodge may display community risk zones (also shown as safety zones) on the map. Nearby small map
+          cells with sufficient support may be pooled into one zone, which may have an irregular shape and
+          different risk levels in different parts.
         </Clause>
         <Clause n="15.2">
-          Zones are calculated from aggregated unsafe reports and, where users opt in, pass-through signals
-          (at most once per user per area per day—not stored routes).
+          Zones are calculated from pooled unsafe reports and, where pass-through contribution is enabled,
+          pass-through input. Pass-through input is de-duplicated to at most once per account per small map
+          cell per day, and one day can include several cells. Dodge does not use this feature to build a
+          continuous, ordered record of your trip. How this data is collected and kept is described in the{" "}
+          <PolicyLink to="/privacy">Privacy Policy</PolicyLink>.
         </Clause>
         <Clause n="15.3">
-          Risk tiers and map shapes are assigned using rolling counts, recency weighting, and automated
-          scoring.
+          Risk tiers and map shapes are assigned using recency weighting, pooling of nearby cells, and
+          automated scoring.
         </Clause>
         <Clause n="15.4">
-          Areas must accumulate enough unsafe reports to be published as zones. Pass-through signals reduce
-          risk scores but do not create zones. Test zones may be visible if you enable that option.
+          Areas must accumulate enough unsafe reports to be published as zones. Pass-through input
+          provides context about how much activity passes through an area and can lower the assessed risk
+          level, but it does not create zones. Test zones may be visible if you enable that option.
         </Clause>
         <Clause n="15.5">
           Risk zones are shown to signed-in users as community information. They do not identify
-          individuals. You can disable your own pass-through contribution in Settings → Safety map data
-          without affecting other features, though you will no longer contribute to zone calculations.
+          individuals. You can turn off your own pass-through contribution in Settings → Safety map data
+          without turning off zone display, alerts, or circle sharing. Turning it off stops new
+          pass-through recording and deletes pass-through observations on your device that have not yet
+          been uploaded. Data already uploaded is handled as described in the Privacy Policy, and unsafe
+          reports you submit continue to affect risk-zone calculations.
         </Clause>
         <Clause n="15.6">
           Risk zone alerts (for you or circle members) are optional and separate from unsafe-pin proximity
-          alerts. Enabling them does not mean an area is objectively dangerous—use your own judgment.
+          alerts. Your own risk-zone alert and the alerts you receive about circle members are separate
+          preferences. If you share your location with a circle, Dodge may send that circle an alert when
+          you enter a risk zone, including your current location and movement status; turning off your own
+          risk-zone alert does not by itself stop that. Receiving an alert does not mean an area is
+          objectively dangerous—use your own judgment.
         </Clause>
       </LegalCard>
 
@@ -733,7 +746,10 @@ export default function TermsOfService() {
           Unsafe reports and alerts you submit may be stored and shown to other users (for example circle
           members or signed-in users viewing map pins).
         </Clause>
-        <Clause n="16.2">Reports may also feed into aggregated community risk zones.</Clause>
+        <Clause n="16.2">
+          Reports may also feed into aggregated community risk zones, where reports in nearby cells may be
+          pooled. Your identity is not published with a zone.
+        </Clause>
         <Clause n="16.3">Do not submit false, misleading, or malicious reports.</Clause>
         <Clause n="16.4">
           Dodge may remove content or suspend accounts that violate these Terms or harm other users or the
