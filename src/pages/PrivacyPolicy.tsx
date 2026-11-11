@@ -147,7 +147,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon="near_me" title="8. Location data">
+      <LegalCard icon="location_on" title="8. Location data">
         <Clause n="8.1">
           Dodge is built around location-based functionality. With your permission, we collect your
           location both in the foreground and in the background, including when the Dodge app is not open.
@@ -168,7 +168,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon="near_me" id="background-location" title="8A. Background location on Android">
+      <LegalCard icon="location_on" id="background-location" title="8A. Background location on Android">
         <p className="font-medium text-foreground">
           Dodge collects location data to enable circle location sharing, circle safety alerts, community
           risk-zone alerts, presence status, and, if enabled, trip history, even when the app is closed or

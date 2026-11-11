@@ -175,7 +175,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon="volunteer_activism" title="10. Payments and in-app purchases">
+      <LegalCard icon="credit_card" title="10. Payments and in-app purchases">
         <Clause n="10.1">
           Any subscriptions or other purchases made through the iOS version of Dodge are processed through
           Apple&apos;s App Store and applicable In-App Purchase system, subject to Apple&apos;s applicable

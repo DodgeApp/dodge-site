@@ -1,14 +1,12 @@
-/**
- * Instagram brand mark. Material Symbols has no brand logos, so this keeps the existing
- * glyph drawn by Lucide (https://lucide.dev), used under the ISC licence:
- *
+/*!
+ * Instagram glyph from Lucide 0.462.0 (https://lucide.dev), ISC licence; portions from Feather, MIT.
  * Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as part of Feather (MIT).
  * All other copyright (c) for Lucide are held by Lucide Contributors 2022.
- *
  * Permission to use, copy, modify, and/or distribute this software for any purpose with or
  * without fee is hereby granted, provided that the above copyright notice and this permission
- * notice appear in all copies.
+ * notice appear in all copies. Full text: public/licenses/lucide-LICENSE.txt
  */
+// Material Symbols has no brand logos, so the existing Instagram mark is kept.
 export default function InstagramGlyph({ size = 24, strokeWidth = 2 }: { size?: number; strokeWidth?: number }) {
   return (
     <svg

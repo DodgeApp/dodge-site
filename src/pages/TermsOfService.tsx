@@ -185,7 +185,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon="volunteer_activism" title="5.3 Electronic transactions and payments">
+      <LegalCard icon="credit_card" title="5.3 Electronic transactions and payments">
         <Clause n="5.3.1">
           When Dodge offers paid features, voluntary contributions, subscriptions, purchases, or other
           electronic transactions, the applicable price, taxes, charges, payment method, and material terms
@@ -318,7 +318,7 @@ export default function TermsOfService() {
         </p>
       </LegalCard>
 
-      <LegalCard icon="near_me" title="5.8 Location-based features and privacy">
+      <LegalCard icon="location_on" title="5.8 Location-based features and privacy">
         <Clause n="5.8.1">
           Certain Dodge features rely on location information. Your use of these features depends on the
           permissions you grant through your device and the settings available within Dodge.
@@ -683,7 +683,7 @@ export default function TermsOfService() {
         </p>
       </LegalCard>
 
-      <LegalCard icon="near_me" title="14. Location & safety disclaimer">
+      <LegalCard icon="location_on" title="14. Location & safety disclaimer">
         <Clause n="14.1">Dodge relies on device GPS, network conditions, and third-party map data.</Clause>
         <Clause n="14.2">Location information may be delayed, inaccurate, or unavailable.</Clause>
         <Clause n="14.3">

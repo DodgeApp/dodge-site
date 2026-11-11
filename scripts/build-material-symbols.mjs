@@ -10,7 +10,7 @@
  * Material Symbols are licensed under the Apache License 2.0
  * (public/licenses/material-symbols-LICENSE.txt).
  *
- * To add a symbol, add it to SYMBOLS and run:
+ * Requires Node 18 or later (global fetch). To add a symbol, add it to SYMBOLS and run:
  *
  *     node scripts/build-material-symbols.mjs
  */
@@ -55,12 +55,12 @@ const SYMBOLS = {
   how_to_reg: null,
   info: null,
   left_panel_open: null,
+  location_on: null,
   lock: null,
   mail: null,
   manage_accounts: null,
   map: null,
   more_horiz: null,
-  near_me: null,
   notifications: null,
   psychology: null,
   receipt_long: null,
