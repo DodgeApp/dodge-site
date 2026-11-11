@@ -9,7 +9,7 @@ Pages include home (`src/pages/Index.tsx`), download, privacy, terms, support, a
 The site is a responsive website, not a copy of the phone screens. It must still look like Dodge.
 
 - Tokens are in `src/index.css`, aligned with iOS `Theme.swift`: background `#222222`, surface `#2C2C2C`, elevated `#383838`, yellow `#FFBE00`, red `#D9262E`, 24px card radius.
-- Type: SF Pro Rounded on Apple, Nunito elsewhere; Inter only when `html.android` is set.
+- Type: SF Pro Rounded on Apple, self-hosted Nunito everywhere else, Android included (`public/fonts/`, built by `scripts/build-nunito.py` with the Android app's weight mapping). Do not load fonts from a CDN.
 - Reuse `src/components/` and `src/components/ui/` before adding components. The glow utility used by the home logo and download button is `shadow-glow`.
 - Do not introduce a new palette, a light theme, or a different brand. Do not add dependencies for styling that existing Tailwind and components already cover.
 

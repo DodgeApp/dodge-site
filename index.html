@@ -2,14 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Before first paint, so Android never flashes the Apple/Nunito stack -->
+    <!-- Preload Nunito only where it will render: the --font-sans stack in src/index.css
+         reaches it when neither ui-rounded nor SF Pro Rounded exists -->
     <script>
-      if (
-        (navigator.userAgentData && navigator.userAgentData.platform === "Android") ||
-        /Android/i.test(navigator.userAgent)
-      ) {
-        document.documentElement.classList.add("android");
-      }
+      (function () {
+        var context = document.createElement("canvas").getContext("2d");
+        if (!context) return;
+        var width = function (family) {
+          context.font = "40px " + family;
+          return context.measureText("Dodge Community Safety").width;
+        };
+        var fallback = width("monospace");
+        if (width("ui-rounded, monospace") !== fallback) return;
+        if (width('"SF Pro Rounded", monospace') !== fallback) return;
+        var link = document.createElement("link");
+        link.rel = "preload";
+        link.as = "font";
+        link.type = "font/woff2";
+        link.crossOrigin = "anonymous";
+        link.href = "/fonts/nunito-latin-wght.v1.woff2";
+        document.head.appendChild(link);
+      })();
     </script>
     <!-- circle-invite-download: same choice as src/lib/store-redirect.ts and vercel.json -->
     <script>
