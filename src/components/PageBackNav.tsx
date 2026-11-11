@@ -1,4 +1,4 @@
-import { ChevronLeft } from "lucide-react";
+import MaterialSymbol from "@/components/icons/MaterialSymbol";
 import { useNavigate } from "react-router-dom";
 
 /** Floating back control (46pt circle, elevated surface) — left side, chevron back. */
@@ -31,7 +31,7 @@ export default function PageBackNav() {
         height: CONTROL_SIZE_PX,
       }}
     >
-      <ChevronLeft size={20} strokeWidth={2.75} aria-hidden />
+      <MaterialSymbol name="arrow_back_ios_new" size={20} />
     </button>
   );
 }

@@ -1,14 +1,3 @@
-import {
-  BadgeInfo,
-  FileText,
-  Gavel,
-  HeartHandshake,
-  Scale,
-  ShieldCheck,
-  Smartphone,
-  Store,
-  Wrench,
-} from "lucide-react";
 import LegalPageShell from "@/components/LegalPageShell";
 import LegalCard, { BulletList, Clause } from "@/components/LegalCard";
 import {
@@ -22,7 +11,7 @@ import { BUSINESS_ADDRESS, COMPANY_NAME, LEGAL_LAST_UPDATED } from "@/lib/legal"
 export default function EndUserLicence() {
   return (
     <LegalPageShell title="End User Licence Agreement" lastUpdated={LEGAL_LAST_UPDATED}>
-      <LegalCard icon={Smartphone} title="iPhone licence">
+      <LegalCard icon="smartphone" title="iPhone licence">
         <p>
           This EULA is the licence for Dodge on iPhone and other Apple devices, obtained through the Apple
           App Store. If you use Dodge on Android, your licence is set out in sections 6 and 7A of our{" "}
@@ -31,7 +20,7 @@ export default function EndUserLicence() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Store} title="1. Apple App Store and licence">
+      <LegalCard icon="storefront" title="1. Apple App Store and licence">
         <Clause n="1.1">
           This End User Licence Agreement (&quot;EULA&quot;) is an agreement between you and {COMPANY_NAME}{" "}
           (&quot;we&quot;, &quot;us&quot;, &quot;our&quot; or &quot;Dodge Labs&quot;) and not between you and
@@ -61,7 +50,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={FileText} title="2. Apple terms and conditions">
+      <LegalCard icon="description" title="2. Apple terms and conditions">
         <Clause n="2.1">
           Your use of Dodge is also subject to Apple&apos;s applicable terms and conditions, including the
           Apple Media Services Terms and Conditions and applicable App Store usage rules.
@@ -77,7 +66,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Wrench} title="3. Maintenance and support">
+      <LegalCard icon="build" title="3. Maintenance and support">
         <Clause n="3.1">
           Dodge Labs is solely responsible for providing maintenance and support for the App, including
           addressing reasonable technical support requests, subject to applicable law and the limitations
@@ -96,7 +85,7 @@ export default function EndUserLicence() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={ShieldCheck} title="4. Warranties">
+      <LegalCard icon="verified_user" title="4. Warranties">
         <Clause n="4.1">
           Dodge Labs is responsible for any warranties relating to the App that cannot lawfully be excluded
           or limited.
@@ -117,7 +106,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Scale} title="5. Responsibility for the App and claims">
+      <LegalCard icon="balance" title="5. Responsibility for the App and claims">
         <Clause n="5.1">
           Dodge Labs, and not Apple, is responsible for addressing claims made by you or any third party
           relating to Dodge, including claims concerning:
@@ -138,7 +127,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Gavel} title="6. Intellectual property claims">
+      <LegalCard icon="gavel" title="6. Intellectual property claims">
         <Clause n="6.1">
           If a third party alleges that Dodge or your possession or use of Dodge infringes that third
           party&apos;s intellectual property rights, Dodge, and not Apple, will be responsible, to the
@@ -146,7 +135,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={BadgeInfo} title="7. Legal compliance">
+      <LegalCard icon="info" title="7. Legal compliance">
         <Clause n="7.1">You represent and warrant that:</Clause>
         <BulletList
           items={[
@@ -159,7 +148,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Smartphone} title="8. Third-party services">
+      <LegalCard icon="smartphone" title="8. Third-party services">
         <Clause n="8.1">
           Dodge Labs may enable access to third-party services, websites, platforms, communication
           services, mapping services, location services or other external services.
@@ -175,7 +164,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Store} title="9. Apple as third-party beneficiary">
+      <LegalCard icon="storefront" title="9. Apple as third-party beneficiary">
         <Clause n="9.1">
           You and Dodge Labs acknowledge and agree that Apple and Apple&apos;s subsidiaries are
           third-party beneficiaries of this EULA.
@@ -186,7 +175,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={HeartHandshake} title="10. Payments and in-app purchases">
+      <LegalCard icon="volunteer_activism" title="10. Payments and in-app purchases">
         <Clause n="10.1">
           Any subscriptions or other purchases made through the iOS version of Dodge are processed through
           Apple&apos;s App Store and applicable In-App Purchase system, subject to Apple&apos;s applicable
@@ -203,7 +192,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={FileText} title="11. Relationship with Dodge Terms of Service">
+      <LegalCard icon="description" title="11. Relationship with Dodge Terms of Service">
         <Clause n="11.1">This EULA governs your licence to use Dodge on Apple devices.</Clause>
         <Clause n="11.2">
           Your use of Dodge is also governed by the Dodge <PolicyLink to="/terms">Terms of Service</PolicyLink>{" "}
@@ -216,7 +205,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={ShieldCheck} title="12. Termination">
+      <LegalCard icon="verified_user" title="12. Termination">
         <Clause n="12.1">This EULA remains effective until terminated by you or Dodge Labs.</Clause>
         <Clause n="12.2">
           Your licence may terminate automatically if you materially breach this EULA or any applicable
@@ -231,7 +220,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Store} title="13. Apple disclaimer">
+      <LegalCard icon="storefront" title="13. Apple disclaimer">
         <Clause n="13.1">
           Apple has no obligation to furnish maintenance or support services for Dodge.
         </Clause>
@@ -245,7 +234,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={BadgeInfo} title="14. Developer information">
+      <LegalCard icon="info" title="14. Developer information">
         <Clause n="14.1">The developer and provider of Dodge is:</Clause>
         <p>
           {COMPANY_NAME}
@@ -260,7 +249,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Gavel} title="15. Applicable law">
+      <LegalCard icon="gavel" title="15. Applicable law">
         <Clause n="15.1">
           Nothing in this EULA excludes or limits any mandatory rights or protections available to you
           under the laws applicable to you.
@@ -272,7 +261,7 @@ export default function EndUserLicence() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={FileText} title="16. Electronic acceptance">
+      <LegalCard icon="description" title="16. Electronic acceptance">
         <p>
           By selecting &quot;Accept,&quot; &quot;Agree,&quot; creating an account, accessing, or continuing
           to use Dodge after reviewing the terms of this End User Licence Agreement, you acknowledge that:

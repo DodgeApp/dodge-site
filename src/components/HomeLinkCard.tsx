@@ -1,7 +1,7 @@
-import { type LucideIcon, ArrowUpRight, ChevronRight } from "lucide-react";
+import MaterialSymbol, { type MaterialSymbolName } from "@/components/icons/MaterialSymbol";
 
 interface HomeLinkCardProps {
-  icon: LucideIcon;
+  icon: MaterialSymbolName;
   title: string;
   subtitle: string;
   onClick?: () => void;
@@ -9,20 +9,20 @@ interface HomeLinkCardProps {
   href?: string;
 }
 
-export default function HomeLinkCard({ icon: Icon, title, subtitle, onClick, href }: HomeLinkCardProps) {
+export default function HomeLinkCard({ icon, title, subtitle, onClick, href }: HomeLinkCardProps) {
   const content = (
     <span className="settings-row">
       <span className="settings-row-icon">
-        <Icon size={18} strokeWidth={2.5} />
+        <MaterialSymbol name={icon} size={18} />
       </span>
       <span className="min-w-0 flex-1 text-left">
         <span className="settings-row-title block">{title}</span>
         <span className="settings-row-subtitle block">{subtitle}</span>
       </span>
       {href ? (
-        <ArrowUpRight size={14} strokeWidth={2.5} className="shrink-0 text-foreground" />
+        <MaterialSymbol name="arrow_outward" size={14} className="shrink-0 text-foreground" />
       ) : (
-        <ChevronRight size={12} strokeWidth={2.5} className="shrink-0 text-foreground" />
+        <MaterialSymbol name="arrow_back_ios_new" mirrored size={12} className="shrink-0 text-foreground" />
       )}
     </span>
   );

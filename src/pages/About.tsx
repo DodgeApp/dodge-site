@@ -1,4 +1,4 @@
-import { Building2, Compass, Shield, Mail, Instagram } from "lucide-react";
+import InstagramGlyph from "@/components/icons/InstagramGlyph";
 import ContentPageShell from "@/components/ContentPageShell";
 import LegalCard from "@/components/LegalCard";
 import { PolicyLink } from "@/components/LegalBits";
@@ -11,7 +11,7 @@ export default function About() {
       title="About Dodge Labs"
       subtitle="The team behind the Dodge safety app"
     >
-      <LegalCard icon={Building2} title="Who we are">
+      <LegalCard icon="domain" title="Who we are">
         <p>
           Dodge Labs (Pty) Ltd is an independent software company focused on personal safety tools for
           everyday life. We build technology that helps people stay connected to the small groups they
@@ -24,7 +24,7 @@ export default function About() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Compass} title="What we do">
+      <LegalCard icon="explore" title="What we do">
         <p>
           We design and operate <span className="font-semibold text-foreground">Dodge</span>, a mobile
           app for iOS that combines private circles, live location sharing, and safety alerts.
@@ -46,7 +46,7 @@ export default function About() {
         </ul>
       </LegalCard>
 
-      <LegalCard icon={Shield} title="How we think about privacy">
+      <LegalCard icon="shield" title="How we think about privacy">
         <p>
           Dodge is built around consent and small groups. Location and alerts are shared within circles
           you control, not broadcast publicly. We use industry-standard infrastructure (including Google
@@ -59,7 +59,7 @@ export default function About() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Mail} title="Get in touch">
+      <LegalCard icon="mail" title="Get in touch">
         <p>
           Whether you have a support question, partnership idea, or press enquiry, we would like to hear
           from you.
@@ -81,7 +81,7 @@ export default function About() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 font-semibold text-primary transition-opacity hover:opacity-80"
           >
-            <Instagram size={14} strokeWidth={2.25} aria-hidden />
+            <InstagramGlyph size={14} strokeWidth={2.25} />
             @dodge.app
           </a>
         </p>

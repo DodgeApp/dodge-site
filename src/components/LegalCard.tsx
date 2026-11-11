@@ -1,17 +1,17 @@
-import { type LucideIcon } from "lucide-react";
+import type { MaterialSymbolName } from "@/components/icons/MaterialSymbol";
 import SettingsSectionLabel from "@/components/SettingsSectionLabel";
 
 interface LegalCardProps {
-  icon: LucideIcon;
+  icon: MaterialSymbolName;
   title: string;
   id?: string;
   children: React.ReactNode;
 }
 
-export default function LegalCard({ icon: Icon, title, id, children }: LegalCardProps) {
+export default function LegalCard({ icon, title, id, children }: LegalCardProps) {
   return (
     <section id={id} className="scroll-mt-6 space-y-2.5">
-      <SettingsSectionLabel icon={Icon}>{title}</SettingsSectionLabel>
+      <SettingsSectionLabel icon={icon}>{title}</SettingsSectionLabel>
       <div className="settings-card p-5">
         <div className="space-y-2.5 text-[15px] leading-relaxed text-foreground">{children}</div>
       </div>

@@ -1,4 +1,3 @@
-import { FileText, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import LegalCard, { BulletList } from "@/components/LegalCard";
 import {
@@ -30,7 +29,7 @@ export function SupportEmail() {
 
 export function RelatedLegalCard({ current }: { current: LegalDocId }) {
   return (
-    <LegalCard icon={FileText} title="Related documents">
+    <LegalCard icon="description" title="Related documents">
       <p>These documents together govern your use of Dodge:</p>
       <BulletList
         items={LEGAL_DOCS.filter((doc) => doc.id !== current).map((doc) => (
@@ -49,7 +48,7 @@ export function LegalContactCard({
   showInformationOfficer?: boolean;
 }) {
   return (
-    <LegalCard icon={Mail} title="Get in touch">
+    <LegalCard icon="mail" title="Get in touch">
       <p>{intro}</p>
       {showInformationOfficer && (
         <p>

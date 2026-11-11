@@ -1,5 +1,4 @@
 import { FormEvent, useState } from "react";
-import { HelpCircle, Mail } from "lucide-react";
 import PageBackNav, { PAGE_CONTENT_PAD_TOP } from "@/components/PageBackNav";
 import PageHeader from "@/components/PageHeader";
 import LegalCard from "@/components/LegalCard";
@@ -75,7 +74,7 @@ export default function Support() {
       >
         <PageHeader title="Support" subtitle="We are here to help" />
 
-        <LegalCard icon={Mail} title="Contact Support">
+        <LegalCard icon="mail" title="Contact Support">
           <p>
             For help with your account, app issues, or feedback, please contact the Dodge support team.
           </p>
@@ -87,7 +86,7 @@ export default function Support() {
           </a>
         </LegalCard>
 
-        <LegalCard icon={Mail} title="Contact Form">
+        <LegalCard icon="mail" title="Contact Form">
           <form onSubmit={handleSubmit} className="space-y-3">
             <input
               type="text"
@@ -130,7 +129,7 @@ export default function Support() {
           </form>
         </LegalCard>
 
-        <LegalCard icon={HelpCircle} title="Frequently Asked Questions">
+        <LegalCard icon="help" title="Frequently Asked Questions">
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="response-time" className="border-white/10">
               <AccordionTrigger className="text-left text-sm text-foreground hover:no-underline">
