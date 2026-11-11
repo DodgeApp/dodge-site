@@ -1,21 +1,3 @@
-import {
-  Bell,
-  Clock,
-  Database,
-  FileText,
-  Lock,
-  MapPin,
-  MapPinned,
-  Route,
-  Scale,
-  Server,
-  Settings2,
-  Share2,
-  Shield,
-  Trash2,
-  UserCog,
-  Users,
-} from "lucide-react";
 import LegalPageShell from "@/components/LegalPageShell";
 import LegalCard, { BulletList, Clause } from "@/components/LegalCard";
 import {
@@ -29,7 +11,7 @@ import { COMPANY_NAME, LEGAL_LAST_UPDATED } from "@/lib/legal";
 export default function PrivacyPolicy() {
   return (
     <LegalPageShell title="Privacy Policy" lastUpdated={LEGAL_LAST_UPDATED}>
-      <LegalCard icon={Shield} title="1. Introduction">
+      <LegalCard icon="shield" title="1. Introduction">
         <p>
           {COMPANY_NAME} (&quot;we,&quot; &quot;our,&quot; &quot;us&quot;) operates the Dodge mobile
           application (hereinafter called &quot;Dodge&quot;) and related services at dodgeapp.com, and is
@@ -52,7 +34,7 @@ export default function PrivacyPolicy() {
         <p>We have appointed an Information Officer as required in terms of POPIA.</p>
       </LegalCard>
 
-      <LegalCard icon={Database} title="2. Information we collect">
+      <LegalCard icon="database" title="2. Information we collect">
         <p>Depending on how you use Dodge, we may collect:</p>
         <BulletList
           items={[
@@ -80,7 +62,7 @@ export default function PrivacyPolicy() {
         />
       </LegalCard>
 
-      <LegalCard icon={Settings2} title="3. How we use your information">
+      <LegalCard icon="tune" title="3. How we use your information">
         <p>We process your information to:</p>
         <BulletList
           items={[
@@ -106,7 +88,7 @@ export default function PrivacyPolicy() {
         />
       </LegalCard>
 
-      <LegalCard icon={Scale} title="4. Legal basis for processing">
+      <LegalCard icon="balance" title="4. Legal basis for processing">
         <p>We process personal data under the following legal bases:</p>
         <Clause n="4.1">Consent (GDPR Art. 6(1)(a)): For optional features and marketing.</Clause>
         <Clause n="4.2">Contractual necessity (GDPR Art. 6(1)(b)): To provide App services.</Clause>
@@ -114,7 +96,7 @@ export default function PrivacyPolicy() {
         <Clause n="4.4">Legitimate Interests (GDPR Art. 6(1)(f)): To improve and secure Dodge.</Clause>
       </LegalCard>
 
-      <LegalCard icon={Share2} title="5. Data sharing and transfers">
+      <LegalCard icon="share" title="5. Data sharing and transfers">
         <Clause n="5.1">We do not sell your personal information/data.</Clause>
         <Clause n="5.2">
           Data may be shared with trusted service providers (hosting, analytics, payment processors). The
@@ -127,7 +109,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={UserCog} title="6. Your rights">
+      <LegalCard icon="manage_accounts" title="6. Your rights">
         <Clause n="6.1">Depending on your jurisdiction, you may have rights to:</Clause>
         <BulletList
           items={[
@@ -151,7 +133,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Clock} title="7. Children's data">
+      <LegalCard icon="schedule" title="7. Children's data">
         <Clause n="7.1">
           Dodge is not directed to children under 13 (or under 16 in the EU). We do not knowingly collect
           data from minors without parental or guardian consent.
@@ -165,7 +147,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={MapPin} title="8. Location data">
+      <LegalCard icon="location_on" title="8. Location data">
         <Clause n="8.1">
           Dodge is built around location-based functionality. With your permission, we collect your
           location both in the foreground and in the background, including when the Dodge app is not open.
@@ -186,7 +168,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={MapPin} id="background-location" title="8A. Background location on Android">
+      <LegalCard icon="location_on" id="background-location" title="8A. Background location on Android">
         <p className="font-medium text-foreground">
           Dodge collects location data to enable circle location sharing, circle safety alerts, community
           risk-zone alerts, presence status, and, if enabled, trip history, even when the app is closed or
@@ -215,7 +197,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Route} title="Trip history">
+      <LegalCard icon="route" title="Trip history">
         <p>
           When trip history is enabled, Dodge automatically detects completed journeys on your primary
           signed-in device and builds a personal trip summary. Trip history is a record of past journeys.
@@ -243,7 +225,7 @@ export default function PrivacyPolicy() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Users} title="9. Circles, alerts & community reports">
+      <LegalCard icon="group" title="9. Circles, alerts & community reports">
         <Clause n="9.1">
           Dodge allows you to create or join private circles consisting of trusted contacts. Members of a
           circle may have access to information that you choose to share with that circle, including your
@@ -265,7 +247,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={MapPinned} title="10. Safety zones and community risk areas">
+      <LegalCard icon="map" title="10. Safety zones and community risk areas">
         <Clause n="10.1">
           Dodge may display community risk zones on the map. These are highlighted areas generated from
           aggregated community activity and are not based on the information or activity of any single
@@ -323,7 +305,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Bell} title="11. Push notifications">
+      <LegalCard icon="notifications" title="11. Push notifications">
         <Clause n="11.1">
           If you enable push notifications, we use your device&apos;s push notification token to deliver
           alerts and notifications that you have opted to receive. These may include circle safety alerts,
@@ -342,7 +324,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Share2} title="12. How we share information">
+      <LegalCard icon="share" title="12. How we share information">
         <p>We may share information:</p>
         <Clause n="12.1">
           With other Dodge users in your private circles, in accordance with the features described in this
@@ -363,7 +345,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Server} title="13. Service providers">
+      <LegalCard icon="dns" title="13. Service providers">
         <p>We use trusted third-party service providers to operate and support Dodge, including:</p>
         <BulletList
           items={[
@@ -400,7 +382,7 @@ export default function PrivacyPolicy() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Database} id="data-safety" title="13A. Data collected and shared (Google Play Data safety)">
+      <LegalCard icon="database" id="data-safety" title="13A. Data collected and shared (Google Play Data safety)">
         <p>
           This summary matches what we declare in the Google Play Data safety section. All data is
           encrypted in transit, and you can ask us to delete it (see section 15A).
@@ -423,7 +405,7 @@ export default function PrivacyPolicy() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Lock} title="14. Data security and retention">
+      <LegalCard icon="lock" title="14. Data security and retention">
         <Clause n="14.1">
           We retain personal information only for as long as reasonably necessary to fulfil the purposes
           described in this Privacy Policy, provide and maintain Dodge, or comply with applicable legal
@@ -469,7 +451,7 @@ export default function PrivacyPolicy() {
         />
       </LegalCard>
 
-      <LegalCard icon={UserCog} title="15. Your choices and rights">
+      <LegalCard icon="manage_accounts" title="15. Your choices and rights">
         <p>Subject to applicable law, you may:</p>
         <Clause n="15.1">
           Update your profile, telephone number, or email address within the Dodge app, although
@@ -505,7 +487,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Trash2} id="delete-account" title="15A. Deleting your account and data">
+      <LegalCard icon="delete" id="delete-account" title="15A. Deleting your account and data">
         <Clause n="15A.1">
           In the app (iPhone and Android): open Settings, choose Delete account, confirm your password, and
           select Permanently delete account. This deletes your profile and personal information, your
@@ -534,7 +516,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Clock} title="16. Child data handling provisions">
+      <LegalCard icon="schedule" title="16. Child data handling provisions">
         <Clause n="16.1">
           Dodge is not intended for use by children under the age of 13, and we do not knowingly collect or
           process personal information relating to children under 13.
@@ -566,7 +548,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Lock} title="17. Security">
+      <LegalCard icon="lock" title="17. Security">
         <p>
           We implement reasonable technical and organisational safeguards designed to protect personal
           information, including encryption, secure infrastructure, access controls, and other appropriate
@@ -575,7 +557,7 @@ export default function PrivacyPolicy() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Shield} title="18. Data breach notification">
+      <LegalCard icon="shield" title="18. Data breach notification">
         <Clause n="18.1">
           If we become aware of a personal-information security breach that is required to be notified
           under applicable law, we will take appropriate steps to assess, contain, investigate, and
@@ -590,7 +572,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={FileText} title="19. Changes to this Privacy Policy">
+      <LegalCard icon="description" title="19. Changes to this Privacy Policy">
         <Clause n="19.1">
           We may update this Privacy Policy from time to time to reflect changes to Dodge, our processing
           activities, legal requirements, or other operational requirements. We will post the updated
@@ -604,7 +586,7 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={FileText} title="20. Electronic acceptance of terms">
+      <LegalCard icon="description" title="20. Electronic acceptance of terms">
         <p>
           By selecting &quot;Accept,&quot; &quot;Agree,&quot; after reviewing the Privacy Policy, you
           acknowledge that:

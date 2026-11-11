@@ -1,21 +1,3 @@
-import {
-  AlertTriangle,
-  Brain,
-  FileText,
-  Gavel,
-  HeartHandshake,
-  Lock,
-  MapPin,
-  MapPinned,
-  RefreshCw,
-  Route,
-  Scale,
-  ShieldCheck,
-  Smartphone,
-  UserCheck,
-  Users,
-  XCircle,
-} from "lucide-react";
 import LegalPageShell from "@/components/LegalPageShell";
 import LegalCard, { BulletList, Clause } from "@/components/LegalCard";
 import {
@@ -28,7 +10,7 @@ import { COMPANY_NAME, LEGAL_LAST_UPDATED } from "@/lib/legal";
 export default function TermsOfService() {
   return (
     <LegalPageShell title="Terms of Service" lastUpdated={LEGAL_LAST_UPDATED}>
-      <LegalCard icon={FileText} title="1. Introduction">
+      <LegalCard icon="description" title="1. Introduction">
         <p>
           {COMPANY_NAME} (&quot;Dodge&quot;, &quot;we&quot;, &quot;us&quot; or &quot;our&quot;) provides the
           following services through the Dodge mobile application (&quot;Dodge&quot; or the
@@ -60,7 +42,7 @@ export default function TermsOfService() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={FileText} title="Agreement">
+      <LegalCard icon="description" title="Agreement">
         <p>
           These Terms of Service (&quot;Terms&quot;) are a binding agreement between you and {COMPANY_NAME}{" "}
           (hereinafter called &quot;we&quot;, &quot;us&quot;, &quot;our&quot;) governing your use of the
@@ -69,7 +51,7 @@ export default function TermsOfService() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={FileText} title="Acronyms">
+      <LegalCard icon="description" title="Acronyms">
         <BulletList
           items={[
             "“CPA” means “Consumer Protection Act, 6 of 2008”",
@@ -84,7 +66,7 @@ export default function TermsOfService() {
         />
       </LegalCard>
 
-      <LegalCard icon={UserCheck} title="2. Acceptance of Terms">
+      <LegalCard icon="how_to_reg" title="2. Acceptance of Terms">
         <p>
           We have prepared these Terms of Service (&quot;Terms&quot;) to explain the rules governing your
           use of Dodge and the relationship between you and Dodge.
@@ -101,7 +83,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={UserCheck} title="3. Eligibility & age requirements">
+      <LegalCard icon="how_to_reg" title="3. Eligibility & age requirements">
         <p>
           Dodge is not intended for persons under the age of 13, or any higher minimum age required under
           the laws applicable in your jurisdiction.
@@ -135,7 +117,7 @@ export default function TermsOfService() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Lock} title="4. User accounts">
+      <LegalCard icon="lock" title="4. User accounts">
         <p>Certain Dodge features require you to create an account.</p>
         <p>Accounts are verified using your phone number and/or email.</p>
         <Clause n="4.3">
@@ -159,7 +141,7 @@ export default function TermsOfService() {
         <p>We reserve the right to suspend or terminate accounts that violate these Terms.</p>
       </LegalCard>
 
-      <LegalCard icon={FileText} title="5.1 Electronic communications and transactions">
+      <LegalCard icon="description" title="5.1 Electronic communications and transactions">
         <Clause n="5.1.1">
           Dodge operates through electronic communications and transactions. By creating an account,
           accessing, or using Dodge, you consent to transact with us electronically. Communications,
@@ -187,7 +169,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={FileText} title="5.2 Electronic records">
+      <LegalCard icon="description" title="5.2 Electronic records">
         <Clause n="5.2.1">
           We may create and maintain electronic records relating to your account, use of Dodge,
           transactions, communications, consents, reports, security events, and other activities within the
@@ -203,7 +185,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={HeartHandshake} title="5.3 Electronic transactions and payments">
+      <LegalCard icon="credit_card" title="5.3 Electronic transactions and payments">
         <Clause n="5.3.1">
           When Dodge offers paid features, voluntary contributions, subscriptions, purchases, or other
           electronic transactions, the applicable price, taxes, charges, payment method, and material terms
@@ -244,7 +226,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Lock} title="5.4 Security of electronic communications">
+      <LegalCard icon="lock" title="5.4 Security of electronic communications">
         <Clause n="5.4.1">
           We implement reasonable technical and organisational safeguards to protect Dodge and the
           information processed through our Services. However, no electronic communication, system, or
@@ -265,7 +247,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={AlertTriangle} title="5.5 Prohibited cyber activities">
+      <LegalCard icon="warning" title="5.5 Prohibited cyber activities">
         <p>You must not, directly or indirectly, use Dodge or any related system to:</p>
         <BulletList
           items={[
@@ -286,7 +268,7 @@ export default function TermsOfService() {
         />
       </LegalCard>
 
-      <LegalCard icon={AlertTriangle} title="5.6 Malicious and harmful communications">
+      <LegalCard icon="warning" title="5.6 Malicious and harmful communications">
         <Clause n="5.6.1">
           We may remove, restrict, preserve, or disclose communications or content where we reasonably
           believe that doing so is necessary to protect users, investigate suspected unlawful activity,
@@ -313,7 +295,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={ShieldCheck} title="5.7 Safety features and reporting">
+      <LegalCard icon="verified_user" title="5.7 Safety features and reporting">
         <p>
           Because Dodge provides personal safety and communication-risk features, you must use all safety
           and reporting tools honestly and responsibly. You must not:
@@ -336,7 +318,7 @@ export default function TermsOfService() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={MapPin} title="5.8 Location-based features and privacy">
+      <LegalCard icon="location_on" title="5.8 Location-based features and privacy">
         <Clause n="5.8.1">
           Certain Dodge features rely on location information. Your use of these features depends on the
           permissions you grant through your device and the settings available within Dodge.
@@ -360,7 +342,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Gavel} title="5.9 Jurisdiction and applicable laws">
+      <LegalCard icon="gavel" title="5.9 Jurisdiction and applicable laws">
         <Clause n="5.9.1">
           Dodge may be accessed from different countries and jurisdictions. Laws governing electronic
           communications, consumer protection, privacy, cybersecurity, location information, online safety,
@@ -385,7 +367,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Lock} title="5.10–5.15 Security, restrictions and disclaimers">
+      <LegalCard icon="lock" title="5.10–5.15 Security, restrictions and disclaimers">
         <Clause n="5.10.1">
           If you become aware of a suspected vulnerability, unauthorised access, account compromise,
           malicious activity, or other cyber incident involving Dodge, you must promptly notify us through
@@ -464,7 +446,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Smartphone} title="6. Mobile software">
+      <LegalCard icon="smartphone" title="6. Mobile software">
         <Clause n="6.1">
           We provide software and applications for mobile devices (&quot;Mobile Software&quot;). You must
           use a compatible device, and we do not warrant compatibility.
@@ -493,7 +475,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Smartphone} title="7. Mobile software from the Apple App Store">
+      <LegalCard icon="smartphone" title="7. Mobile software from the Apple App Store">
         <p>For Mobile Software obtained via the Apple App Store (&quot;Apple-Sourced Software&quot;):</p>
         <p>These Terms are between you and Dodge Labs, not Apple.</p>
         <p>
@@ -517,7 +499,7 @@ export default function TermsOfService() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Smartphone} title="7A. Mobile software from Google Play">
+      <LegalCard icon="smartphone" title="7A. Mobile software from Google Play">
         <p>For Mobile Software obtained via Google Play (&quot;Google Play-Sourced Software&quot;):</p>
         <Clause n="7A.1">
           These Terms are between you and Dodge Labs, not Google. Dodge Labs, and not Google, is
@@ -539,7 +521,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={ShieldCheck} title="8. Lawful and responsible use">
+      <LegalCard icon="verified_user" title="8. Lawful and responsible use">
         <Clause n="8.1">You agree to use Dodge only for lawful purposes and in accordance with these Terms.</Clause>
         <Clause n="8.2">
           By using Dodge, you agree to comply with these Terms, our{" "}
@@ -556,7 +538,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={FileText} title="9. Service-related communication and mobile charges">
+      <LegalCard icon="description" title="9. Service-related communication and mobile charges">
         <Clause n="9.1">
           We may send you service-related communications, including account verification messages, security
           notifications, safety alerts, administrative notices, and other communications necessary to
@@ -571,7 +553,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Users} title="10. User content and ownership">
+      <LegalCard icon="group" title="10. User content and ownership">
         <p>You retain ownership of the content you share within Dodge.</p>
         <p>
           By posting, you grant us a non-exclusive, worldwide license to use, store, and display that
@@ -600,7 +582,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Lock} title="11. Privacy and data protection">
+      <LegalCard icon="lock" title="11. Privacy and data protection">
         <Clause n="11.1">
           Your use of Dodge is subject to our <PolicyLink to="/privacy">Privacy Policy</PolicyLink>, which
           explains how we collect, use, and protect your personal information in compliance with POPIA,
@@ -620,7 +602,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Lock} title="12. Account responsibilities and termination">
+      <LegalCard icon="lock" title="12. Account responsibilities and termination">
         <Clause n="12.1">
           You are responsible for all activity on your account and must promptly notify us if you suspect
           unauthorised access.
@@ -662,7 +644,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Users} title="13. Circles & consent">
+      <LegalCard icon="group" title="13. Circles & consent">
         <p>You control which circles you join or create.</p>
         <p>Only invite people who have agreed to share their location and safety information with you.</p>
         <p>Do not use Dodge to track, monitor, or harass anyone without their knowledge and consent.</p>
@@ -677,7 +659,7 @@ export default function TermsOfService() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Route} title="Trip history">
+      <LegalCard icon="route" title="Trip history">
         <p>
           Dodge may automatically detect completed journeys and show them as trip history. A trip summary
           may include start and end times, a simplified route, distance, inferred transport mode, and short
@@ -701,7 +683,7 @@ export default function TermsOfService() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={MapPin} title="14. Location & safety disclaimer">
+      <LegalCard icon="location_on" title="14. Location & safety disclaimer">
         <Clause n="14.1">Dodge relies on device GPS, network conditions, and third-party map data.</Clause>
         <Clause n="14.2">Location information may be delayed, inaccurate, or unavailable.</Clause>
         <Clause n="14.3">
@@ -719,7 +701,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={MapPinned} title="15. Community risk zones">
+      <LegalCard icon="map" title="15. Community risk zones">
         <Clause n="15.1">
           Dodge may display community risk zones (also shown as safety zones) on the map.
         </Clause>
@@ -746,7 +728,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={AlertTriangle} title="16. Community reports & user content">
+      <LegalCard icon="warning" title="16. Community reports & user content">
         <Clause n="16.1">
           Unsafe reports and alerts you submit may be stored and shown to other users (for example circle
           members or signed-in users viewing map pins).
@@ -759,7 +741,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={HeartHandshake} title="17. Support Dodge Labs">
+      <LegalCard icon="volunteer_activism" title="17. Support Dodge Labs">
         <Clause n="17.1">
           If you find Dodge useful, you may make a once-off voluntary contribution to {COMPANY_NAME} to
           support the ongoing development, maintenance and operation of Dodge. This contribution is
@@ -770,7 +752,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={ShieldCheck} title="18. Prohibited conduct">
+      <LegalCard icon="verified_user" title="18. Prohibited conduct">
         <p>You agree not to:</p>
         <BulletList
           items={[
@@ -785,7 +767,7 @@ export default function TermsOfService() {
         />
       </LegalCard>
 
-      <LegalCard icon={AlertTriangle} title="19. Disclaimer of warranties">
+      <LegalCard icon="warning" title="19. Disclaimer of warranties">
         <Clause n="19.1">
           Dodge is provided &quot;as is&quot; and &quot;as available&quot;, without any warranties of any
           kind.
@@ -796,7 +778,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={XCircle} title="20. Limitation of liability">
+      <LegalCard icon="cancel" title="20. Limitation of liability">
         <p>
           To the fullest extent permitted by law, we are not liable for indirect, incidental, special,
           consequential, or punitive damages, or for loss of profits, data, goodwill, or personal injury
@@ -813,7 +795,7 @@ export default function TermsOfService() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={FileText} title="21. Additional terms">
+      <LegalCard icon="description" title="21. Additional terms">
         <Clause n="21.1">
           Certain features or services may be subject to additional terms, conditions, notices, or
           policies. These form part of these Terms and apply to your use of the relevant feature or
@@ -836,7 +818,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Brain} title="22. AI features">
+      <LegalCard icon="psychology" title="22. AI features">
         <p>
           Where Dodge offers AI features, any inputs you provide and outputs generated may be processed in
           line with these Terms, our <PolicyLink to="/privacy">Privacy Policy</PolicyLink>, and any
@@ -854,7 +836,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={ShieldCheck} title="23. Safety and responsible use">
+      <LegalCard icon="verified_user" title="23. Safety and responsible use">
         <Clause n="23.1">
           We work to provide a safe and reliable environment, but Dodge cannot guarantee safety, accuracy,
           availability, or freedom from harmful activity.
@@ -878,7 +860,7 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Scale} title="24. Governing law">
+      <LegalCard icon="balance" title="24. Governing law">
         <p>
           The laws of South Africa govern these Terms and any claims and disputes (whether contract, tort
           or otherwise) arising out of or relating to these Terms or their subject matter. The courts in
@@ -887,7 +869,7 @@ export default function TermsOfService() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Smartphone} title="25. Third-party services">
+      <LegalCard icon="smartphone" title="25. Third-party services">
         <p>
           Dodge integrates with third-party services (including cloud hosting, maps, messaging, and
           payments) for example the Apple App Store, Google Play, Google Play Billing, Google Maps Platform,
@@ -896,7 +878,7 @@ export default function TermsOfService() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={RefreshCw} title="26. Changes to Dodge and these Terms">
+      <LegalCard icon="sync" title="26. Changes to Dodge and these Terms">
         <Clause n="26.1">
           Dodge is continuously evolving. We may modify, improve, add, remove, or discontinue features or
           services from time to time.
@@ -922,14 +904,14 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Gavel} title="27. Severability">
+      <LegalCard icon="gavel" title="27. Severability">
         <p>
           If any provision of these Terms is found unenforceable, then that provision will be removed from
           these Terms and not affect the validity and enforceability of any remaining provisions.
         </p>
       </LegalCard>
 
-      <LegalCard icon={FileText} title="28. General terms">
+      <LegalCard icon="description" title="28. General terms">
         <Clause n="28.1">
           These Terms form the entire agreement between you and Dodge and do not create rights for third
           parties.
@@ -945,7 +927,7 @@ export default function TermsOfService() {
         <Clause n="28.5">All rights not expressly granted to you are reserved.</Clause>
       </LegalCard>
 
-      <LegalCard icon={FileText} title="29. Electronic acceptance of terms">
+      <LegalCard icon="description" title="29. Electronic acceptance of terms">
         <p>
           By selecting &quot;Accept,&quot; &quot;Agree,&quot; creating an account, accessing, or continuing
           to use Dodge after reviewing these Terms, you acknowledge that:

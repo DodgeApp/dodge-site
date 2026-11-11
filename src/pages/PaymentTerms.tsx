@@ -1,14 +1,3 @@
-import {
-  BadgeDollarSign,
-  FileText,
-  HeartHandshake,
-  Receipt,
-  RefreshCw,
-  Scale,
-  ShieldCheck,
-  Store,
-  Wallet,
-} from "lucide-react";
 import LegalPageShell from "@/components/LegalPageShell";
 import LegalCard, { BulletList, Clause } from "@/components/LegalCard";
 import {
@@ -21,7 +10,7 @@ import { COMPANY_NAME, LEGAL_LAST_UPDATED } from "@/lib/legal";
 export default function PaymentTerms() {
   return (
     <LegalPageShell title="Payment Terms" lastUpdated={LEGAL_LAST_UPDATED}>
-      <LegalCard icon={FileText} title="About these Payment Terms">
+      <LegalCard icon="description" title="About these Payment Terms">
         <p>
           The Payment Terms of {COMPANY_NAME} (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;,
           &quot;Dodge Labs&quot;) govern payments made through the Dodge mobile application
@@ -30,7 +19,7 @@ export default function PaymentTerms() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Store} title="Payments through Apple">
+      <LegalCard icon="storefront" title="Payments through Apple">
         <p>
           On iPhone, all subscriptions, voluntary contributions and other paid features or services offered
           through Dodge are purchased exclusively through the Apple App Store and its In-App Purchase
@@ -53,7 +42,7 @@ export default function PaymentTerms() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Store} title="Payments through Google Play">
+      <LegalCard icon="storefront" title="Payments through Google Play">
         <p>
           On Android, all subscriptions, voluntary contributions and other paid features or services
           offered through Dodge are purchased exclusively through Google Play and Google Play Billing, under
@@ -73,7 +62,7 @@ export default function PaymentTerms() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={RefreshCw} title="Subscriptions">
+      <LegalCard icon="sync" title="Subscriptions">
         <p>
           Dodge may offer paid subscriptions on a recurring basis, as indicated in the App at the time of
           purchase.
@@ -100,7 +89,7 @@ export default function PaymentTerms() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={HeartHandshake} title={`Voluntary contributions to ${COMPANY_NAME}`}>
+      <LegalCard icon="volunteer_activism" title={`Voluntary contributions to ${COMPANY_NAME}`}>
         <p>
           Dodge may provide you with an optional facility to make a voluntary financial contribution to
           Dodge Labs to support the continued development, maintenance, improvement and operation of Dodge
@@ -190,7 +179,7 @@ export default function PaymentTerms() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={BadgeDollarSign} title="Prices and taxes">
+      <LegalCard icon="sell" title="Prices and taxes">
         <p>
           Prices for subscriptions and other paid services will be displayed in Dodge or through
           Apple&apos;s purchase interface.
@@ -205,7 +194,7 @@ export default function PaymentTerms() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Wallet} title="Refunds">
+      <LegalCard icon="account_balance_wallet" title="Refunds">
         <p>
           Because payments are processed through Apple, refund requests must generally be submitted to
           Apple through the App Store or Apple&apos;s applicable refund process.
@@ -225,7 +214,7 @@ export default function PaymentTerms() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={Receipt} title="Purchase records">
+      <LegalCard icon="receipt_long" title="Purchase records">
         <p>Apple may provide you with a purchase receipt or other confirmation of payment.</p>
         <p>
           Dodge may receive and process transaction information necessary to verify subscriptions,
@@ -233,7 +222,7 @@ export default function PaymentTerms() {
         </p>
       </LegalCard>
 
-      <LegalCard icon={ShieldCheck} title="7. No direct payments">
+      <LegalCard icon="verified_user" title="7. No direct payments">
         <Clause n="7.1">
           Dodge does not accept payment for subscriptions or other digital services through bank transfers,
           credit cards, debit cards, cryptocurrency, PayPal or other external payment methods within the
@@ -245,7 +234,7 @@ export default function PaymentTerms() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Store} title="8. Apple's role">
+      <LegalCard icon="storefront" title="8. Apple's role">
         <Clause n="8.1">
           Apple is responsible for operating the Apple Store and processing In-App Purchases made through
           its platform.
@@ -261,7 +250,7 @@ export default function PaymentTerms() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={Scale} title="9. Consumer rights">
+      <LegalCard icon="balance" title="9. Consumer rights">
         <Clause n="9.1">
           Nothing in these payment terms excludes, restricts or limits any rights or remedies that cannot
           lawfully be excluded or limited under the laws applicable to you.
@@ -272,7 +261,7 @@ export default function PaymentTerms() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={RefreshCw} title="10. Changes to Payment Terms">
+      <LegalCard icon="sync" title="10. Changes to Payment Terms">
         <Clause n="10.1">
           We may amend these Payment Terms from time to time to reflect changes to Dodge, Apple
           requirements, payment arrangements or applicable law.
@@ -283,7 +272,7 @@ export default function PaymentTerms() {
         </Clause>
       </LegalCard>
 
-      <LegalCard icon={FileText} title="11. Electronic acceptance of terms">
+      <LegalCard icon="description" title="11. Electronic acceptance of terms">
         <p>By selecting &quot;Accept,&quot; &quot;Agree,&quot; after reviewing these terms, you acknowledge that:</p>
         <Clause n="11.1">You have read and understood these Payment Terms.</Clause>
         <Clause n="11.2">You agree to be legally bound by them.</Clause>

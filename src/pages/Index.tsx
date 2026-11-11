@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Building2, CreditCard, Download, Heart, Info, LifeBuoy, Scale, Wallet } from "lucide-react";
+import MaterialSymbol from "@/components/icons/MaterialSymbol";
 import HomeBrandLockup from "@/components/HomeBrandLockup";
 import HomeLinkCard from "@/components/HomeLinkCard";
 import SettingsSectionLabel from "@/components/SettingsSectionLabel";
@@ -17,11 +17,11 @@ export default function Index() {
 
         {(PAYSTACK_URL || PAYPAL_URL) && (
           <section className="space-y-2.5">
-            <SettingsSectionLabel icon={Heart}>Support Dodge</SettingsSectionLabel>
+            <SettingsSectionLabel icon="favorite">Support Dodge</SettingsSectionLabel>
             <div className="settings-card overflow-hidden">
               {PAYSTACK_URL && (
                 <HomeLinkCard
-                  icon={CreditCard}
+                  icon="credit_card"
                   title="Contribute via Paystack"
                   subtitle="Cards and EFT in South Africa"
                   href={PAYSTACK_URL}
@@ -30,7 +30,7 @@ export default function Index() {
               )}
               {PAYPAL_URL && (
                 <HomeLinkCard
-                  icon={Wallet}
+                  icon="account_balance_wallet"
                   title="Contribute via PayPal"
                   subtitle="Cards and PayPal outside South Africa"
                   href={PAYPAL_URL}
@@ -53,7 +53,7 @@ export default function Index() {
               rel="noopener noreferrer"
               onClick={() => trackLinkClick("download")}
             >
-              <Download strokeWidth={2.75} aria-hidden />
+              <MaterialSymbol name="download" />
               Download
             </a>
           </Button>
@@ -63,10 +63,10 @@ export default function Index() {
         </div>
 
         <section className="space-y-2.5">
-          <SettingsSectionLabel icon={Info}>More</SettingsSectionLabel>
+          <SettingsSectionLabel icon="info">More</SettingsSectionLabel>
           <div className="settings-card overflow-hidden">
             <HomeLinkCard
-              icon={Building2}
+              icon="domain"
               title="About Dodge Labs (Pty) Ltd"
               subtitle="Who we are and what we build"
               onClick={() => {
@@ -75,7 +75,7 @@ export default function Index() {
               }}
             />
             <HomeLinkCard
-              icon={Scale}
+              icon="balance"
               title="Legal & policies"
               subtitle="Terms, privacy, payments, and licence"
               onClick={() => {
@@ -84,7 +84,7 @@ export default function Index() {
               }}
             />
             <HomeLinkCard
-              icon={LifeBuoy}
+              icon="support"
               title="Support"
               subtitle="Help, issues, and feedback"
               onClick={() => {

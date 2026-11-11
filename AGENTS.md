@@ -10,6 +10,7 @@ The site is a responsive website, not a copy of the phone screens. It must still
 
 - Tokens are in `src/index.css`, aligned with iOS `Theme.swift`: background `#222222`, surface `#2C2C2C`, elevated `#383838`, yellow `#FFBE00`, red `#D9262E`, 24px card radius.
 - Type: SF Pro Rounded on Apple, self-hosted Nunito everywhere else, Android included (`public/fonts/`, built by `scripts/build-nunito.py` with the Android app's weight mapping). Do not load fonts from a CDN.
+- Icons: Material Symbols Rounded, filled, weight 700 (search 600), the same set and names as the Android app, through `src/components/icons/MaterialSymbol.tsx`. Add a symbol in `scripts/build-material-symbols.mjs` and rerun it. Never use SF Symbols (their licence forbids websites), another icon library, or an icon-font CDN.
 - Reuse `src/components/` and `src/components/ui/` before adding components. The glow utility used by the home logo and download button is `shadow-glow`.
 - Do not introduce a new palette, a light theme, or a different brand. Do not add dependencies for styling that existing Tailwind and components already cover.
 
