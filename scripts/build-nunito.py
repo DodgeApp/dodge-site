@@ -1,4 +1,4 @@
-"""Build public/fonts/nunito-latin-wght.woff2 from the upstream Nunito variable font.
+"""Build public/fonts/nunito-latin-wght.v1.woff2 from the upstream Nunito variable font.
 
 The Android app draws Nunito at these points on the wght axis so it matches the
 iOS rounded system font. The axis is remapped (avar) so the plain CSS weights on
@@ -8,6 +8,14 @@ the left render those instances, and font-weight needs no per-element override:
 
 Then it is subset to Google Fonts' "latin" range (keep UNICODES in sync with
 unicode-range in src/index.css) and saved as woff2.
+
+The output is a Modified Version under the SIL OFL 1.1 (public/fonts/Nunito-OFL.txt):
+derived from upstream Nunito at google/fonts commit
+5bb28733cec313b63fbd415b574b5ae35c8aa8b8, with the wght axis remapped (avar)
+and glyphs subset to latin.
+
+vercel.json serves /fonts/*.woff2 as immutable, so a rebuild that changes the
+file must bump the version in its name (OUT, src/index.css, index.html).
 
     pip install fonttools brotli
     python3 scripts/build-nunito.py
@@ -24,7 +32,7 @@ SOURCE = (
     "https://raw.githubusercontent.com/google/fonts/"
     "5bb28733cec313b63fbd415b574b5ae35c8aa8b8/ofl/nunito/Nunito%5Bwght%5D.ttf"
 )
-OUT = Path(__file__).resolve().parent.parent / "public" / "fonts" / "nunito-latin-wght.woff2"
+OUT = Path(__file__).resolve().parent.parent / "public" / "fonts" / "nunito-latin-wght.v1.woff2"
 
 WEIGHT_MAP = [
     (200, 200),

@@ -1,5 +1,12 @@
 Copyright 2014 The Nunito Project Authors (https://github.com/googlefonts/nunito)
 
+nunito-latin-wght.v1.woff2 is a Modified Version of Nunito, derived from upstream
+Nunito[wght].ttf at google/fonts commit 5bb28733cec313b63fbd415b574b5ae35c8aa8b8
+(https://github.com/google/fonts/tree/5bb28733cec313b63fbd415b574b5ae35c8aa8b8/ofl/nunito),
+with the wght axis remapped (avar) and glyphs subset to latin. It is built by
+scripts/build-nunito.py in the dodge-site repository and remains licensed under
+the SIL Open Font License, Version 1.1, below.
+
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
 http://scripts.sil.org/OFL
