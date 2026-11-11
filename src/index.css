@@ -1,16 +1,20 @@
-/* Rounded fallback for non-Apple browsers (SF Pro Rounded cannot be hosted for web);
-   Inter matches the Android app and is only downloaded when html.android uses it */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap');
+/* Rounded fallback wherever SF Pro Rounded is not available (it cannot be hosted
+   for web), the same face the Android app bundles. Built by scripts/build-nunito.py,
+   whose wght remap makes CSS 400-900 render the Android app's weights; keep
+   unicode-range in sync with it. Licence: /fonts/Nunito-OFL.txt */
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/nunito-latin-wght.woff2") format("woff2");
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Set by the inline script in index.html; matches the Android app's Inter.
-   Outside @layer so Tailwind never purges it (the class only appears in index.html). */
-html.android {
-  --font-sans: "Inter", system-ui, sans-serif;
-}
 
 /* Dodge app design tokens — aligned with Theme.swift */
 
@@ -72,11 +76,11 @@ html.android {
   html {
     /* Match page surface in top safe area & overscroll; footer uses card */
     background-color: hsl(var(--surface));
-    /* Matches SwiftUI .system(..., design: .rounded) on Apple; Nunito fallback elsewhere */
+    /* Matches SwiftUI .system(..., design: .rounded) where WebKit exposes it, and
+       the Android app's Nunito everywhere else (Chrome and Firefox on a Mac too,
+       which have no rounded system font). The preload in index.html makes the same check. */
     --font-sans:
       ui-rounded,
-      -apple-system,
-      BlinkMacSystemFont,
       "SF Pro Rounded",
       "Nunito",
       system-ui,
