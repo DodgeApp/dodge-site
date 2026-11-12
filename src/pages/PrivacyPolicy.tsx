@@ -6,11 +6,11 @@ import {
   RelatedLegalCard,
   SupportEmail,
 } from "@/components/LegalBits";
-import { COMPANY_NAME, LEGAL_LAST_UPDATED } from "@/lib/legal";
+import { COMPANY_NAME, PRIVACY_LAST_UPDATED } from "@/lib/legal";
 
 export default function PrivacyPolicy() {
   return (
-    <LegalPageShell title="Privacy Policy" lastUpdated={LEGAL_LAST_UPDATED}>
+    <LegalPageShell title="Privacy Policy" lastUpdated={PRIVACY_LAST_UPDATED}>
       <LegalCard icon="shield" title="1. Introduction">
         <p>
           {COMPANY_NAME} (&quot;we,&quot; &quot;our,&quot; &quot;us&quot;) operates the Dodge mobile
@@ -47,8 +47,9 @@ export default function PrivacyPolicy() {
             "Trip history data: if enabled, completed journey summaries including start and end times, start and end coordinates, a simplified route, distance, inferred transport mode, and short place labels (for example a street name). High-frequency GPS samples used to detect trips remain on your device and are not uploaded.",
             "Circle and social safety data: circle memberships, shared live locations, invite codes, saved places, presence pings, and unsafe status alerts you send or receive.",
             "Community safety reports: locations and optional descriptions you submit when reporting that you feel unsafe, plus aggregated unsafe-report pins shown on the map.",
-            "Safety zone / pass-through contribution data: if enabled, a once-per-day signal that you passed through a geographic area (area key, approximate coordinates, optional street name, and date)—not a continuous route history.",
-            "Aggregated community risk zone data: area-level pass-through and report counts, risk scores, tiers, and map geometry computed by our servers from community activity (not tied to your identity on the map).",
+            "Safety zone / pass-through contribution data: if enabled, the date and the keys of the small map cells (or areas) you pass through, recorded at most once per account per cell per day, together with approximate coordinates and, where available, a street name. One day's contribution can include several cell keys, and observations may be held briefly on your device before they are uploaded. This is not a continuous, ordered record of your trip.",
+            "Aggregated community risk zone data: risk scores, tiers, summary measures, and map geometry computed by our servers by pooling unsafe reports and pass-through activity from many users. Contributor identities are not shown on the map.",
+            "Risk-zone processing data: to de-duplicate contributions, limit any one account's influence, and prevent abuse, our servers may keep account-associated or pseudonymous (coded, not named) summaries of your pass-through and report contributions. These are used only on our servers and are not shown to other users.",
             "Notifications data: device push tokens (APNs/FCM), notification preferences, and delivery-related metadata.",
             "Photos and camera: the profile photo you take with your camera or choose from your photo library. On Android, Dodge uses the system photo picker, so it only receives the photo you select and does not access the rest of your library.",
             "Address and place searches: text you type into a place or address search field, which is sent to Google Places on Android (and Apple on iOS) to suggest matching places.",
@@ -78,7 +79,7 @@ export default function PrivacyPolicy() {
             "Show your movement status and online status to circle members when enabled.",
             "Send safety-related notifications (for example proximity alerts, place arrivals or departures, circle unsafe alerts, and report reminders).",
             "Display community unsafe-report pins and aggregated risk zones on the map.",
-            "Compute and update community risk zones from aggregated pass-through and report activity.",
+            "Compute and update community risk zones from pooled pass-through and report activity.",
             "Send alerts when you or circle members enter published community risk zones (if enabled).",
             "Process voluntary contributions (if applicable) and process payments (if applicable).",
             "Respond to support requests and feedback.",
@@ -156,6 +157,12 @@ export default function PrivacyPolicy() {
           location-based alerts, update your presence status, and, if trip history is enabled, detect
           completed journeys.
         </Clause>
+        <Clause n="8.1A">
+          If pass-through contribution is enabled, location fixes collected in the foreground or background
+          may also be used to record pass-through contributions for the small map cells you pass through
+          (see section 10). This setting is separate from circle location sharing, the risk-zone map, and
+          risk-zone alerts.
+        </Clause>
         <Clause n="8.2">
           You may restrict or disable location access through your device settings. Please note that
           certain Dodge features may not function properly without location permission. Within Dodge, you
@@ -171,8 +178,8 @@ export default function PrivacyPolicy() {
       <LegalCard icon="location_on" id="background-location" title="8A. Background location on Android">
         <p className="font-medium text-foreground">
           Dodge collects location data to enable circle location sharing, circle safety alerts, community
-          risk-zone alerts, presence status, and, if enabled, trip history, even when the app is closed or
-          not in use.
+          risk-zone alerts, presence status, and, if enabled, trip history and pass-through contribution,
+          even when the app is closed or not in use.
         </p>
         <Clause n="8A.1">
           On Android, background location is only collected if you choose &quot;Allow all the time&quot;
@@ -230,7 +237,15 @@ export default function PrivacyPolicy() {
           Dodge allows you to create or join private circles consisting of trusted contacts. Members of a
           circle may have access to information that you choose to share with that circle, including your
           profile information, live location, movement or presence status, safety alerts that you
-          initiate, and, where trip sharing is enabled, your recent trip history.
+          initiate, automatically generated alerts such as risk-zone entry alerts, and, where trip sharing
+          is enabled, your recent trip history.
+        </Clause>
+        <Clause n="9.1A">
+          If you share your location with a circle and enter a published community risk zone, Dodge may
+          automatically send that circle a risk-zone entry alert. The alert may include your current
+          location, your movement status, and information about the zone. It is sent only to circles with
+          which you are sharing your location, and is not shared publicly. Whether a circle member is
+          notified depends on that member&apos;s own notification preferences.
         </Clause>
         <Clause n="9.2">
           If you report that you feel unsafe, Dodge may collect and retain the location of the report and
@@ -238,6 +253,13 @@ export default function PrivacyPolicy() {
           reason or additional details. Safety reports submitted by users may be displayed on the Dodge map
           to other signed-in Dodge users as aggregated pins. Such reports are not intended to identify the
           individual who submitted the report.
+        </Clause>
+        <Clause n="9.2A">
+          For ten minutes after you submit an unsafe report, the app may keep a short list of your recent
+          report locations and times on your device, so that it does not send you or your circles a
+          duplicate risk-zone entry alert for the area you just reported. This list stays on your device, is
+          not uploaded separately, and each entry is removed after ten minutes. Your report itself is
+          submitted as described above.
         </Clause>
         <Clause n="9.3">
           You should only add individuals to a private circle where they are aware of and have consented to
@@ -249,28 +271,47 @@ export default function PrivacyPolicy() {
 
       <LegalCard icon="map" title="10. Safety zones and community risk areas">
         <Clause n="10.1">
-          Dodge may display community risk zones on the map. These are highlighted areas generated from
-          aggregated community activity and are not based on the information or activity of any single
-          individual. Community risk zones are generated using:
+          Dodge may display community risk zones on the map. These are highlighted areas derived by pooling
+          community activity from many users. Risk zones are designed to combine evidence from multiple
+          contributors: Dodge de-duplicates contributions, limits how much any one account can influence
+          the result, and requires sufficient unsafe-report support before an area is published. Your own
+          reports and pass-through contributions still form part of that pooled evidence. Community risk
+          zones are generated using:
         </Clause>
         <BulletList
           items={[
             "Unsafe reports submitted by Dodge users. Each unsafe report also contributes to the measure of activity or presence within the relevant area; and",
-            "Optional pass-through contributions, which allow Dodge to measure the volume of people travelling through an area. If this feature is enabled under Settings → Safety Map Data, Dodge records no more than one pass-through event per day for each area you pass through.",
+            "Optional pass-through contributions, which allow Dodge to estimate how much activity passes through an area. If this feature is enabled under Settings → Safety Map Data, Dodge records a pass-through at most once per account per small map cell per day. A zone shown on the map can cover several cells, so one journey through a zone may contribute more than one cell.",
           ]}
         />
+        <Clause n="10.1A">
+          Evidence is calculated for small map cells. Our servers may combine nearby cells that have
+          sufficient support into a single zone, so a zone may have an irregular shape, may contain gaps,
+          and may show different risk levels in different parts.
+        </Clause>
         <Clause n="10.2">
           Pass-through contribution is enabled by default, but you may disable it at any time through your
-          settings. When enabled, a pass-through event may be associated with your account and may include
-          your user ID, the relevant area key, the date of the event, approximate coordinates, and, where
-          available, the relevant street name. Dodge does not use this feature to store your complete route
-          or maintain a continuous history of your movements.
+          settings. When enabled, a pass-through contribution is associated with your account and may
+          include your user ID, the relevant cell or area key, the date, approximate coordinates, and, where
+          available, the relevant street name. The app may hold individual observations on your device
+          briefly before uploading them, and one day&apos;s upload may contain several cell keys. Dodge does
+          not use this feature to build a continuous, ordered record of your trip or maintain a continuous
+          history of your movements.
+        </Clause>
+        <Clause n="10.2A">
+          If you turn pass-through contribution off, Dodge stops recording new pass-through contributions
+          and deletes pass-through observations that are stored on your device and have not yet been
+          uploaded. Contributions that were already uploaded are kept and deleted as described in section
+          14. Turning this setting off does not turn off the risk-zone map, risk-zone alerts, circle
+          location sharing, or the risk-zone entry alerts described in section 9.1A, and unsafe reports you
+          submit continue to contribute to risk-zone calculations.
         </Clause>
         <Clause n="10.3">
-          Our servers aggregate pass-through and unsafe-report data over a rolling period, currently
-          approximately 60 days. We apply recency weighting so that more recent activity has a greater
-          influence on the calculation and use the aggregated information to calculate area risk scores and
-          corresponding risk tiers, such as Elevated, High, and Very High.
+          Our servers weight activity by recency, so recent unsafe reports and pass-through activity have
+          more influence than older activity, and older activity counts for progressively less or stops
+          counting. We use this weighted information to calculate risk scores and corresponding risk tiers,
+          such as Elevated, High, and Very High. The weighting method and period may change as we improve
+          the calculation.
         </Clause>
         <Clause n="10.4">
           We combine community reports and travel activity to show general safety patterns. These maps are
@@ -290,13 +331,17 @@ export default function PrivacyPolicy() {
         </Clause>
         <Clause n="10.7">
           Other signed-in Dodge users may see published community risk zones and aggregated summary
-          information, such as pass-through and unsafe-report totals. They will not be able to identify
-          which individuals contributed to those totals.
+          measures, such as unsafe-report counts and measures of pass-through activity. Some measures may
+          be totals and others may be recency-weighted or estimated, so they are not exact counts of people
+          or trips. Other users will not be able to identify which individuals contributed to them.
         </Clause>
         <Clause n="10.8">
-          Community risk-zone map overlays, detailed zone information, and related alerts are separate from
-          individual unsafe-report pins and from live location sharing. Your live location is shared only
-          with members of the relevant private circles, subject to your in-app sharing settings.
+          Community risk-zone map overlays and detailed zone information are separate from individual
+          unsafe-report pins and from live location sharing, and are shown to signed-in users only in
+          aggregate. Your live location is shared only with members of the relevant private circles,
+          subject to your in-app sharing settings. If you share your location with a circle, the risk-zone
+          entry alerts described in section 9.1A may include your current location and movement status.
+          These alerts are not shared publicly.
         </Clause>
         <Clause n="10.9">
           Community risk zones and alerts are generated through aggregated reports and pass-through
@@ -317,6 +362,12 @@ export default function PrivacyPolicy() {
           Push notifications are delivered through Apple Push Notification service on iOS and Firebase
           Cloud Messaging on Android. On Android, Dodge also uses silent Firebase Cloud Messaging messages
           to refresh your presence for your circles; these are not shown to you.
+        </Clause>
+        <Clause n="11.1B">
+          Notifications about your own entry into a risk zone and notifications about circle members
+          entering risk zones are separate preferences. Turning off your own risk-zone notification does
+          not by itself stop risk-zone entry alerts being sent to circles with which you share your
+          location; those follow your per-circle location-sharing settings.
         </Clause>
         <Clause n="11.2">
           You can manage notification categories and preferences within Dodge and may disable notifications
@@ -389,7 +440,7 @@ export default function PrivacyPolicy() {
         </p>
         <BulletList
           items={[
-            "Location (precise and approximate): collected for app functionality and account management; shared with circle members you choose; not optional if you use location features.",
+            "Location (precise and approximate): collected for app functionality and account management; shared with circle members you choose, including in risk-zone entry alerts; not optional if you use location features, although pass-through contribution can be turned off in Settings → Safety Map Data.",
             "Personal info (name, email address, phone number, user ID): collected for app functionality, account management, and security.",
             "Photos: your profile photo, collected for app functionality and shown to your circle members; optional.",
             "Messages and user content: unsafe reports, circle content, and support messages, collected for app functionality and support.",
@@ -427,7 +478,10 @@ export default function PrivacyPolicy() {
           If you delete your account, we will delete or anonymise associated personal information in
           accordance with our account-deletion procedures, except where we are required or permitted by law
           to retain limited information for legal, regulatory, security, fraud-prevention,
-          dispute-resolution, or backup purposes.
+          dispute-resolution, or backup purposes. Account-linked pass-through data is deleted or
+          anonymised. Limited pseudonymous records used to keep a deleted account out of risk-zone
+          calculations, and aggregate risk-zone data that no longer identifies you, may remain until they
+          expire as described in section 14.6.
         </Clause>
         <Clause n="14.5">
           Completed trip summaries are generally retained for about 3 days on your device and on our
@@ -443,7 +497,8 @@ export default function PrivacyPolicy() {
             "Account, profile, profile photo, and circle data: while your account is active, then deleted when you delete your account.",
             "Live location and presence: only the latest position and status are kept, replaced as they update, and deleted with your account.",
             "Trip summaries: about 3 days, as described above.",
-            "Pass-through contributions: individual pass-through records are deleted after 14 days, and area-level daily totals, which do not identify you, after 90 days.",
+            "Pass-through contributions: detailed pass-through records and the records used to de-duplicate them are generally deleted after 14 days, and area-level daily totals, which do not identify you, after 90 days. Observations still waiting on your device are deleted if you turn pass-through contribution off.",
+            "Risk-zone processing summaries: to calculate and check risk zones, we may keep server-only pseudonymous summaries of pass-through and report contributions, and limited records that keep deleted accounts out of the calculation, for up to about seven months after the most recent relevant activity. Aggregate cell and zone data that does not identify you may be kept for as long as it is needed to provide risk zones.",
             "Unsafe reports: kept so they can continue to inform community risk zones. When you delete your account, your user ID and username are removed from your reports, so they no longer identify you.",
             "Support messages: in-app feedback is deleted when you delete your account, and support emails, including those sent through the form on our website, are kept for up to 12 months.",
             "Backups: we keep daily backups of our database for 7 days, so deleted data may remain in a backup for up to 7 days before it is removed.",
@@ -462,7 +517,10 @@ export default function PrivacyPolicy() {
           including preferences relating to community risk-zone alerts;
         </Clause>
         <Clause n="15.3">
-          Enable or disable your contribution of pass-through data under Settings → Safety Map Data;
+          Enable or disable your contribution of pass-through data under Settings → Safety Map Data.
+          Turning it off stops new pass-through recording and deletes pass-through observations on your
+          device that have not yet been uploaded. It does not turn off the risk-zone map, alerts, or circle
+          sharing, and your unsafe reports still contribute to risk zones (see section 10.2A);
         </Clause>
         <Clause n="15.3A">
           Enable or disable trip history, and separately enable or disable sharing of trip history with
@@ -511,8 +569,9 @@ export default function PrivacyPolicy() {
         </Clause>
         <Clause n="15A.5">
           Some information may be kept after deletion, as described in section 14, for example where the
-          law requires it, unsafe reports with your user ID and username removed, or aggregated risk-zone
-          counts that no longer identify you.
+          law requires it, unsafe reports with your user ID and username removed, aggregated risk-zone
+          data that no longer identifies you, or the limited pseudonymous records that keep a deleted
+          account out of risk-zone calculations until they expire.
         </Clause>
       </LegalCard>
 
