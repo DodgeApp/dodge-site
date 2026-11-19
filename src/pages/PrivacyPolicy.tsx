@@ -351,9 +351,10 @@ export default function PrivacyPolicy() {
         <Clause n="9A.9">
           <span className="font-semibold">Moderation records.</span> When content is reported, hidden,
           rejected or reviewed, we keep a record of the moderation: the automated results, the decision, the
-          report tally, and an excerpt of the content with the author&apos;s username. These records are kept
-          after the content or account is deleted, so we can deal with repeat abuse, appeals and legal
-          claims.
+          report tally, and an excerpt of the content with the author&apos;s username. Moderation records,
+          including reports, moderation decisions, the review queue and the audit log, are kept for 12
+          months from the last action on them, then deleted. They are kept for that period even if the
+          content or account is deleted, so we can deal with repeat abuse, appeals and legal claims.
         </Clause>
       </LegalCard>
 
@@ -607,9 +608,9 @@ export default function PrivacyPolicy() {
             "Community Forums posts and comments: kept until you or a moderator delete them, or you delete your account. Where others have replied, a deleted post or comment is replaced with a “[deleted]” placeholder that holds none of your details. Reactions are deleted with your account.",
             "Community Forums location records: cities you were found in, 30 days each; suburb visit counts, up to 60 days; the approximate area of your last check, 24 hours; your current suburb and city, until your next check or until you delete your account.",
             "Community Forums blocks and Community Guidelines acceptance: until you unblock, or until you delete your account.",
-            "Community Forums reports you make: kept for moderation. When you delete your account, your account ID is removed from them; the coded version stays so that past reports can still be weighed.",
+            "Community Forums reports you make: 12 months from the last action on them, then deleted. If you delete your account sooner, your account ID is removed from them; the coded version stays until they are deleted so that past reports can still be weighed.",
             "Community Forums strike record: 12 months after your most recent strike, then deleted automatically, including after account deletion.",
-            "Community Forums moderation records, including reports about you or your content: kept after the content or account is deleted, for repeat-abuse prevention, appeals and legal claims.",
+            "Community Forums moderation records (reports about you or your content, moderation decisions, the review queue and the audit log, including content excerpts): 12 months from the last action on them, then deleted, including after the content or account is deleted.",
             "Support messages: in-app feedback is deleted when you delete your account, and support emails, including those sent through the form on our website, are kept for up to 12 months.",
             "Backups: we keep daily backups of our database for 7 days, so deleted data may remain in a backup for up to 7 days before it is removed.",
           ]}
@@ -687,8 +688,9 @@ export default function PrivacyPolicy() {
           Deleting your account also deletes your Community Forums data: your posts, comments and reactions,
           your blocks and other people&apos;s blocks of you, and your forum location records. Posts and
           comments that others have replied to are replaced with a &quot;[deleted]&quot; placeholder without
-          your name, photo or text. The strike record, the moderation records and the anonymised reports
-          described in section 9A are kept as set out in section 14.6.
+          your name, photo or text. The strike record is kept for 12 months after your most recent strike,
+          and the moderation records and anonymised reports described in section 9A are kept for 12 months
+          from the last action on them, then deleted, as set out in section 14.6.
         </Clause>
       </LegalCard>
 

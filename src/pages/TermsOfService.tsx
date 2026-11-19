@@ -778,8 +778,9 @@ export default function TermsOfService() {
         </Clause>
         <Clause n="16A.4">
           You are responsible for what you post. You must not post content that is unlawful, threatening,
-          abusive, harassing, hateful, defamatory, sexual, or that discloses personal information about
-          private individuals, or that otherwise breaks the Community Guidelines.
+          abusive, harassing, hateful, defamatory or sexual, that includes vehicle registration numbers,
+          that discloses personal information about private individuals, or that otherwise breaks the
+          Community Guidelines.
         </Clause>
         <Clause n="16A.5">
           Content in Community Forums is posted by users. It does not represent the views of Dodge, and
@@ -855,7 +856,7 @@ export default function TermsOfService() {
             "Interfere with or disrupt Dodge, its servers, or networks.",
             "Scrape, reverse engineer, or misuse the service, except as permitted by law.",
             "Submit false or malicious unsafe reports or pass-through data intended to manipulate community risk zones.",
-            "Post threats, harassment, hate, sexual content, spam, calls for vigilante action, or other people's personal information in Community Forums, or otherwise break the Community Guidelines.",
+            "Post threats, harassment, hate, sexual content, spam, calls for vigilante action, vehicle registration numbers, or other people's personal information in Community Forums, or otherwise break the Community Guidelines.",
             "Submit false or coordinated reports to have other people's content hidden, or fake your location to gain access to a forum.",
             "Create another account to avoid a forum restriction or ban.",
           ]}

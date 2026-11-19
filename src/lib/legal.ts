@@ -7,7 +7,7 @@ export const BUSINESS_ADDRESS = "40 Bell Road, Kenilworth, Cape Town";
 export const COMPANY_NAME = "Dodge Labs (Pty) Ltd";
 
 export const FORUM_DATA_ATTRIBUTION =
-  "© OpenStreetMap contributors, Overture Maps Foundation; Google Open Buildings and Esri, CC BY 4.0";
+  "© OpenStreetMap contributors, Overture Maps Foundation, Microsoft; Google Open Buildings and Esri, CC BY 4.0";
 
 export const LEGAL_DOCS = [
   { id: "terms", path: "/terms", title: "Terms of Service" },

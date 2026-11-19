@@ -70,7 +70,8 @@ export default function CommunityGuidelines() {
           items={[
             "Threats of violence or harm against anyone.",
             "Calls for vigilante action, mob justice or revenge.",
-            "Personal information about private individuals, such as home addresses, phone numbers or ID numbers, or anything that links a number plate or photo to a named person as an accusation.",
+            "Personal information, such as home addresses, phone numbers or ID numbers, or anything that links a photo to a named person as an accusation.",
+            "Vehicle registration numbers (number plates). You can describe a vehicle's make and colour instead.",
             "Hate, or profiling by race, ethnicity, nationality or religion. Treating a group as suspects, or calling someone suspicious because of who they are rather than what they did, is not allowed.",
             "Harassment or bullying of anyone.",
             "Sexual content of any kind. Anything sexual involving a minor is removed, the account is banned, and we may report it to the authorities.",
@@ -234,7 +235,8 @@ export default function CommunityGuidelines() {
           <a href="https://opendatacommons.org/licenses/odbl/" className={externalLinkClass}>
             Open Database License (ODbL)
           </a>
-          . Google Open Buildings and Esri building footprints are available under{" "}
+          , including Microsoft building footprints. Google Open Buildings and Esri building footprints
+          are available under{" "}
           <a href="https://creativecommons.org/licenses/by/4.0/" className={externalLinkClass}>
             CC BY 4.0
           </a>
