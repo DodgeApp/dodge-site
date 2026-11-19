@@ -351,10 +351,12 @@ export default function PrivacyPolicy() {
         <Clause n="9A.9">
           <span className="font-semibold">Moderation records.</span> When content is reported, hidden,
           rejected or reviewed, we keep a record of the moderation: the automated results, the decision, the
-          report tally, and an excerpt of the content with the author&apos;s username. Moderation records,
-          including reports, moderation decisions, the review queue and the audit log, are kept for 12
-          months from the last action on them, then deleted. They are kept for that period even if the
-          content or account is deleted, so we can deal with repeat abuse, appeals and legal claims.
+          report tally, and an excerpt of the content with the author&apos;s username. Moderation records
+          about content you posted also include a copy of that content. Moderation records, including
+          reports, moderation decisions, the review queue and the audit log, are kept for 12 months from
+          the last action on them, then deleted, unless we must keep them longer for a legal claim or a
+          request from the authorities. They are kept for that period even if the content or account is
+          deleted, so we can deal with repeat abuse, appeals and legal claims.
         </Clause>
       </LegalCard>
 
@@ -660,7 +662,8 @@ export default function PrivacyPolicy() {
         <Clause n="15A.1">
           In the app (iPhone and Android): open Settings, choose Delete account, confirm your password, and
           select Permanently delete account. This deletes your profile and personal information, your
-          membership in all circles, your profile picture, and your location history.
+          membership in all circles, your profile picture, your location history, and your Community Forums
+          posts, comments and reactions.
         </Clause>
         <Clause n="15A.2">
           On the web, without the app: email <SupportEmail /> from the email address on your account, or
@@ -688,9 +691,11 @@ export default function PrivacyPolicy() {
           Deleting your account also deletes your Community Forums data: your posts, comments and reactions,
           your blocks and other people&apos;s blocks of you, and your forum location records. Posts and
           comments that others have replied to are replaced with a &quot;[deleted]&quot; placeholder without
-          your name, photo or text. The strike record is kept for 12 months after your most recent strike,
-          and the moderation records and anonymised reports described in section 9A are kept for 12 months
-          from the last action on them, then deleted, as set out in section 14.6.
+          your name, photo or text. Notifications already delivered to other users, which may show your
+          username and the start of your comment, cannot be withdrawn. Your username becomes available for
+          others to use. The strike record is kept for 12 months after your most recent strike, and the
+          moderation records and the reports you made, with your account ID removed, described in section
+          9A are kept for 12 months from the last action on them, then deleted, as set out in section 14.6.
         </Clause>
       </LegalCard>
 
