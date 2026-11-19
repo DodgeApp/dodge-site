@@ -212,12 +212,8 @@ export default function CommunityGuidelines() {
           others at risk to take a photo, follow someone or confront anyone.
         </Clause>
         <Clause n="10.2">
-          If you are thinking about harming yourself, you&apos;re not alone. In South Africa, SADAG is free
-          and available 24 hours a day on{" "}
-          <a href="tel:0800567567" className={externalLinkClass}>
-            0800 567 567
-          </a>
-          .
+          If you are thinking about harming yourself, you&apos;re not alone. Please reach out to someone you
+          trust, or contact a local helpline or emergency services.
         </Clause>
       </LegalCard>
 

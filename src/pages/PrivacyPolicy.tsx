@@ -614,6 +614,7 @@ export default function PrivacyPolicy() {
             "Community Forums strike record: 12 months after your most recent strike, then deleted automatically, including after account deletion.",
             "Community Forums moderation records (reports about you or your content, moderation decisions, the review queue and the audit log, including content excerpts): 12 months from the last action on them, then deleted, including after the content or account is deleted.",
             "Support messages: in-app feedback is deleted when you delete your account, and support emails, including those sent through the form on our website, are kept for up to 12 months.",
+            "App feedback: items marked fixed, won’t fix, or duplicate are deleted 12 months after that status is set. Open feedback is kept until it is resolved.",
             "Backups: we keep daily backups of our database for 7 days, so deleted data may remain in a backup for up to 7 days before it is removed.",
           ]}
         />
