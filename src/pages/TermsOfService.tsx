@@ -5,7 +5,7 @@ import {
   PolicyLink,
   RelatedLegalCard,
 } from "@/components/LegalBits";
-import { COMPANY_NAME, TERMS_LAST_UPDATED } from "@/lib/legal";
+import { COMPANY_NAME, FORUM_DATA_ATTRIBUTION, TERMS_LAST_UPDATED } from "@/lib/legal";
 
 export default function TermsOfService() {
   return (
@@ -30,7 +30,8 @@ export default function TermsOfService() {
             "Unsafe alerts sent to members of your circles;",
             "Shared places, including optional arrival and departure notifications;",
             "Trip history showing completed journeys, which you may share with circle members who can see your location;",
-            "Push notifications relating to safety, location, and circle activity; and",
+            "Community Forums, where signed-in users can read and post safety warnings, general posts, questions and comments about suburbs and cities;",
+            "Push notifications relating to safety, location, circle activity, and Community Forums; and",
             "Voluntary Contributions to support the development and operation of Dodge.",
           ]}
         />
@@ -757,6 +758,81 @@ export default function TermsOfService() {
         </Clause>
       </LegalCard>
 
+      <LegalCard icon="group" id="community-forums" title="16A. Community Forums and user-generated content">
+        <Clause n="16A.1">
+          Community Forums let signed-in users post safety warnings, general posts and questions to suburb
+          and city forums, comment on posts, and react to them. Your use of Community Forums is also governed
+          by our <PolicyLink to="/community-guidelines">Community Guidelines</PolicyLink>, which form part of
+          these Terms. You must accept the Community Guidelines in the app before you first post or comment.
+        </Clause>
+        <Clause n="16A.2">
+          To post or comment, your account must have a verified phone number. Posting a safety warning also
+          requires that Community Forums found you in that forum&apos;s city, using your location, within
+          the last 30 days. Daily posting, commenting and reporting limits apply.
+        </Clause>
+        <Clause n="16A.3">
+          Posts and comments show your username and profile photo and can be read by any signed-in Dodge
+          user, including users who are not in that suburb or city. Do not post anything you would not want
+          other Dodge users to see. If you choose to attach a location to a safety warning, it is shown only
+          to within about 170 metres.
+        </Clause>
+        <Clause n="16A.4">
+          You are responsible for what you post. You must not post content that is unlawful, threatening,
+          abusive, harassing, hateful, defamatory, sexual, or that discloses personal information about
+          private individuals, or that otherwise breaks the Community Guidelines.
+        </Clause>
+        <Clause n="16A.5">
+          Content in Community Forums is posted by users. It does not represent the views of Dodge, and
+          Dodge does not verify it. It may be incomplete, inaccurate or out of date. Do not rely on it in an
+          emergency. Section 10 applies to forum posts and comments as it does to other content you share,
+          and the licence it grants includes showing your content to other Dodge users in Community Forums.
+        </Clause>
+        <Clause n="16A.6">
+          You can delete your own posts and comments in the app. Where other people have commented on your
+          post or replied to your comment, it is replaced with &quot;[deleted]&quot; so their replies remain,
+          and your name, photo and text are removed.
+        </Clause>
+      </LegalCard>
+
+      <LegalCard icon="gavel" id="forum-enforcement" title="16B. Zero tolerance, moderation and enforcement">
+        <Clause n="16B.1">
+          There is no tolerance for objectionable content or abusive users in Community Forums. Dodge
+          provides tools to report posts, comments and users, and to block users. We review reports of
+          objectionable content within 24 hours, and remove content and users that break these Terms or the
+          Community Guidelines.
+        </Clause>
+        <Clause n="16B.2">
+          Posts and comments are checked by automated moderation tools before they are shown to others, and
+          may be reviewed by the Dodge team. We may publish, collapse, hold, hide, reject, recategorise or
+          remove any forum content, and label a safety warning &quot;Unverified&quot;, at our discretion and
+          without notice. Reports alone never hide a safety warning, except where its content suggests a
+          credible threat to a person or a risk to a child.
+        </Clause>
+        <Clause n="16B.3">
+          Breaking the Community Guidelines may result in strikes. A strike stays active for 90 days. One
+          active strike is a warning; two pause your posting and commenting for 24 hours; three pause it for
+          7 days; four or more result in a forum ban, under which you can read but cannot post, comment or
+          react. A single severe violation, such as a credible threat against a person or sexual content
+          involving a minor, results in an immediate forum ban. Three rejected posts or comments within 24
+          hours pause your posting for 24 hours.
+        </Clause>
+        <Clause n="16B.4">
+          We may also restrict your posting, ban you from Community Forums, or disable your Dodge account
+          entirely, under section 12.4. Where content suggests a risk to someone&apos;s life or to a child,
+          we may report it to the relevant authorities.
+        </Clause>
+        <Clause n="16B.5">
+          Strikes and forum bans are linked to your phone number and email address for 12 months after your
+          most recent strike, as described in our <PolicyLink to="/privacy#community-forums">Privacy
+          Policy</PolicyLink>. Deleting your account and signing up again with the same phone number or email
+          address does not remove active strikes or a ban.
+        </Clause>
+        <Clause n="16B.6">
+          If you believe a moderation decision was wrong, contact us at the address below and a person will
+          review it.
+        </Clause>
+      </LegalCard>
+
       <LegalCard icon="volunteer_activism" title="17. Support Dodge Labs">
         <Clause n="17.1">
           If you find Dodge useful, you may make a once-off voluntary contribution to {COMPANY_NAME} to
@@ -779,6 +855,9 @@ export default function TermsOfService() {
             "Interfere with or disrupt Dodge, its servers, or networks.",
             "Scrape, reverse engineer, or misuse the service, except as permitted by law.",
             "Submit false or malicious unsafe reports or pass-through data intended to manipulate community risk zones.",
+            "Post threats, harassment, hate, sexual content, spam, calls for vigilante action, or other people's personal information in Community Forums, or otherwise break the Community Guidelines.",
+            "Submit false or coordinated reports to have other people's content hidden, or fake your location to gain access to a forum.",
+            "Create another account to avoid a forum restriction or ban.",
           ]}
         />
       </LegalCard>
@@ -819,7 +898,8 @@ export default function TermsOfService() {
         </Clause>
         <Clause n="21.2">
           For example, <PolicyLink to="/payment-terms">Payment Terms</PolicyLink>,{" "}
-          <PolicyLink to="/privacy">Privacy Policy</PolicyLink>, and the{" "}
+          <PolicyLink to="/privacy">Privacy Policy</PolicyLink>,{" "}
+          <PolicyLink to="/community-guidelines">Community Guidelines</PolicyLink>, and the{" "}
           <PolicyLink to="/eula">End User Licence Agreement</PolicyLink> or other payment-related
           functionality may carry additional terms.
         </Clause>
@@ -891,6 +971,12 @@ export default function TermsOfService() {
           payments) for example the Apple App Store, Google Play, Google Play Billing, Google Maps Platform,
           Google Firebase, Paystack, and PayPal. Your use of those services may be subject to their own
           terms. We are not responsible for third-party services outside our reasonable control.
+        </p>
+        <p>
+          Community Forums use automated moderation services from OpenAI and Google (Gemini on Vertex AI)
+          to check posts and comments. Forum areas and place names use open map data: {FORUM_DATA_ATTRIBUTION}.
+          This data is available under the Open Database License (ODbL) and CC BY 4.0, as described in the{" "}
+          <PolicyLink to="/community-guidelines#data-sources">Community Guidelines</PolicyLink>.
         </p>
       </LegalCard>
 

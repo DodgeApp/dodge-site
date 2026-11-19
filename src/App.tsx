@@ -15,6 +15,7 @@ import EndUserLicence from "./pages/EndUserLicence.tsx";
 import Support from "./pages/Support.tsx";
 import About from "./pages/About.tsx";
 import Legal from "./pages/Legal.tsx";
+import CommunityGuidelines from "./pages/CommunityGuidelines.tsx";
 import SiteFooter from "./components/SiteFooter.tsx";
 
 const queryClient = new QueryClient();
@@ -58,6 +59,7 @@ const App = () => {
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/payment-terms" element={<PaymentTerms />} />
                 <Route path="/eula" element={<EndUserLicence />} />
+                <Route path="/community-guidelines" element={<CommunityGuidelines />} />
                 <Route path="/support" element={<Support />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/legal" element={<Legal />} />

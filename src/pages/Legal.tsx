@@ -21,6 +21,12 @@ export default function Legal() {
           onClick={() => navigate("/privacy")}
         />
         <HomeLinkCard
+          icon="group"
+          title="Community Guidelines"
+          subtitle="Rules for Community Forums"
+          onClick={() => navigate("/community-guidelines")}
+        />
+        <HomeLinkCard
           icon="credit_card"
           title="Payment Terms"
           subtitle="Subscriptions & contributions"
