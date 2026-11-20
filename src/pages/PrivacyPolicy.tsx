@@ -47,6 +47,9 @@ export default function PrivacyPolicy() {
             "Trip history data: if enabled, completed journey summaries including start and end times, start and end coordinates, a simplified route, distance, inferred transport mode, and short place labels (for example a street name). High-frequency GPS samples used to detect trips remain on your device and are not uploaded.",
             "Circle and social safety data: circle memberships, shared live locations, invite codes, saved places, presence pings, and unsafe status alerts you send or receive.",
             "Community safety reports: locations and optional descriptions you submit when reporting that you feel unsafe, plus aggregated unsafe-report pins shown on the map.",
+            "Community Forums content: posts, comments and reactions (“Thanks” and “Seen too”) you make, with your username and profile photo, the forum and category, any safety reasons you choose, and, if you attach one to a safety warning, a location rounded to about 170 metres.",
+            "Community Forums location records: when you open Community Forums, the suburb and city you are in, the cities you were found in over the last 30 days, the suburbs you visited most over the last 60 days, and, for 24 hours, the approximate area (about 0.74 km²) of your last check. Your exact coordinates are not stored.",
+            "Community Forums safety and moderation records: your acceptance of the Community Guidelines, reports you make or that are made about you or your content, users you block, automated moderation results, moderation decisions, strikes and restrictions, and a coded (HMAC) strike record linked to your phone number and email address.",
             "Safety zone / pass-through contribution data: if enabled, the date and the keys of the small map cells (or areas) you pass through, recorded at most once per account per cell per day, together with approximate coordinates and, where available, a street name. One day's contribution can include several cell keys, and observations may be held briefly on your device before they are uploaded. This is not a continuous, ordered record of your trip.",
             "Aggregated community risk zone data: risk scores, tiers, summary measures, and map geometry computed by our servers by pooling unsafe reports and pass-through activity from many users. Contributor identities are not shown on the map.",
             "Risk-zone processing data: to de-duplicate contributions, limit any one account's influence, and prevent abuse, our servers may keep account-associated or pseudonymous (coded, not named) summaries of your pass-through and report contributions. These are used only on our servers and are not shown to other users.",
@@ -81,6 +84,8 @@ export default function PrivacyPolicy() {
             "Display community unsafe-report pins and aggregated risk zones on the map.",
             "Compute and update community risk zones from pooled pass-through and report activity.",
             "Send alerts when you or circle members enter published community risk zones (if enabled).",
+            "Run Community Forums: place you in your suburb and city forums, show posts and comments, check eligibility for safety warnings, and send forum notifications.",
+            "Moderate Community Forums: screen posts and comments, handle reports, prevent spam and abuse, apply strikes and restrictions, and stop banned users from returning.",
             "Process voluntary contributions (if applicable) and process payments (if applicable).",
             "Respond to support requests and feedback.",
             "Maintain security, prevent abuse, enforce our terms, and comply with law.",
@@ -95,6 +100,13 @@ export default function PrivacyPolicy() {
         <Clause n="4.2">Contractual necessity (GDPR Art. 6(1)(b)): To provide App services.</Clause>
         <Clause n="4.3">Legal Obligation (GDPR Art. 6(1)(c)): To comply with laws.</Clause>
         <Clause n="4.4">Legitimate Interests (GDPR Art. 6(1)(f)): To improve and secure Dodge.</Clause>
+        <Clause n="4.5">
+          For Community Forums, we rely on contractual necessity to provide the forums you choose to use, and
+          on our legitimate interests in keeping users safe, preventing abuse and enforcing our Community
+          Guidelines to moderate content and keep the strike record described in section 9A. Under POPIA, this
+          processing is necessary to pursue our legitimate interests and those of other users (section
+          11(1)(f)).
+        </Clause>
       </LegalCard>
 
       <LegalCard icon="share" title="5. Data sharing and transfers">
@@ -269,6 +281,85 @@ export default function PrivacyPolicy() {
         </Clause>
       </LegalCard>
 
+      <LegalCard icon="group" id="community-forums" title="9A. Community Forums">
+        <Clause n="9A.1">
+          Community Forums are suburb and city forums where signed-in users can post safety warnings, general
+          posts and questions, comment, and react. Using them is optional. The rules for posting are in our{" "}
+          <PolicyLink to="/community-guidelines">Community Guidelines</PolicyLink>.
+        </Clause>
+        <Clause n="9A.2">
+          <span className="font-semibold">What other users see.</span> Your posts and comments, with your
+          username and profile photo, can be read by any signed-in Dodge user, including people browsing a
+          forum from elsewhere. Reaction totals are shown on each post, but other users cannot see who
+          reacted. If you attach a location to a safety warning, other users see it rounded to the centre of
+          an area about 170 metres across; your exact position is not stored with the post. Other users
+          cannot see which forums you are in, where you have been located, your reports, your blocks, or your
+          strikes.
+        </Clause>
+        <Clause n="9A.3">
+          <span className="font-semibold">Finding your forums.</span> When you open Community Forums, the app
+          sends your current location to our servers once (at most about every 15 minutes) to work out which
+          suburb and city you are in. Our servers do not store or log the coordinates. They keep your current
+          suburb and city; a list of cities you were found in, each kept for 30 days and used to decide
+          whether you can post safety warnings there; up to 8 suburbs you visited and on how many days, over
+          the last 60 days, used to choose up to 2 home suburbs for safety notifications; and, for 24 hours,
+          the approximate area (about 0.74 km²) of your last check, used only to detect impossible jumps in
+          location. If you do not allow location access, you can still find forums by searching, but you
+          cannot post safety warnings.
+        </Clause>
+        <Clause n="9A.4">
+          <span className="font-semibold">Phone verification.</span> To post or comment, your account must
+          have a phone number verified by a one-time code. We check this on our servers; your phone number is
+          not shown to other users.
+        </Clause>
+        <Clause n="9A.5">
+          <span className="font-semibold">Automated moderation.</span> Every post and comment is checked
+          before other users see it. We send its title and text to OpenAI&apos;s moderation service. Where a
+          closer judgement is needed, or the post is reported, we send the text, with its category, any safety
+          reasons and the forum&apos;s country, to Google&apos;s Gemini model on Vertex AI. We do not send your
+          name, username, account ID, phone number, email address or location to either service. OpenAI and
+          Google process this text as our service providers to return a moderation result.
+        </Clause>
+        <Clause n="9A.6">
+          <span className="font-semibold">Decisions about you.</span> Automated moderation may publish,
+          collapse, hold, hide or reject a post or comment, issue a strike, and, under the strike rules in the
+          Community Guidelines, pause your posting or ban you from forums. These decisions affect only your
+          ability to use Community Forums. Content suggesting a threat to life, a risk to a child, or
+          self-harm is sent to a person on the Dodge team. You can ask for any automated decision to be
+          reviewed by a person by contacting us (see section 15).
+        </Clause>
+        <Clause n="9A.7">
+          <span className="font-semibold">Reports and blocks.</span> When you report a post, comment or user,
+          we store the report with your account ID, a coded (HMAC) version of your account ID, the reason and
+          any note you add. The person you report is not told who reported them. The Dodge team sees reports
+          with a short code in place of your identity. When you block someone, we store that in your account so
+          you no longer see their content and they cannot comment on or react to your posts or reply to your
+          comments.
+        </Clause>
+        <Clause n="9A.8">
+          <span className="font-semibold">Strike record.</span> If you receive a strike, we record it, with
+          its reason and date and whether it led to a ban, under a coded identifier made from your phone
+          number and, separately, from your email address, using a keyed hash (HMAC) with a secret key. The
+          record does not contain your phone number or email address in readable form. It lets us carry active
+          strikes and bans over to a new account created with the same phone number or email address, so that
+          deleting an account cannot be used to avoid enforcement. It is kept for 12 months after your most
+          recent strike and then deleted automatically, including if you have deleted your account. Strikes
+          themselves stop counting after 90 days. We keep this record on the basis of our legitimate interest
+          in protecting users from abuse, as permitted by POPIA and the GDPR. You can object to it or ask
+          about it by contacting us.
+        </Clause>
+        <Clause n="9A.9">
+          <span className="font-semibold">Moderation records.</span> When content is reported, hidden,
+          rejected or reviewed, we keep a record of the moderation: the automated results, the decision, the
+          report tally, and an excerpt of the content with the author&apos;s username. Moderation records
+          about content you posted also include a copy of that content. Moderation records, including
+          reports, moderation decisions, the review queue and the audit log, are kept for 12 months from
+          the last action on them, then deleted, unless we must keep them longer for a legal claim or a
+          request from the authorities. They are kept for that period even if the content or account is
+          deleted, so we can deal with repeat abuse, appeals and legal claims.
+        </Clause>
+      </LegalCard>
+
       <LegalCard icon="map" title="10. Safety zones and community risk areas">
         <Clause n="10.1">
           Dodge may display community risk zones on the map. These are highlighted areas derived by pooling
@@ -369,6 +460,15 @@ export default function PrivacyPolicy() {
           not by itself stop risk-zone entry alerts being sent to circles with which you share your
           location; those follow your per-circle location-sharing settings.
         </Clause>
+        <Clause n="11.1C">
+          Community Forums may send you notifications about comments on your posts and replies to your
+          comments, safety warnings in your current or home suburb (at most 3 a day, and none between 22:00
+          and 06:00 local time), and moderation notices such as a removal, a posting pause or a forum ban. To
+          send them only to devices that can show them, we record which of your devices run a version of
+          Dodge that supports forum notifications. You can turn off reply and safety-warning notifications
+          in the app; moderation notices are always sent. No notifications are sent between users who have
+          blocked each other.
+        </Clause>
         <Clause n="11.2">
           You can manage notification categories and preferences within Dodge and may disable notifications
           through your device settings.
@@ -407,6 +507,8 @@ export default function PrivacyPolicy() {
             "Email delivery providers – used by our backend to send verification, account, and service-related emails;",
             "Apple – maps through Apple MapKit (including reverse geocoding and road-routing used for trip history), push-notification delivery on iOS, and App Store distribution; and",
             "Paystack and PayPal – processing voluntary contributions made through dodgeapp.com. They act under their own terms and privacy policies when you pay on their sites;",
+            "OpenAI – automated moderation of Community Forums posts and comments (the text only, as described in section 9A);",
+            "Google Cloud Vertex AI (Gemini) – automated moderation judgements on Community Forums posts and comments (the text only, as described in section 9A);",
             "Resend – processing and delivery of messages submitted through the Dodge support contact form on dodgeapp.com.",
           ]}
         />
@@ -431,6 +533,11 @@ export default function PrivacyPolicy() {
           . Dodge&apos;s data is stored and processed by Google Cloud in the United States, under the
           safeguards described in section 5.3.
         </p>
+        <p>
+          Text sent for Community Forums moderation is processed by OpenAI in the United States, and by
+          Google&apos;s Vertex AI global service, which may process it in any region where Google offers
+          Gemini. These transfers are also covered by the safeguards in section 5.3.
+        </p>
       </LegalCard>
 
       <LegalCard icon="database" id="data-safety" title="13A. Data collected and shared (Google Play Data safety)">
@@ -443,7 +550,7 @@ export default function PrivacyPolicy() {
             "Location (precise and approximate): collected for app functionality and account management; shared with circle members you choose, including in risk-zone entry alerts; not optional if you use location features, although pass-through contribution can be turned off in Settings → Safety Map Data.",
             "Personal info (name, email address, phone number, user ID): collected for app functionality, account management, and security.",
             "Photos: your profile photo, collected for app functionality and shown to your circle members; optional.",
-            "Messages and user content: unsafe reports, circle content, and support messages, collected for app functionality and support.",
+            "Messages and user content: unsafe reports, circle content, Community Forums posts, comments and reactions, and support messages, collected for app functionality, moderation and support. Forum posts and comments are shown to other signed-in Dodge users.",
             "App activity (place and address searches): collected for app functionality. We do not collect crash logs, diagnostics, or usage analytics.",
             "Device or other IDs (push token, App Check attestation): collected for app functionality and security.",
             "Purchase history: only if you make an in-app purchase, processed by Apple or Google.",
@@ -500,7 +607,14 @@ export default function PrivacyPolicy() {
             "Pass-through contributions: detailed pass-through records and the records used to de-duplicate them are generally deleted after 14 days, and area-level daily totals, which do not identify you, after 90 days. Observations still waiting on your device are deleted if you turn pass-through contribution off.",
             "Risk-zone processing summaries: to calculate and check risk zones, we may keep server-only pseudonymous summaries of pass-through and report contributions, and limited records that keep deleted accounts out of the calculation, for up to about seven months after the most recent relevant activity. Aggregate cell and zone data that does not identify you may be kept for as long as it is needed to provide risk zones.",
             "Unsafe reports: kept so they can continue to inform community risk zones. When you delete your account, your user ID and username are removed from your reports, so they no longer identify you.",
+            "Community Forums posts and comments: kept until you or a moderator delete them, or you delete your account. Where others have replied, a deleted post or comment is replaced with a “[deleted]” placeholder that holds none of your details. Reactions are deleted with your account.",
+            "Community Forums location records: cities you were found in, 30 days each; suburb visit counts, up to 60 days; the approximate area of your last check, 24 hours; your current suburb and city, until your next check or until you delete your account.",
+            "Community Forums blocks and Community Guidelines acceptance: until you unblock, or until you delete your account.",
+            "Community Forums reports you make: 12 months from the last action on them, then deleted. If you delete your account sooner, your account ID is removed from them; the coded version stays until they are deleted so that past reports can still be weighed.",
+            "Community Forums strike record: 12 months after your most recent strike, then deleted automatically, including after account deletion.",
+            "Community Forums moderation records (reports about you or your content, moderation decisions, the review queue and the audit log, including content excerpts): 12 months from the last action on them, then deleted, including after the content or account is deleted.",
             "Support messages: in-app feedback is deleted when you delete your account, and support emails, including those sent through the form on our website, are kept for up to 12 months.",
+            "App feedback: items marked fixed, won’t fix, or duplicate are deleted 12 months after that status is set. Open feedback is kept until it is resolved.",
             "Backups: we keep daily backups of our database for 7 days, so deleted data may remain in a backup for up to 7 days before it is removed.",
           ]}
         />
@@ -549,7 +663,8 @@ export default function PrivacyPolicy() {
         <Clause n="15A.1">
           In the app (iPhone and Android): open Settings, choose Delete account, confirm your password, and
           select Permanently delete account. This deletes your profile and personal information, your
-          membership in all circles, your profile picture, and your location history.
+          membership in all circles, your profile picture, your location history, and your Community Forums
+          posts, comments and reactions.
         </Clause>
         <Clause n="15A.2">
           On the web, without the app: email <SupportEmail /> from the email address on your account, or
@@ -572,6 +687,16 @@ export default function PrivacyPolicy() {
           law requires it, unsafe reports with your user ID and username removed, aggregated risk-zone
           data that no longer identifies you, or the limited pseudonymous records that keep a deleted
           account out of risk-zone calculations until they expire.
+        </Clause>
+        <Clause n="15A.6">
+          Deleting your account also deletes your Community Forums data: your posts, comments and reactions,
+          your blocks and other people&apos;s blocks of you, and your forum location records. Posts and
+          comments that others have replied to are replaced with a &quot;[deleted]&quot; placeholder without
+          your name, photo or text. Notifications already delivered to other users, which may show your
+          username and the start of your comment, cannot be withdrawn. Your username becomes available for
+          others to use. The strike record is kept for 12 months after your most recent strike, and the
+          moderation records and the reports you made, with your account ID removed, described in section
+          9A are kept for 12 months from the last action on them, then deleted, as set out in section 14.6.
         </Clause>
       </LegalCard>
 

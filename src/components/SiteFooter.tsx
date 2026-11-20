@@ -5,6 +5,7 @@ const footerLinks = [
   { to: "/support", label: "Support" },
   { to: "/privacy", label: "Privacy Policy" },
   { to: "/terms", label: "Terms of Service" },
+  { to: "/community-guidelines", label: "Community Guidelines" },
   { to: "/payment-terms", label: "Payment Terms" },
   { to: "/eula", label: "EULA" },
 ];
