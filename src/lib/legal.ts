@@ -1,5 +1,5 @@
 export const LEGAL_LAST_UPDATED = "26 September 2026";
-export const PRIVACY_LAST_UPDATED = "20 November 2026";
+export const PRIVACY_LAST_UPDATED = "27 November 2026";
 export const TERMS_LAST_UPDATED = "20 November 2026";
 export const GUIDELINES_LAST_UPDATED = "20 November 2026";
 export const SUPPORT_EMAIL = "support@dodgeapp.com";

@@ -41,7 +41,7 @@ export default function PrivacyPolicy() {
             "Personal Information: Full Name, email address, phone number, profile details, including a profile photo.",
             "Usage Data: App activity, device type, operating system, IP Address.",
             "Communications: Messages shared within trusted groups.",
-            "Authentication data: one-time verification codes and related logs used to sign in, verify your email, reset your password, or change your contact details.",
+            "Authentication data: one-time verification codes, the delivery status of the WhatsApp or SMS messages that carry them, and related logs used to sign in, verify your email, reset your password, or change your contact details.",
             "Location data: precise GPS coordinates, including in the background when you grant permission, used for live map features, safety alerts, and, if enabled, trip history.",
             "Movement and presence data: inferred activity (for example walking, running, driving, or stationary) and online/presence status shared with your circles.",
             "Trip history data: if enabled, completed journey summaries including start and end times, start and end coordinates, a simplified route, distance, inferred transport mode, and short place labels (for example a street name). High-frequency GPS samples used to detect trips remain on your device and are not uploaded.",
@@ -116,9 +116,12 @@ export default function PrivacyPolicy() {
           providers we use are listed in section 13.
         </Clause>
         <Clause n="5.3">
-          Where personal data is transferred outside South Africa or the EU, we rely on appropriate
-          safeguards such as adequacy decisions, Standard Contractual Clauses, or binding corporate rules
-          to ensure your information remains protected in line with POPIA and the GDPR.
+          Where personal information is transferred outside South Africa, we do so only as section 72 of
+          POPIA allows: where the recipient is bound by a law, binding corporate rules or a binding agreement
+          that gives the information an adequate level of protection, or where the transfer is necessary to
+          perform our agreement with you, for example to deliver a verification code to your phone. Where
+          personal data is transferred outside the EU, we rely on appropriate safeguards such as adequacy
+          decisions, Standard Contractual Clauses, or binding corporate rules, in line with the GDPR.
         </Clause>
       </LegalCard>
 
@@ -503,7 +506,9 @@ export default function PrivacyPolicy() {
             "Google Firebase – Firebase Authentication (sign-in), Cloud Firestore (cloud database), Cloud Storage for Firebase (profile photos), Cloud Functions for Firebase (backend services), Firebase Cloud Messaging (push notifications on Android and delivery infrastructure), and Firebase App Check with Google Play Integrity (app integrity on Android);",
             "Google Maps Platform – on Android, the Maps SDK for Android displays the map, and the Places API suggests places from the text you type into search fields;",
             "Google Play – Android app distribution and, where available, Google Play Billing for in-app purchases;",
-            "Twilio – telephone number verification and delivery of one-time verification codes;",
+            "Meta Platforms (WhatsApp Business Platform) – delivery of one-time verification codes by WhatsApp, using your phone number and the code;",
+            "SMSPortal – a South African SMS gateway that delivers verification codes by SMS to phone numbers in South Africa, Namibia, Botswana, Lesotho and Eswatini when WhatsApp does not deliver them;",
+            "Twilio – delivery of verification codes by SMS to phone numbers in other countries when WhatsApp does not deliver them (Twilio Programmable Messaging), and, for phone numbers in the United States, Canada and India, sending verification codes by WhatsApp or SMS and checking them (Twilio Verify);",
             "Email delivery providers – used by our backend to send verification, account, and service-related emails;",
             "Apple – maps through Apple MapKit (including reverse geocoding and road-routing used for trip history), push-notification delivery on iOS, and App Store distribution; and",
             "Paystack and PayPal – processing voluntary contributions made through dodgeapp.com. They act under their own terms and privacy policies when you pay on their sites;",
@@ -537,6 +542,13 @@ export default function PrivacyPolicy() {
           Text sent for Community Forums moderation is processed by OpenAI in the United States, and by
           Google&apos;s Vertex AI global service, which may process it in any region where Google offers
           Gemini. These transfers are also covered by the safeguards in section 5.3.
+        </p>
+        <p>
+          To send you a verification code, we give your phone number and the code to the provider that
+          delivers it, and we receive a delivery status back. Meta and Twilio process this information
+          outside South Africa, including in the United States. SMSPortal is based in South Africa; for
+          numbers in Namibia, Botswana, Lesotho and Eswatini, the message is passed to a mobile network in
+          that country. These transfers are covered by section 5.3.
         </p>
       </LegalCard>
 
